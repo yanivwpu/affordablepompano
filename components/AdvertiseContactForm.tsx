@@ -30,10 +30,10 @@ export default function AdvertiseContactForm() {
   if (submitted) {
     return (
       <div className="rounded-sm border border-teal/30 bg-teal/10 px-6 py-8 text-center">
-        <p className="font-display text-xl text-navy">Thanks for reaching out!</p>
+        <p className="font-display text-xl text-navy">You&apos;re on the list!</p>
         <p className="mt-2 text-sm text-navy/70">
-          We&apos;ll get back to you within 1–2 business days with pricing and
-          next steps. You can also email us directly at{" "}
+          Thanks for applying — we&apos;ll confirm availability and next steps
+          within 1–2 business days. Questions? Email us at{" "}
           <a
             href={`mailto:${ADVERTISE_EMAIL}`}
             className="font-semibold text-teal hover:text-teal-light"
@@ -45,6 +45,9 @@ export default function AdvertiseContactForm() {
       </div>
     );
   }
+
+  const inputClass =
+    "mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -59,7 +62,7 @@ export default function AdvertiseContactForm() {
             required
             value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+            className={inputClass}
             placeholder="Jane Smith"
           />
         </div>
@@ -76,7 +79,7 @@ export default function AdvertiseContactForm() {
             required
             value={form.business}
             onChange={(e) => setForm({ ...form, business: e.target.value })}
-            className="mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+            className={inputClass}
             placeholder="Your Pompano business"
           />
         </div>
@@ -92,7 +95,7 @@ export default function AdvertiseContactForm() {
           required
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
-          className="mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+          className={inputClass}
           placeholder="you@yourbusiness.com"
         />
       </div>
@@ -102,19 +105,20 @@ export default function AdvertiseContactForm() {
           htmlFor="package"
           className="block text-sm font-medium text-navy"
         >
-          Interested in
+          Package you&apos;re interested in
         </label>
         <select
           id="package"
           required
           value={form.package}
           onChange={(e) => setForm({ ...form, package: e.target.value })}
-          className="mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
+          className={inputClass}
         >
           <option value="">Select a package</option>
           {advertisePackages.map((pkg) => (
             <option key={pkg.id} value={pkg.id}>
-              {pkg.title}
+              {pkg.title} — {pkg.price}
+              {pkg.period}
             </option>
           ))}
           <option value="custom">Custom partnership</option>
@@ -133,25 +137,17 @@ export default function AdvertiseContactForm() {
           rows={4}
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          className="mt-1.5 w-full rounded-sm border border-sand-dark bg-cream px-4 py-3 text-sm text-navy focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal"
-          placeholder="What are you hoping to promote? Any questions about pricing?"
+          className={inputClass}
+          placeholder="What would you like to promote? Any questions about placement or timing?"
         />
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <button
-          type="submit"
-          className="inline-flex flex-1 items-center justify-center rounded-sm bg-coral px-6 py-3.5 text-sm font-semibold tracking-wide text-cream transition-colors hover:bg-coral-light"
-        >
-          Apply to Sponsor
-        </button>
-        <a
-          href={`mailto:${ADVERTISE_EMAIL}?subject=${encodeURIComponent("Pricing Request - Affordable Pompano")}`}
-          className="inline-flex flex-1 items-center justify-center rounded-sm border border-navy/20 bg-transparent px-6 py-3.5 text-sm font-semibold tracking-wide text-navy transition-colors hover:border-teal hover:text-teal"
-        >
-          Get Pricing
-        </a>
-      </div>
+      <button
+        type="submit"
+        className="inline-flex w-full items-center justify-center rounded-sm bg-coral px-6 py-3.5 text-sm font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light sm:w-auto"
+      >
+        Apply to Sponsor
+      </button>
     </form>
   );
 }

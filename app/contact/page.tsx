@@ -2,15 +2,10 @@ import ContactForm from "@/components/ContactForm";
 import ImagePageHero from "@/components/ImagePageHero";
 import { images, REALTOR_EMAIL } from "@/lib/images";
 import { ADVERTISE_EMAIL } from "@/lib/navigation";
-import { pageTitle } from "@/lib/seo";
+import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: pageTitle("Contact Us"),
-  description:
-    "Get in touch with Affordable Pompano Beach — questions about homes, restaurants, things to do, or advertising partnerships in Pompano Beach, Florida.",
-};
+export const metadata = metadataForPage("contact");
 
 export default function ContactPage() {
   return (

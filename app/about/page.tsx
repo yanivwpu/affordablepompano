@@ -1,15 +1,10 @@
 import PageHero from "@/components/PageHero";
 import { images } from "@/lib/images";
 import { siteTagline } from "@/lib/navigation";
-import { pageTitle } from "@/lib/seo";
+import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: pageTitle("About Affordable Pompano Beach"),
-  description:
-    "Learn about Affordable Pompano — a sunny local magazine for Pompano Beach, Florida with honest tips on homes, food, and coastal living.",
-};
+export const metadata = metadataForPage("about");
 
 export default function AboutPage() {
   return (

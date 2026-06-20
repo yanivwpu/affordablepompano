@@ -1,18 +1,14 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
+import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import ContentCard from "@/components/ContentCard";
 import ContentNotice from "@/components/ContentNotice";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
 import { featuredGuides, guideCategories } from "@/lib/content";
 import { images } from "@/lib/images";
-import { pageTitle } from "@/lib/seo";
-import type { Metadata } from "next";
+import { metadataForPage } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: pageTitle("Pompano Beach Local Guides & Tips"),
-  description:
-    "Helpful guides for visiting, living, and exploring Pompano Beach on a budget. Neighborhood tips, free activities, and insider advice.",
-};
+export const metadata = metadataForPage("guides");
 
 export default function GuidesPage() {
   return (
@@ -31,7 +27,7 @@ export default function GuidesPage() {
 
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AdSensePlaceholder size="leaderboard" className="mb-12" />
+          <AdSensePlaceholder size="leaderboard" label="Advertisement" />
 
           {guideCategories.map((cat, index) => {
             const guides = featuredGuides.filter((g) => g.group === cat.id);
@@ -41,7 +37,7 @@ export default function GuidesPage() {
               <div key={cat.id}>
                 <div
                   id={cat.id}
-                  className={`scroll-mt-28 ${index > 0 ? "mt-16" : ""}`}
+                  className={`scroll-mt-28 ${index > 0 ? "mt-16 sm:mt-20" : "mt-12"}`}
                 >
                   <SectionIntro title={cat.title} description={cat.description} />
                   <div className="masonry-grid">
@@ -53,14 +49,26 @@ export default function GuidesPage() {
 
                 {index === 0 && (
                   <AdSensePlaceholder
-                    label="Advertisement"
+                    label="Sponsored"
                     size="rectangle"
-                    className="mt-12"
+                    className="mt-12 sm:mt-16"
+                  />
+                )}
+
+                {index === 1 && (
+                  <AdSensePlaceholder
+                    label="Advertisement"
+                    size="banner"
+                    className="mt-12 sm:mt-16"
                   />
                 )}
               </div>
             );
           })}
+
+          <div className="mt-16 sm:mt-20">
+            <AffiliateDisclaimer />
+          </div>
         </div>
       </section>
     </>

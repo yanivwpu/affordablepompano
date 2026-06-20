@@ -1,3 +1,4 @@
+import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import ContentCard from "@/components/ContentCard";
 import EditorialCard from "@/components/EditorialCard";
 import Hero from "@/components/Hero";
@@ -9,15 +10,10 @@ import {
   featuredGuides,
   foodSpots,
 } from "@/lib/content";
-import { SITE_TITLE } from "@/lib/seo";
+import { metadataForPage } from "@/lib/seo";
 import { siteTagline } from "@/lib/navigation";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: { absolute: SITE_TITLE },
-  description:
-    "Your sunny local guide to Pompano Beach, Florida — affordable homes, great restaurants, things to do, and honest tips for locals and visitors.",
-};
+export const metadata = metadataForPage("home");
 
 export default function Home() {
   return (
@@ -41,6 +37,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <AdSensePlaceholder size="leaderboard" label="Advertisement" />
+      </div>
 
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,14 @@ export default function Home() {
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {foodSpots.slice(0, 4).map((spot) => {
-              const { actionLabel: _a, actionHref: _b, ...preview } = spot;
+              const {
+                actionLabel: _a,
+                actionHref: _b,
+                reviewsHref: _c,
+                whyLocalsLove: _d,
+                bestDishes: _e,
+                ...preview
+              } = spot;
               return (
                 <EditorialCard key={spot.title} {...preview} href="/food" />
               );
@@ -78,6 +85,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <AdSensePlaceholder size="rectangle" label="Sponsored" />
+      </div>
 
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -90,7 +101,13 @@ export default function Home() {
           />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {excursions.slice(0, 4).map((excursion) => {
-              const { actionLabel: _a, actionHref: _b, ...preview } = excursion;
+              const {
+                actionLabel: _a,
+                actionHref: _b,
+                secondaryActionLabel: _c,
+                secondaryActionHref: _d,
+                ...preview
+              } = excursion;
               return (
                 <EditorialCard
                   key={excursion.title}

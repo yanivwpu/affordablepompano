@@ -100,6 +100,55 @@ export const images = {
   localGrill: unsplash("photo-1590523277543-a94d2e4eb00b", 900),
   localGrillAlt: "Sunny Florida palms near a local neighborhood grill",
 
+  /** Food & Eats — unique verified Florida / Pompano Beach photo per card */
+  foodHero: unsplash("photo-1703556891303-99ed089279e6", 1800),
+  foodHeroAlt:
+    "Pompano Beach fishing pier at sunset with warm sky and Atlantic Ocean",
+
+  fishermansDock: unsplash("photo-1702003201618-955fee10a2b4", 1000),
+  fishermansDockAlt:
+    "Sunny Pompano Beach waterfront with palm trees and the Atlantic Ocean",
+
+  pierHouse: unsplash("photo-1645771845014-7077d5d0f058", 1000),
+  pierHouseAlt:
+    "Pompano Beach pier and palm-lined shoreline on a bright sunny day",
+
+  pelicanRawBar: unsplash("photo-1559847844-5315695dadae", 1000),
+  pelicanRawBarAlt:
+    "Fresh Atlantic seafood spread at a South Florida raw bar",
+
+  intracoastalSunset: unsplash("photo-1721676447566-9a898db74c2b", 1000),
+  intracoastalSunsetAlt:
+    "Waterfront restaurant patio with palm trees and ocean views in South Florida",
+
+  rustyAnchorPatio: unsplash("photo-1514933651103-005eec06c04b", 1000),
+  rustyAnchorPatioAlt:
+    "Sunny tropical beach bar patio with palm trees near the Atlantic coast",
+
+  sunriseCafe: unsplash("photo-1533089860892-a7c6f0a88666", 1000),
+  sunriseCafeAlt:
+    "Classic sunny Florida breakfast at a bright beachside café",
+
+  coralBrunch: unsplash("photo-1757025662650-92188a174325", 1000),
+  coralBrunchAlt:
+    "Outdoor brunch patio with palm trees and blue sky along the Florida coast",
+
+  tacoReefShack: unsplash("photo-1565299585323-38d6b0865b47", 1000),
+  tacoReefShackAlt:
+    "Fresh fish tacos at a casual Pompano Beach shore-side shack",
+
+  harborMarket: unsplash("photo-1689933251513-72c7d0e69d94", 1000),
+  harborMarketAlt:
+    "Sunny Florida harbor with palms and turquoise water near fresh seafood markets",
+
+  nonnasItalian: unsplash("photo-1414235077428-338989a2e8c0", 1000),
+  nonnasItalianAlt:
+    "Warm coastal Italian restaurant dining room with elegant table setting",
+
+  sandbarGrill: unsplash("photo-1600891964092-4316c288032e", 1000),
+  sandbarGrillAlt:
+    "Grilled Florida catch served at a sunny Atlantic beachfront grill",
+
   /** Activities — South Florida Atlantic coast */
   snorkeling: unsplash("photo-1638945657559-24972f58788a", 1200),
   snorkelingAlt: "Turquoise Atlantic waters for snorkeling in South Florida",

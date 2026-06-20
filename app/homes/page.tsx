@@ -1,19 +1,15 @@
+import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import HomesLeadForm from "@/components/HomesLeadForm";
 import IdxEmbedPlaceholder from "@/components/IdxEmbedPlaceholder";
 import ImagePageHero from "@/components/ImagePageHero";
 import ServiceCategoryCard from "@/components/ServiceCategoryCard";
 import { homeCategories } from "@/lib/content";
 import { images, REALTOR_EMAIL } from "@/lib/images";
-import { pageTitle } from "@/lib/seo";
+import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
-import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: pageTitle("Homes for Sale & Rentals in Pompano Beach"),
-  description:
-    "Buy homes, find long-term rentals, and book vacation stays in Pompano Beach, Florida. Get property alerts, schedule showings, and connect with a local realtor.",
-};
+export const metadata = metadataForPage("homes");
 
 const listingSections = homeCategories.filter((c) =>
   ["buy", "long-term", "vacation"].includes(c.id),
@@ -131,6 +127,10 @@ export default function HomesPage() {
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <AdSensePlaceholder size="banner" label="Sponsored" className="my-12 sm:my-16" />
+      </div>
 
       {/* Lead capture forms */}
       <section className="bg-warm-white py-16 sm:py-20">

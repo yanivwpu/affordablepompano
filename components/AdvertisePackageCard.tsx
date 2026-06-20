@@ -6,7 +6,7 @@ type Package = (typeof advertisePackages)[number];
 export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
   return (
     <article
-      className={`flex h-full flex-col overflow-hidden rounded-sm border bg-cream ${
+      className={`flex h-full flex-col overflow-hidden rounded-sm border bg-cream shadow-sm ${
         pkg.highlighted
           ? "border-teal ring-2 ring-teal/20"
           : "border-sand-dark/60"
@@ -26,17 +26,14 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
           {pkg.idealFor}
         </p>
 
-        <h3 className="font-display mt-3 text-2xl font-medium text-navy">
+        <h3 className="font-display mt-3 text-xl font-medium leading-snug text-navy sm:text-2xl">
           {pkg.title}
         </h3>
 
-        <div className="mt-3 flex items-baseline gap-1">
-          <span className="font-display text-3xl text-coral">{pkg.price}</span>
-          <span className="text-sm text-navy/50">{pkg.period}</span>
+        <div className="mt-4 flex items-baseline gap-1 border-b border-sand-dark/30 pb-4">
+          <span className="font-display text-4xl text-coral">{pkg.price}</span>
+          <span className="text-sm font-medium text-navy/55">{pkg.period}</span>
         </div>
-        <p className="mt-1 text-xs italic text-navy/45">
-          Introductory rates — custom quotes welcome
-        </p>
 
         <p className="mt-4 text-sm leading-relaxed text-navy/70">
           {pkg.description}
@@ -54,20 +51,12 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
           ))}
         </ul>
 
-        <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-          <Link
-            href={`/advertise?package=${pkg.id}#contact`}
-            className="inline-flex flex-1 items-center justify-center rounded-sm bg-teal px-4 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-teal-light"
-          >
-            Apply to Sponsor
-          </Link>
-          <Link
-            href="#contact"
-            className="inline-flex flex-1 items-center justify-center rounded-sm border border-coral/40 px-4 py-2.5 text-sm font-semibold text-coral transition-colors hover:bg-coral hover:text-cream"
-          >
-            Get Pricing
-          </Link>
-        </div>
+        <Link
+          href={`/advertise?package=${pkg.id}#contact`}
+          className="mt-6 inline-flex w-full items-center justify-center rounded-sm bg-coral px-4 py-3.5 text-sm font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light"
+        >
+          Reserve Your Spot
+        </Link>
       </div>
     </article>
   );
