@@ -9,6 +9,8 @@ type ServiceCategoryCardProps = {
   image: string;
   imageAlt: string;
   highlights: readonly string[];
+  onSearchListings?: () => void;
+  searchListingsLabel?: string;
 };
 
 export default function ServiceCategoryCard({
@@ -18,6 +20,8 @@ export default function ServiceCategoryCard({
   image,
   imageAlt,
   highlights,
+  onSearchListings,
+  searchListingsLabel = "Search Listings",
 }: ServiceCategoryCardProps) {
   return (
     <article
@@ -52,12 +56,22 @@ export default function ServiceCategoryCard({
           ))}
         </ul>
         <div className="mt-auto space-y-2 pt-6">
-          <Link
-            href="#idx-search"
-            className="inline-flex w-full items-center justify-center rounded-sm bg-teal px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-teal-light"
-          >
-            Search Listings
-          </Link>
+          {onSearchListings ? (
+            <button
+              type="button"
+              onClick={onSearchListings}
+              className="inline-flex w-full items-center justify-center rounded-sm bg-teal px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-teal-light"
+            >
+              {searchListingsLabel}
+            </button>
+          ) : (
+            <Link
+              href="#browse"
+              className="inline-flex w-full items-center justify-center rounded-sm bg-teal px-4 py-3 text-sm font-semibold text-cream transition-colors hover:bg-teal-light"
+            >
+              {searchListingsLabel}
+            </Link>
+          )}
           <div className="grid grid-cols-2 gap-2">
             <Link
               href="#alerts"

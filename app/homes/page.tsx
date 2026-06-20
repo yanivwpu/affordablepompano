@@ -1,8 +1,7 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
+import HomesBrowseSection from "@/components/HomesBrowseSection";
 import HomesLeadForm from "@/components/HomesLeadForm";
-import IdxEmbedPlaceholder from "@/components/IdxEmbedPlaceholder";
 import ImagePageHero from "@/components/ImagePageHero";
-import ServiceCategoryCard from "@/components/ServiceCategoryCard";
 import { homeCategories } from "@/lib/content";
 import { images, REALTOR_EMAIL } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
@@ -24,7 +23,7 @@ export default function HomesPage() {
         description="Buy a home, lease long-term, or book a beach getaway — with a local realtor who knows every neighborhood."
         image={images.pompanoPier}
         imageAlt={images.pompanoPierAlt}
-        primaryCta={{ label: "Search Listings", href: "#idx-search" }}
+        primaryCta={{ label: "Browse Options", href: "#browse" }}
         secondaryCta={{ label: "Get Property Alerts", href: "#alerts" }}
       />
 
@@ -52,15 +51,8 @@ export default function HomesPage() {
         </div>
       </div>
 
-      {/* IDX embed */}
-      <section className="bg-cream py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <IdxEmbedPlaceholder />
-        </div>
-      </section>
-
       {/* Buy / Long-term / Vacation sections */}
-      <section id="browse" className="scroll-mt-24 bg-background py-16 sm:py-20">
+      <section id="browse" className="scroll-mt-24 bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center sm:mb-12">
             <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
@@ -82,11 +74,7 @@ export default function HomesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {listingSections.map((category) => (
-              <ServiceCategoryCard key={category.id} {...category} />
-            ))}
-          </div>
+          <HomesBrowseSection categories={listingSections} />
         </div>
       </section>
 
