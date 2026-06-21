@@ -10,7 +10,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-sand-dark/60 bg-cream/95 backdrop-blur-md">
+    <header className="sticky top-0 z-[100] border-b border-sand-dark/60 bg-cream/95 backdrop-blur-md">
       <div
         className="h-0.5 bg-gradient-to-r from-teal via-coral to-sunset"
         aria-hidden="true"

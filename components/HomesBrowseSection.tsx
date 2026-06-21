@@ -54,7 +54,7 @@ export default function HomesBrowseSection({
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
         {categories.map((category) => (
           <ServiceCategoryCard
             key={category.id}
@@ -76,13 +76,19 @@ export default function HomesBrowseSection({
       </div>
 
       {activeListing && (
-        <WhachatListingsEmbed ref={embedRef} listingType={activeListing} />
+        <div className="relative left-1/2 mt-12 w-screen max-w-[100vw] -translate-x-1/2 sm:mt-14">
+          <div className="mx-auto w-full max-w-[min(1600px,calc(100vw-1rem))] px-2 sm:px-3">
+            <WhachatListingsEmbed ref={embedRef} listingType={activeListing} />
+          </div>
+        </div>
       )}
 
       <section
         ref={vacationRef}
         id="vacation-stays"
-        className="scroll-mt-28 mt-12 rounded-sm border border-sand-dark/60 bg-cream p-6 sm:mt-14 sm:p-8"
+        className={`scroll-mt-28 rounded-sm border border-sand-dark/60 bg-cream p-6 sm:p-8 ${
+          activeListing ? "mt-10 sm:mt-12" : "mt-12 sm:mt-14"
+        }`}
       >
         <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-teal">
           Vacation Stays

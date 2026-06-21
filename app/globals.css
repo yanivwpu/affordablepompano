@@ -36,12 +36,15 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-dm-sans), system-ui, sans-serif;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .font-display {
@@ -132,4 +135,59 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+.listings-embed-shell {
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 12px;
+  background: #f6f1ea;
+}
+
+.listings-embed-shell iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #f6f1ea;
+}
+
+/* Safety: suppress widget.js UI if ever injected — AP owns chat via WhachatChatWidget */
+button[data-wcw="toggle"],
+[data-wcw="frame-container"],
+body > div[style*="bottom:90px"][style*="max-width:240px"]:not([data-wcw="frame-container"]) {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* WhachatCRM chat panel — fixed in viewport, no horizontal overflow */
+.whachat-chat-panel {
+  position: fixed;
+  bottom: 96px;
+  right: 24px;
+  z-index: 10001;
+  box-sizing: border-box;
+  width: min(420px, calc(100vw - 32px));
+  max-width: calc(100vw - 32px);
+  height: min(520px, calc(100vh - 8.5rem));
+  overflow: hidden;
+}
+
+.whachat-chat-bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10002;
+  box-sizing: border-box;
+  max-width: calc(100vw - 32px);
+}
+
+@media (max-width: 639px) {
+  .whachat-chat-panel {
+    left: 16px;
+    right: 16px;
+    width: auto;
+    max-width: none;
+  }
 }

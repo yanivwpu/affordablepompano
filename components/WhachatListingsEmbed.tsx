@@ -14,48 +14,43 @@ const WhachatListingsEmbed = forwardRef<
   HTMLElement,
   WhachatListingsEmbedProps
 >(function WhachatListingsEmbed({ listingType }, ref) {
-  const { heading, embedUrl, openUrl } = WHACHAT_LISTING_EMBEDS[listingType];
+  const { heading, embedUrl } = WHACHAT_LISTING_EMBEDS[listingType];
 
   return (
     <section
       ref={ref}
       id="listings-embed"
-      className="scroll-mt-28 mt-12 sm:mt-14"
+      className="scroll-mt-28"
       aria-labelledby="listings-embed-heading"
     >
-      <div className="mb-5 text-center sm:mb-6">
-        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-teal">
+      <div className="mb-4 text-center sm:mb-5">
+        <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
+          <span className="text-[8px] text-coral" aria-hidden="true">
+            &#9670;
+          </span>
           Live Listings
+          <span className="text-[8px] text-coral" aria-hidden="true">
+            &#9670;
+          </span>
         </p>
         <h3
           id="listings-embed-heading"
-          className="font-display mt-2 text-2xl font-medium text-navy sm:text-3xl"
+          className="font-display mt-2 text-xl font-medium text-navy sm:text-2xl"
         >
           {heading}
         </h3>
       </div>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-sand-dark/40">
+      <div className="listings-embed-shell">
         <iframe
           src={embedUrl}
           title={heading}
-          className="w-full border-0 bg-white"
+          className="w-full"
           style={{ height: "950px" }}
           loading="lazy"
           allow="fullscreen"
         />
       </div>
-
-      <p className="mt-4 text-center">
-        <a
-          href={openUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-semibold text-teal underline-offset-4 transition-colors hover:text-teal-light hover:underline"
-        >
-          Open listings in a new tab
-        </a>
-      </p>
     </section>
   );
 });
