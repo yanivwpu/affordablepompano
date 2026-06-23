@@ -1,9 +1,8 @@
 "use client";
 
+import Stay22VacationEmbed from "@/components/Stay22VacationEmbed";
 import WhachatListingsEmbed from "@/components/WhachatListingsEmbed";
-import { REALTOR_EMAIL } from "@/lib/images";
 import type { WhachatListingType } from "@/lib/whachatcrm";
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type BrowseTab = WhachatListingType | "vacation";
@@ -17,18 +16,19 @@ const TABS: { id: BrowseTab; label: string }[] = [
 export default function HomesBrowseSection() {
   const [activeTab, setActiveTab] = useState<BrowseTab>("for_sale");
   const [scrollTarget, setScrollTarget] = useState<BrowseTab | null>(null);
-  const listingsRef = useRef<HTMLDivElement>(null);
-  const vacationRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#vacation-stays") {
+      setActiveTab("vacation");
+    }
+  }, []);
 
   useEffect(() => {
     if (!scrollTarget) return;
+    if (!contentRef.current) return;
 
-    const element =
-      scrollTarget === "vacation" ? vacationRef.current : listingsRef.current;
-
-    if (!element) return;
-
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
+    contentRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     setScrollTarget(null);
   }, [scrollTarget, activeTab]);
 
@@ -87,47 +87,23 @@ export default function HomesBrowseSection() {
         })}
       </div>
 
-      {showMlsListings && (
-        <div
-          ref={listingsRef}
-          className="relative left-1/2 mt-8 w-screen max-w-[100vw] -translate-x-1/2 sm:mt-10"
-        >
-          <div className="mx-auto w-full max-w-[min(1600px,calc(100vw-1rem))] px-2 sm:px-3">
+      <div
+        ref={contentRef}
+        id="vacation-stays"
+        className="scroll-mt-28 relative left-1/2 mt-6 w-screen max-w-[100vw] -translate-x-1/2 sm:mt-8"
+      >
+        <div className="mx-auto w-full max-w-[min(1600px,calc(100vw-1rem))] px-2 sm:px-3">
+          {showMlsListings && (
             <WhachatListingsEmbed listingType={activeTab} />
-          </div>
-        </div>
-      )}
+          )}
 
-      {activeTab === "vacation" && (
-        <section
-          ref={vacationRef}
-          id="vacation-stays"
-          className="scroll-mt-28 mt-8 rounded-sm border border-sand-dark/60 bg-cream p-6 sm:mt-10 sm:p-8"
-        >
-          <h3 className="font-display text-xl font-medium text-navy sm:text-2xl">
-            Short-term &amp; Vacation Rentals
-          </h3>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-navy/70 sm:text-base">
-            Beach-week getaways and snowbird stays are booked outside our MLS
-            search. Contact us for hand-picked vacation rental recommendations
-            across Pompano Beach and the South Florida coast.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-sm bg-teal px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-teal-light"
-            >
-              Ask About Vacation Stays
-            </Link>
-            <a
-              href={`mailto:${REALTOR_EMAIL}?subject=${encodeURIComponent("Vacation rental inquiry — Pompano Beach")}`}
-              className="inline-flex items-center justify-center rounded-sm border border-coral/30 px-6 py-3 text-sm font-semibold text-coral transition-colors hover:bg-coral hover:text-cream"
-            >
-              Email Realtor
-            </a>
-          </div>
-        </section>
-      )}
+          {activeTab === "vacation" && (
+            <div className="stay22-embed-shell rounded-sm border border-sand-dark/60 bg-cream shadow-[0_12px_28px_-14px_rgba(27,58,75,0.12)]">
+              <Stay22VacationEmbed />
+            </div>
+          )}
+        </div>
+      </div>
     </>
   );
 }

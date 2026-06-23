@@ -54,7 +54,7 @@ export default function HomesPage() {
         </div>
       </section>
 
-      <section className="border-y border-sand-dark/40 bg-sand py-10 sm:py-12">
+      <section className="border-y border-sand-dark/40 bg-background py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 sm:grid-cols-3">
             {[
