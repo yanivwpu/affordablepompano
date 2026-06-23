@@ -42,7 +42,7 @@ export default function HomesBrowseSection() {
 
   return (
     <>
-      <div className="mb-8 text-center sm:mb-10">
+      <div className="mb-4 text-center sm:mb-5">
         <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
           <span className="text-[8px] text-coral" aria-hidden="true">
             &#9670;
@@ -52,10 +52,10 @@ export default function HomesBrowseSection() {
             &#9670;
           </span>
         </p>
-        <h2 className="font-display mt-3 text-3xl font-medium text-navy sm:text-4xl">
+        <h2 className="font-display mt-2 text-2xl font-medium text-navy sm:text-3xl">
           Live Homes &amp; Rentals in Pompano Beach
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-base text-navy/70">
+        <p className="mx-auto mt-2 max-w-2xl text-sm text-navy/70 sm:text-base">
           Search current MLS inventory, compare neighborhoods, and connect with
           a local expert when you&apos;re ready to tour.
         </p>
@@ -90,18 +90,14 @@ export default function HomesBrowseSection() {
       <div
         ref={contentRef}
         id="vacation-stays"
-        className="scroll-mt-28 relative left-1/2 mt-6 w-screen max-w-[100vw] -translate-x-1/2 sm:mt-8"
+        className="scroll-mt-28 relative left-1/2 mt-5 w-screen max-w-[100vw] -translate-x-1/2"
       >
         <div className="mx-auto w-full max-w-[min(1600px,calc(100vw-1rem))] px-2 sm:px-3">
           {showMlsListings && (
             <WhachatListingsEmbed listingType={activeTab} />
           )}
 
-          {activeTab === "vacation" && (
-            <div className="stay22-embed-shell rounded-sm border border-sand-dark/60 bg-cream shadow-[0_12px_28px_-14px_rgba(27,58,75,0.12)]">
-              <Stay22VacationEmbed />
-            </div>
-          )}
+          {activeTab === "vacation" && <Stay22VacationEmbed />}
         </div>
       </div>
     </>

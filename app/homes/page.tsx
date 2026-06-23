@@ -2,7 +2,7 @@ import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import HomesBrowseSection from "@/components/HomesBrowseSection";
 import HomesLeadForm from "@/components/HomesLeadForm";
 import ImagePageHero from "@/components/ImagePageHero";
-import { images, REALTOR_EMAIL } from "@/lib/images";
+import { images, REALTOR_EMAIL, REALTOR_PHONE, REALTOR_PHONE_HREF } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,10 +20,11 @@ export default function HomesPage() {
         imageAlt={images.pompanoPierAlt}
         primaryCta={{ label: "Search Listings", href: "#listings" }}
         secondaryCta={{ label: "Get Property Alerts", href: "#alerts" }}
+        size="compact"
       />
 
-      <div className="border-b border-sand-dark/40 bg-navy py-3.5">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2.5 px-4 sm:flex-row sm:gap-4 sm:px-6 lg:px-8">
+      <div className="border-b border-sand-dark/40 bg-navy py-3">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-2 px-4 sm:flex-row sm:gap-3 sm:px-6 lg:px-8">
           <Link
             href="#showing"
             className="inline-flex w-full items-center justify-center rounded-sm bg-coral px-6 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-coral-light sm:w-auto"
@@ -37,24 +38,24 @@ export default function HomesPage() {
             Contact Realtor
           </Link>
           <a
-            href="tel:+19545550100"
+            href={REALTOR_PHONE_HREF}
             className="text-sm font-medium text-cream/70 transition-colors hover:text-cream"
           >
-            (954) 555-0100
+            {REALTOR_PHONE}
           </a>
         </div>
       </div>
 
       <section
         id="listings"
-        className="scroll-mt-24 bg-background py-10 sm:py-14"
+        className="scroll-mt-24 bg-background py-6 sm:py-8"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <HomesBrowseSection />
         </div>
       </section>
 
-      <section className="border-y border-sand-dark/40 bg-background py-10 sm:py-12">
+      <section className="border-y border-sand-dark/40 bg-background py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 sm:grid-cols-3">
             {[
@@ -91,9 +92,9 @@ export default function HomesPage() {
         </div>
       </section>
 
-      <section className="bg-warm-white py-14 sm:py-16">
+      <section className="bg-warm-white py-10 sm:py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
+          <div className="mb-8 text-center">
             <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
               <span className="text-[8px] text-coral" aria-hidden="true">
                 &#9670;
@@ -170,10 +171,10 @@ export default function HomesPage() {
               Get Property Alerts
             </Link>
             <a
-              href={`mailto:${REALTOR_EMAIL}`}
+              href={REALTOR_PHONE_HREF}
               className="inline-flex items-center justify-center rounded-sm border border-cream/40 px-8 py-3.5 text-sm font-semibold text-cream transition-colors hover:border-coral hover:text-coral-light"
             >
-              Email Realtor
+              Call {REALTOR_PHONE}
             </a>
           </div>
         </div>

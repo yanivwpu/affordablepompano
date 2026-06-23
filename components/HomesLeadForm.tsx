@@ -1,6 +1,6 @@
 "use client";
 
-import { REALTOR_EMAIL } from "@/lib/images";
+import { REALTOR_EMAIL, REALTOR_PHONE } from "@/lib/images";
 import { FormEvent, useState } from "react";
 
 type FormType = "alerts" | "showing" | "contact";
@@ -133,7 +133,7 @@ export default function HomesLeadForm({ type }: { type: FormType }) {
                 type="tel"
                 required
                 className={inputClass}
-                placeholder="(954) 555-0100"
+                placeholder={REALTOR_PHONE}
               />
             </div>
             <div>
@@ -166,7 +166,7 @@ export default function HomesLeadForm({ type }: { type: FormType }) {
                 id="contact-phone"
                 type="tel"
                 className={inputClass}
-                placeholder="(954) 555-0100"
+                placeholder={REALTOR_PHONE}
               />
             </div>
             <div>

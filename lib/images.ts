@@ -174,5 +174,9 @@ export const images = {
 
 export const REALTOR_EMAIL = "hello@affordablepompano.com";
 
+export const REALTOR_PHONE = "(954) 513-8408";
+
+export const REALTOR_PHONE_HREF = "tel:+19545138408";
+
 export const MLS_PLACEHOLDER =
   "Live MLS listings coming soon — contact us for best value properties";

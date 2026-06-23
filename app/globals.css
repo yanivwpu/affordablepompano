@@ -137,11 +137,18 @@ body {
   display: none;
 }
 
-.stay22-embed-shell {
+.listings-embed-shell {
   box-sizing: border-box;
   overflow: hidden;
   border-radius: 16px;
-  padding: 0;
+  padding: 8px;
+  background: #f6f1ea;
+}
+
+.listings-embed-shell iframe {
+  display: block;
+  width: 100%;
+  border: 0;
   background: #f6f1ea;
 }
 
@@ -153,35 +160,14 @@ body {
 
 @media (min-width: 768px) {
   .stay22-vacation-iframe {
-    height: 640px;
+    height: 650px;
   }
 }
 
 @media (min-width: 1024px) {
   .stay22-vacation-iframe {
-    height: 720px;
+    height: 800px;
   }
-}
-
-@media (min-width: 1280px) {
-  .stay22-vacation-iframe {
-    height: 760px;
-  }
-}
-
-.listings-embed-shell {
-  box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 16px;
-  padding: 12px;
-  background: #f6f1ea;
-}
-
-.listings-embed-shell iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-  background: #f6f1ea;
 }
 
 /* Safety: suppress widget.js UI if ever injected — AP owns chat via WhachatChatWidget */
