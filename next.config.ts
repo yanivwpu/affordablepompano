@@ -9,6 +9,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/food-and-eats",
+        destination: "/food",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

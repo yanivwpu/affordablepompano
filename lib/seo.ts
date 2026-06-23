@@ -133,6 +133,21 @@ export function metadataForPage(
   return createPageMetadata(pageSeo[key]);
 }
 
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  alternateName: "Affordable Pompano",
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: "en-US",
+  publisher: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+};
+
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -140,7 +155,7 @@ export const localBusinessSchema = {
   description: SITE_DESCRIPTION,
   url: SITE_URL,
   image: DEFAULT_OG_IMAGE,
-  telephone: "+1-954-555-0100",
+  telephone: "+1-954-513-8408",
   email: "hello@affordablepompano.com",
   address: {
     "@type": "PostalAddress",
