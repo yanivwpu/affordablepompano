@@ -26,7 +26,7 @@ export const pageSeo = {
   homes: {
     title: "Pompano Beach Homes for Sale & Rentals | Affordable Pompano",
     description:
-      "Find affordable homes, long-term rentals, and vacation stays in Pompano Beach, FL. Property alerts, showings, and local realtor help.",
+      "Search live MLS homes and long-term rentals in Pompano Beach, FL. Property alerts, showings, and local realtor help.",
     path: "/homes",
   },
   food: {

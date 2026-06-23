@@ -1,6 +1,5 @@
 "use client";
 
-import { forwardRef } from "react";
 import {
   WHACHAT_LISTING_EMBEDS,
   type WhachatListingType,
@@ -10,37 +9,13 @@ type WhachatListingsEmbedProps = {
   listingType: WhachatListingType;
 };
 
-const WhachatListingsEmbed = forwardRef<
-  HTMLElement,
-  WhachatListingsEmbedProps
->(function WhachatListingsEmbed({ listingType }, ref) {
+export default function WhachatListingsEmbed({
+  listingType,
+}: WhachatListingsEmbedProps) {
   const { heading, embedUrl } = WHACHAT_LISTING_EMBEDS[listingType];
 
   return (
-    <section
-      ref={ref}
-      id="listings-embed"
-      className="scroll-mt-28"
-      aria-labelledby="listings-embed-heading"
-    >
-      <div className="mb-4 text-center sm:mb-5">
-        <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
-          <span className="text-[8px] text-coral" aria-hidden="true">
-            &#9670;
-          </span>
-          Live Listings
-          <span className="text-[8px] text-coral" aria-hidden="true">
-            &#9670;
-          </span>
-        </p>
-        <h3
-          id="listings-embed-heading"
-          className="font-display mt-2 text-xl font-medium text-navy sm:text-2xl"
-        >
-          {heading}
-        </h3>
-      </div>
-
+    <section id="listings-embed" aria-label={heading}>
       <div className="listings-embed-shell">
         <iframe
           src={embedUrl}
@@ -53,6 +28,4 @@ const WhachatListingsEmbed = forwardRef<
       </div>
     </section>
   );
-});
-
-export default WhachatListingsEmbed;
+}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { images, MLS_PLACEHOLDER, REALTOR_EMAIL } from "@/lib/images";
+import { images, REALTOR_EMAIL } from "@/lib/images";
 
 const homeOptions = [
   {
@@ -10,7 +10,7 @@ const homeOptions = [
       "Condos and homes near the beach and Intracoastal — smart value in sunny Pompano.",
     image: images.buyHome,
     imageAlt: images.buyHomeAlt,
-    href: "/homes#buy",
+    href: "/homes#listings",
   },
   {
     id: "long-term",
@@ -19,7 +19,7 @@ const homeOptions = [
       "Monthly and annual leases across Pompano neighborhoods — pet-friendly options available.",
     image: images.longTermRental,
     imageAlt: images.longTermRentalAlt,
-    href: "/homes#long-term",
+    href: "/homes#listings",
   },
   {
     id: "vacation",
@@ -28,7 +28,7 @@ const homeOptions = [
       "Beach-week getaways and snowbird stays steps from the Atlantic — seasonal availability.",
     image: images.vacationRental,
     imageAlt: images.vacationRentalAlt,
-    href: "/homes#vacation",
+    href: "/homes#vacation-stays",
   },
 ];
 
@@ -50,7 +50,8 @@ export default function HomesSection() {
             Find Your Sunny South Florida Home
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-navy/70">
-            {MLS_PLACEHOLDER}
+            Search live MLS homes and rentals in Pompano Beach — plus local
+            expert help when you&apos;re ready to tour.
           </p>
         </div>
 
@@ -90,7 +91,7 @@ export default function HomesSection() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
-            href="/homes"
+            href="/homes#listings"
             className="inline-flex w-full items-center justify-center rounded-sm bg-teal px-8 py-4 text-sm font-semibold tracking-wide text-cream shadow-md transition-all hover:bg-teal-light sm:w-auto"
           >
             Browse Homes
