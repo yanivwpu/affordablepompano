@@ -1,5 +1,11 @@
 export const SPONSORSHIP_INQUIRY_EMAIL = "hello@affordablepompano.com";
 
+export const FEATURED_PLACEMENT_NOTE =
+  "Featured placements receive larger visual presentation, premium positioning, and enhanced visibility compared to standard listings.";
+
+export const STANDARD_PLACEMENT_NOTE =
+  "Standard listings appear within the directory alongside other local businesses.";
+
 export const advertisePackages = [
   {
     id: "featured-restaurant",
@@ -8,8 +14,10 @@ export const advertisePackages = [
       "Premium placement at the top of our Food & Eats section for restaurants, cafes, bars, and local businesses seeking maximum visibility.",
     price: "$99",
     period: "/ month",
-    inventory: "Featured Spot Available",
-    idealFor: "Restaurants, cafés, bars & local shops",
+    inventory: "Only 1 Featured Position Available",
+    bestFor:
+      "Restaurants, cafes, bars, coffee shops, bakeries, and local eateries.",
+    placementTier: "featured",
     perks: [
       "Business logo displayed",
       "Featured business image",
@@ -29,8 +37,10 @@ export const advertisePackages = [
       "Affordable visibility for restaurants and cafes looking to reach local residents and visitors.",
     price: "$29",
     period: "/ month",
-    inventory: "Multiple Standard Listings Available",
-    idealFor: "Restaurants, cafés & local eateries",
+    inventory: "Up to 20 Standard Listings Available",
+    bestFor:
+      "Restaurants, cafes, food trucks, bakeries, and local dining businesses.",
+    placementTier: "standard",
     perks: [
       "Business logo",
       "Business image",
@@ -48,8 +58,10 @@ export const advertisePackages = [
       "Perfect for fishing charters, boat tours, rentals, attractions, and beach-day experiences.",
     price: "$79",
     period: "/ month",
-    inventory: "Featured Partner Available",
-    idealFor: "Charters, tours, rentals & attractions",
+    inventory: "Only 1 Featured Partner Available",
+    bestFor:
+      "Fishing charters, boat tours, watersports, rentals, attractions, and guided experiences.",
+    placementTier: "featured",
     perks: [
       "Business logo",
       "Featured image",
@@ -67,8 +79,10 @@ export const advertisePackages = [
       "Affordable visibility for tours, activities, charters, rentals, and attractions.",
     price: "$29",
     period: "/ month",
-    inventory: "Multiple Standard Listings Available",
-    idealFor: "Tours, rentals & local activities",
+    inventory: "Up to 20 Standard Listings Available",
+    bestFor:
+      "Tours, charters, rentals, activities, and local attractions.",
+    placementTier: "standard",
     perks: [
       "Business logo",
       "Business image",
@@ -85,8 +99,10 @@ export const advertisePackages = [
       "Ideal for attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
     price: "$29",
     period: "/ month",
-    inventory: "Multiple Standard Listings Available",
-    idealFor: "Attorneys, insurance, contractors & services",
+    inventory: "Up to 20 Standard Listings Available",
+    bestFor:
+      "Attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
+    placementTier: "standard",
     perks: [
       "Business logo",
       "Business image",
@@ -104,8 +120,10 @@ export const advertisePackages = [
       "Connect with buyers, renters, and snowbirds searching for homes in Pompano — right when they're ready to act.",
     price: "$149",
     period: "/ month",
-    inventory: "Limited Spots Available",
-    idealFor: "Agents, brokerages & property managers",
+    inventory: "Only 1 Featured Position Available",
+    bestFor:
+      "Realtors, mortgage professionals, title companies, inspectors, and real estate-related services.",
+    placementTier: "featured",
     perks: [
       "Business logo",
       "Featured image",
@@ -125,7 +143,8 @@ export const advertisePackages = [
     price: "$59",
     period: "/ month",
     inventory: "Up to 4 Sponsors Per Issue",
-    idealFor: "Any business with a special offer",
+    bestFor: "Any business seeking recurring local brand exposure.",
+    placementTier: null,
     perks: [
       "Logo placement",
       "Link in newsletter",
@@ -141,8 +160,9 @@ export const advertisePackages = [
       "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
     price: "$179",
     period: "/ month",
-    inventory: "Featured Placement Available",
-    idealFor: "Openings, events & high-impact pushes",
+    inventory: "Only 1 Homepage Feature Available",
+    bestFor: "Businesses seeking maximum visibility across the entire website.",
+    placementTier: "featured",
     perks: [
       "Business logo",
       "Featured image",

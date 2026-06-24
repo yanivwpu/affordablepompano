@@ -1,9 +1,20 @@
 import Link from "next/link";
-import type { advertisePackages } from "@/lib/advertise";
+import {
+  FEATURED_PLACEMENT_NOTE,
+  STANDARD_PLACEMENT_NOTE,
+  type advertisePackages,
+} from "@/lib/advertise";
 
 type Package = (typeof advertisePackages)[number];
 
 export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
+  const placementNote =
+    pkg.placementTier === "featured"
+      ? FEATURED_PLACEMENT_NOTE
+      : pkg.placementTier === "standard"
+        ? STANDARD_PLACEMENT_NOTE
+        : null;
+
   return (
     <article
       className={`flex h-full flex-col overflow-hidden rounded-sm border bg-cream shadow-sm ${
@@ -19,14 +30,7 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
       )}
 
       <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <p className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-teal">
-          <span className="text-[8px] text-coral" aria-hidden="true">
-            &#9670;
-          </span>
-          {pkg.idealFor}
-        </p>
-
-        <h3 className="font-display mt-3 text-xl font-medium leading-snug text-navy sm:text-2xl">
+        <h3 className="font-display text-xl font-medium leading-snug text-navy sm:text-2xl">
           {pkg.title}
         </h3>
 
@@ -42,6 +46,15 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
           {pkg.description}
         </p>
 
+        <div className="mt-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy/45">
+            Best For
+          </p>
+          <p className="mt-1.5 text-xs leading-relaxed text-navy/60">
+            {pkg.bestFor}
+          </p>
+        </div>
+
         <ul className="mt-5 flex-1 space-y-2.5">
           {pkg.perks.map((perk) => (
             <li
@@ -53,6 +66,12 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
             </li>
           ))}
         </ul>
+
+        {placementNote && (
+          <p className="mt-5 text-xs leading-relaxed text-navy/50">
+            {placementNote}
+          </p>
+        )}
 
         <Link
           href={`/advertise?package=${pkg.id}#contact`}
