@@ -1,7 +1,9 @@
+import ContactRealtorCTA from "@/components/ContactRealtorCTA";
 import ContentCard from "@/components/ContentCard";
 import GuideArticleSchema from "@/components/GuideArticleSchema";
 import { GuideRichText } from "@/components/GuideRichText";
 import { getRelatedGuides, guidePath } from "@/lib/guides";
+import { getGuideExploreLinks } from "@/lib/guides/exploreLinks";
 import type { Guide } from "@/lib/guides/types";
 import { guideCategories } from "@/lib/content";
 import Image from "next/image";
@@ -22,6 +24,7 @@ function formatDate(iso: string): string {
 
 export default function GuideArticleView({ guide }: GuideArticleViewProps) {
   const related = getRelatedGuides(guide);
+  const exploreLinks = getGuideExploreLinks(guide);
   const categoryLabel =
     guideCategories.find((c) => c.id === guide.group)?.title ?? "Guide";
 
@@ -203,6 +206,16 @@ export default function GuideArticleView({ guide }: GuideArticleViewProps) {
             )}
           </div>
 
+          {guide.group === "living" && (
+            <div className="mt-10">
+              <ContactRealtorCTA
+                variant="banner"
+                headline="Need help finding a home in Pompano Beach?"
+                description="Browse live listings or reach out — we connect relocators with local real estate expertise."
+              />
+            </div>
+          )}
+
           <aside className="mt-14 rounded-sm border border-teal/20 bg-cream p-6 sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
               Explore Pompano
@@ -211,8 +224,8 @@ export default function GuideArticleView({ guide }: GuideArticleViewProps) {
               Plan the rest of your trip
             </h2>
             <ul className="mt-6 space-y-4">
-              {guide.exploreLinks.map((link) => (
-                <li key={link.href}>
+              {exploreLinks.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
                   <Link
                     href={link.href}
                     className="group block rounded-sm border border-sand-dark/50 bg-warm-white p-4 transition-colors hover:border-teal/40"

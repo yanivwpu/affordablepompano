@@ -14,6 +14,8 @@ export const freeThingsGuide: Guide = {
   updatedAt: "2026-06-23",
   relatedSlugs: [
     "budget-friendly-beach-days",
+    "best-beaches-pompano-beach",
+    "family-friendly-pompano-beach",
     "parking-pier-access-tips",
     "first-timers-guide-pompano-beach",
   ],

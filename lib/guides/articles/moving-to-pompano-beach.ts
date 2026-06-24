@@ -11,9 +11,11 @@ export const movingToPompanoGuide: Guide = {
   image: guideImages.movingToPompano.src,
   imageAlt: guideImages.movingToPompano.alt,
   publishedAt: "2026-06-06",
-  updatedAt: "2026-06-23",
+  updatedAt: "2026-06-25",
   relatedSlugs: [
     "neighborhood-spotlight-old-pompano",
+    "moving-to-pompano-beach-complete-guide",
+    "cost-of-living-pompano-beach",
     "first-timers-guide-pompano-beach",
     "budget-friendly-beach-days",
   ],
@@ -39,9 +41,9 @@ export const movingToPompanoGuide: Guide = {
       type: "section",
       heading: "Why people relocate to Pompano Beach",
       paragraphs: [
-        "Relocators land here for a predictable bundle: Atlantic beach access, relative value compared to some South Florida coastal cities, no state income tax, and a pace calmer than Miami without feeling sleepy. Remote workers, retirees, and Fort Lauderdale–Palm Beach commuters all show up in the same open houses — you're not choosing from one demographic story.",
-        "Pompano isn't a bedroom fiction — it's a functioning city with hospitals, big-box retail on Federal Highway, and neighborhood pockets that feel distinct from the pier tourist strip. That matters when you're signing a 12-month lease or a mortgage, not just booking a weekend.",
-        "Honest downside: you're still in South Florida — insurance costs, heat, seasonal traffic, and hurricane prep are part of the package. This guide focuses on how newcomers actually settle, not brochure weather.",
+        "Relocators land here for a predictable bundle: Atlantic beach access, relative value compared to some South Florida coastal cities, no state income tax, and a pace calmer than Miami without feeling sleepy. Remote workers, retirees, and Fort Lauderdale–Palm Beach commuters all show up in the same open houses — you are not choosing from one demographic story.",
+        "For a step-by-step relocation timeline — utilities, schools, hurricane prep, and your first ninety days — see our [[complete moving guide|/guides/moving-to-pompano-beach-complete-guide]]. This article covers the essentials in a shorter read.",
+        "Pompano is not a bedroom fiction — it is a functioning city with hospitals, big-box retail on Federal Highway, and neighborhood pockets that feel distinct from the pier tourist strip. That matters when you are signing a 12-month lease or a mortgage, not just booking a weekend.",
       ],
     },
     {
@@ -112,6 +114,7 @@ export const movingToPompanoGuide: Guide = {
         "Coffee shops along Atlantic Blvd and coworking-adjacent cafés fill with remote workers 9–3 year-round — reliable Wi-Fi and lunch combos matter when you're scouting neighborhoods between video calls.",
         "Home office buyers should verify internet providers by address — fiber availability isn't uniform across older blocks.",
         "Time zone alignment with East Coast markets is a quiet advantage for finance and media relocators compared to Gulf Coast or mountain moves.",
+        "Need help finding a home in Pompano Beach? [[Contact us|/contact]] or browse [[live MLS listings|/homes#listings]] to see what your budget buys today.",
       ],
     },
   ],

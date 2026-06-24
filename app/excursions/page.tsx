@@ -1,21 +1,18 @@
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
-import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
-import CategoryPills from "@/components/CategoryPills";
-import ContentNotice from "@/components/ContentNotice";
-import EditorialCard from "@/components/EditorialCard";
+import DirectoryListingGrid from "@/components/DirectoryListingGrid";
+import FeaturedExcursionPartnerSlot from "@/components/FeaturedExcursionPartnerSlot";
 import FeaturedExperiencesSection from "@/components/FeaturedExperiencesSection";
 import ImagePageHero from "@/components/ImagePageHero";
+import PopularWaysToExplore from "@/components/PopularWaysToExplore";
 import SectionIntro from "@/components/SectionIntro";
-import { excursionCategories, excursions } from "@/lib/content";
+import { getListingsByType } from "@/lib/directory";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = metadataForPage("excursions");
 
-const featuredExcursion = excursions.find((e) => e.featured);
-const categoriesWithItems = excursionCategories.filter((cat) =>
-  excursions.some((e) => e.group === cat.id),
-);
+const excursionListings = getListingsByType("excursion");
 
 export default function ExcursionsPage() {
   return (
@@ -26,103 +23,67 @@ export default function ExcursionsPage() {
         description="From pier fishing and parasailing to Hillsboro Inlet boat tours and reef snorkeling — the best Pompano Beach activities with real prices and local tips."
         image={images.goldenBeach}
         imageAlt={images.goldenBeachAlt}
-        primaryCta={{ label: "Water Adventures", href: "#water" }}
-        secondaryCta={{ label: "Fishing Charters", href: "#fishing" }}
+        primaryCta={{
+          label: "Browse Experiences",
+          href: "#featured-experiences",
+        }}
+        secondaryCta={{
+          label: "Explore Pompano",
+          href: "#explore-pompano",
+        }}
       />
-
-      <ContentNotice />
 
       <FeaturedExperiencesSection />
 
-      <section className="border-b border-sand-dark/40 bg-cream py-8">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-            Browse by Activity
+      <FeaturedExcursionPartnerSlot />
+
+      {excursionListings.length > 0 && (
+        <section className="border-b border-sand-dark/40 bg-background py-14 sm:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionIntro
+              title="Excursion Partner Listings"
+              description="Paid directory listings with dedicated excursion pages. Featured partners receive top placement, a featured badge, and seasonal promotion mentions."
+            />
+            <DirectoryListingGrid
+              listings={excursionListings}
+              advertisePackageId="excursion-listing-standard"
+            />
+          </div>
+        </section>
+      )}
+
+      <PopularWaysToExplore />
+
+      <section className="relative min-h-[280px] overflow-hidden sm:min-h-[300px]">
+        <Image
+          src={images.pompanoPier}
+          alt={images.pompanoPierAlt}
+          fill
+          sizes="100vw"
+          className="object-cover brightness-110 saturate-[1.06]"
+        />
+        <div className="absolute inset-0 bg-navy/45" />
+        <div className="relative z-10 flex min-h-[280px] flex-col items-center justify-center px-4 text-center sm:min-h-[300px]">
+          <p className="font-display max-w-2xl text-2xl font-medium text-cream sm:text-3xl">
+            Plan your perfect Pompano Beach day
           </p>
-          <CategoryPills categories={categoriesWithItems} />
-        </div>
-      </section>
-
-      <section className="bg-background py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AdSensePlaceholder size="leaderboard" label="Advertisement" />
-
-          {featuredExcursion && (
-            <div className="mt-12">
-              <p className="mb-6 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
-                <span className="text-[8px] text-coral" aria-hidden="true">
-                  &#9670;
-                </span>
-                Top Experience
-                <span className="text-[8px] text-coral" aria-hidden="true">
-                  &#9670;
-                </span>
-              </p>
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <EditorialCard
-                  {...featuredExcursion}
-                  featured
-                  comingSoon={false}
-                  href={`/excursions#${featuredExcursion.group}`}
-                />
-              </div>
-              <AdSensePlaceholder
-                label="Sponsored"
-                size="rectangle"
-                className="mt-12 sm:mt-16"
-              />
-            </div>
-          )}
-
-          {categoriesWithItems.map((cat, index) => {
-            const items = excursions.filter(
-              (e) => e.group === cat.id && !e.featured,
-            );
-            if (items.length === 0) return null;
-
-            return (
-              <div key={cat.id}>
-                <div
-                  id={cat.id}
-                  className={`scroll-mt-28 ${index > 0 || featuredExcursion ? "mt-16 sm:mt-20" : "mt-12"}`}
-                >
-                  <SectionIntro
-                    title={cat.title}
-                    description={cat.description}
-                  />
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {items.map((excursion) => (
-                      <EditorialCard
-                        key={excursion.title}
-                        {...excursion}
-                        comingSoon={false}
-                        href={`/excursions#${cat.id}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {index === 0 && (
-                  <AdSensePlaceholder
-                    label="Advertisement"
-                    size="banner"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
-
-                {index === 2 && (
-                  <AdSensePlaceholder
-                    label="Sponsored"
-                    size="rectangle"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
-              </div>
-            );
-          })}
-
-          <div className="mt-16 sm:mt-20">
-            <AffiliateDisclaimer />
+          <p className="mt-3 max-w-lg text-sm text-cream/85 sm:text-base">
+            Book tours and activities through our featured experiences, or dig
+            deeper with local guides written for visitors and newcomers.
+          </p>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <Link
+              href="#featured-experiences"
+              className="inline-flex items-center justify-center rounded-sm bg-coral px-8 py-3.5 text-sm font-bold tracking-wide text-cream shadow-md transition-colors hover:bg-coral-light"
+            >
+              Browse Experiences
+            </Link>
+            <Link
+              href="/guides"
+              className="inline-flex items-center justify-center rounded-sm border-2 border-cream/70 bg-cream/10 px-8 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm transition-colors hover:bg-cream hover:text-navy"
+            >
+              Read Local Guides
+            </Link>
           </div>
         </div>
       </section>

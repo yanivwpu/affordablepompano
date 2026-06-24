@@ -11,11 +11,13 @@ export const firstTimersGuide: Guide = {
   image: guideImages.firstTimers.src,
   imageAlt: guideImages.firstTimers.alt,
   publishedAt: "2026-06-01",
-  updatedAt: "2026-06-23",
+  updatedAt: "2026-06-25",
   relatedSlugs: [
     "parking-pier-access-tips",
     "best-free-things-to-do",
     "budget-friendly-beach-days",
+    "best-things-to-do-pompano-beach",
+    "weekend-guide-pompano-beach",
   ],
   exploreLinks: [
     {

@@ -11,9 +11,10 @@ export const happyHoursGuide: Guide = {
   image: guideImages.happyHours.src,
   imageAlt: guideImages.happyHours.alt,
   publishedAt: "2026-06-08",
-  updatedAt: "2026-06-23",
+  updatedAt: "2026-06-25",
   relatedSlugs: [
     "budget-friendly-beach-days",
+    "happy-hour-guide-pompano-beach",
     "neighborhood-spotlight-old-pompano",
     "best-free-things-to-do",
   ],
@@ -146,8 +147,8 @@ export const happyHoursGuide: Guide = {
       description: "Daily happy hour energy post-beach.",
     },
     {
-      name: "Gold Coast sunset catamaran",
-      href: "/excursions#boating",
+      name: "Sunset boat tours",
+      href: "/excursions#featured-experiences",
       description: "On-the-water golden hour when patios are full.",
     },
   ],

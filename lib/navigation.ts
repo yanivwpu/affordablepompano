@@ -5,6 +5,7 @@ export const navLinks = [
   { href: "/homes", label: "Homes" },
   { href: "/food", label: "Food & Eats" },
   { href: "/excursions", label: "Excursions" },
+  { href: "/businesses", label: "Businesses" },
   { href: "/guides", label: "Guides" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

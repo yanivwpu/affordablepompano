@@ -1,12 +1,16 @@
 import AdvertiseContactForm from "@/components/AdvertiseContactForm";
-import AdvertisePackageCard from "@/components/AdvertisePackageCard";
+import {
+  AddOnPackageCard,
+  ListingPackageCard,
+} from "@/components/AdvertisePackageCard";
 import ImagePageHero from "@/components/ImagePageHero";
 import {
+  addOnPackages,
   advertiseBenefits,
-  advertisePackages,
   advertisePackagesIntro,
   advertiseTrustStats,
   advertiseWhyUs,
+  listingPackages,
 } from "@/lib/advertise";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
@@ -129,9 +133,24 @@ export default function AdvertisePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {advertisePackages.map((pkg) => (
-              <AdvertisePackageCard key={pkg.id} pkg={pkg} />
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            {listingPackages.map((pkg) => (
+              <ListingPackageCard key={pkg.id} pkg={pkg} />
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal">
+              Add-Ons
+            </p>
+            <h3 className="font-display mt-2 text-2xl font-medium text-navy">
+              Extra visibility beyond your listing
+            </h3>
+          </div>
+
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {addOnPackages.map((pkg) => (
+              <AddOnPackageCard key={pkg.id} pkg={pkg} />
             ))}
           </div>
 

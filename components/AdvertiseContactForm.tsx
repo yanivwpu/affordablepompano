@@ -1,8 +1,9 @@
 "use client";
 
 import {
-  advertisePackages,
+  advertisePackageOptions,
   getAdvertisePackageLabel,
+  isValidAdvertisePackageId,
   SPONSORSHIP_INQUIRY_EMAIL,
 } from "@/lib/advertise";
 import { FormEvent, useEffect, useState } from "react";
@@ -20,7 +21,7 @@ export default function AdvertiseContactForm() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const pkg = params.get("package");
-    if (pkg && advertisePackages.some((p) => p.id === pkg)) {
+    if (pkg && isValidAdvertisePackageId(pkg)) {
       setForm((prev) => ({ ...prev, package: pkg }));
     }
   }, []);
@@ -144,10 +145,9 @@ export default function AdvertiseContactForm() {
           className={inputClass}
         >
           <option value="">Select a package</option>
-          {advertisePackages.map((pkg) => (
+          {advertisePackageOptions.map((pkg) => (
             <option key={pkg.id} value={pkg.id}>
-              {pkg.title} — {pkg.price}
-              {pkg.period}
+              {pkg.label}
             </option>
           ))}
           <option value="custom">Custom partnership</option>

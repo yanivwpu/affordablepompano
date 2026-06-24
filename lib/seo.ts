@@ -69,10 +69,18 @@ export const pageSeo = {
   advertise: {
     title: "Advertise With Affordable Pompano Beach | Sponsor",
     description:
-      "Reach Pompano Beach home buyers, diners, and tourists. Featured restaurant, excursion, real estate, and newsletter packages from $59/month.",
+      "Reach Pompano Beach home buyers, diners, and tourists. Directory listings from $29/month, featured upgrades, homepage features, and newsletter sponsorship.",
     path: "/advertise",
     image: images.pompanoPier,
     imageAlt: images.pompanoPierAlt,
+  },
+  businesses: {
+    title: "Pompano Beach Local Business Directory | Affordable Pompano",
+    description:
+      "Find attorneys, insurance agents, contractors, medical practices, and local services in Pompano Beach. Browse partner listings or list your business.",
+    path: "/businesses",
+    image: images.palmBeach,
+    imageAlt: images.palmBeachAlt,
   },
 } as const;
 

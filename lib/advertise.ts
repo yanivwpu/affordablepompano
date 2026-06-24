@@ -6,134 +6,186 @@ export const FEATURED_PLACEMENT_NOTE =
 export const STANDARD_PLACEMENT_NOTE =
   "Standard listings appear within the directory alongside other local businesses.";
 
-export const advertisePackages = [
+export type AdvertiseTier = {
+  id: string;
+  label: string;
+  price: string;
+  period: string;
+  inventory: string;
+  includes: string;
+  placementTier: "standard" | "featured";
+  perks: string[];
+};
+
+export type AdvertisePackageGroup = {
+  id: string;
+  title: string;
+  description: string;
+  bestFor: string;
+  highlighted?: boolean;
+  tiers: AdvertiseTier[];
+};
+
+export type AdvertiseAddOn = {
+  id: string;
+  title: string;
+  description: string;
+  price: string;
+  period: string;
+  inventory: string;
+  bestFor: string;
+  perks: string[];
+};
+
+export const listingPackages: AdvertisePackageGroup[] = [
   {
-    id: "featured-restaurant",
-    title: "Featured Restaurant / Business",
+    id: "restaurant-listing",
+    title: "Restaurant Listing",
     description:
-      "Premium placement at the top of our Food & Eats section for restaurants, cafes, bars, and local businesses seeking maximum visibility.",
-    price: "$99",
-    period: "/ month",
-    inventory: "Only 1 Featured Position Available",
+      "Get a dedicated restaurant page and placement in our Food & Eats directory — the listing itself is the product.",
     bestFor:
       "Restaurants, cafes, bars, coffee shops, bakeries, and local eateries.",
-    placementTier: "featured",
-    perks: [
-      "Business logo displayed",
-      "Featured business image",
-      "Website link",
-      "Phone button",
-      "Featured badge",
-      "Premium visibility",
-      "Newsletter mention",
-      "Top placement in Food & Eats",
-    ],
     highlighted: true,
-  },
-  {
-    id: "restaurant-directory",
-    title: "Restaurant Directory Listing",
-    description:
-      "Affordable visibility for restaurants and cafes looking to reach local residents and visitors.",
-    price: "$29",
-    period: "/ month",
-    inventory: "Up to 20 Standard Listings Available",
-    bestFor:
-      "Restaurants, cafes, food trucks, bakeries, and local dining businesses.",
-    placementTier: "standard",
-    perks: [
-      "Business logo",
-      "Business image",
-      "Website link",
-      "Phone button",
-      "Listed in Food & Eats",
-      "Category visibility",
+    tiers: [
+      {
+        id: "restaurant-listing-standard",
+        label: "Standard",
+        price: "$29",
+        period: "/ month",
+        inventory: "Standard Listings Available",
+        includes:
+          "Directory listing plus a dedicated restaurant page with logo, cover image, and contact links.",
+        placementTier: "standard",
+        perks: [
+          "Dedicated /food/[your-business] page",
+          "Logo and cover image",
+          "Website and phone links",
+          "Category placement in Food & Eats",
+        ],
+      },
+      {
+        id: "restaurant-listing-featured",
+        label: "Featured",
+        price: "$99",
+        period: "/ month",
+        inventory: "Limited Featured Placement",
+        includes:
+          "Everything in Standard plus top placement, larger card, featured badge, and newsletter mention.",
+        placementTier: "featured",
+        perks: [
+          "Everything in Standard",
+          "Top placement in Food & Eats",
+          "Larger featured card",
+          "Featured badge",
+          "Newsletter mention",
+        ],
+      },
     ],
-    highlighted: false,
-  },
-  {
-    id: "excursion-partner",
-    title: "Excursion & Activity Partner",
-    description:
-      "Perfect for fishing charters, boat tours, rentals, attractions, and beach-day experiences.",
-    price: "$79",
-    period: "/ month",
-    inventory: "Only 1 Featured Partner Available",
-    bestFor:
-      "Fishing charters, boat tours, watersports, rentals, attractions, and guided experiences.",
-    placementTier: "featured",
-    perks: [
-      "Business logo",
-      "Featured image",
-      "Website link",
-      "Featured badge",
-      "Top placement in Excursions",
-      "Seasonal promotion mention",
-    ],
-    highlighted: false,
   },
   {
     id: "excursion-listing",
     title: "Excursion Listing",
     description:
-      "Affordable visibility for tours, activities, charters, rentals, and attractions.",
-    price: "$29",
-    period: "/ month",
-    inventory: "Up to 20 Standard Listings Available",
+      "List your charter, tour, rental, or attraction with a dedicated excursion page in our Things To Do directory.",
     bestFor:
-      "Tours, charters, rentals, activities, and local attractions.",
-    placementTier: "standard",
-    perks: [
-      "Business logo",
-      "Business image",
-      "Website link",
-      "Listed in Excursions",
-      "Category visibility",
+      "Fishing charters, boat tours, watersports, rentals, attractions, and guided experiences.",
+    tiers: [
+      {
+        id: "excursion-listing-standard",
+        label: "Standard",
+        price: "$29",
+        period: "/ month",
+        inventory: "Standard Listings Available",
+        includes:
+          "Directory listing plus a dedicated excursion page with booking links and activity details.",
+        placementTier: "standard",
+        perks: [
+          "Dedicated /excursions/[your-business] page",
+          "Logo and cover image",
+          "Website and booking links",
+          "Category placement in Excursions",
+        ],
+      },
+      {
+        id: "excursion-listing-featured",
+        label: "Featured",
+        price: "$79",
+        period: "/ month",
+        inventory: "Limited Featured Placement",
+        includes:
+          "Everything in Standard plus top placement, larger card, featured badge, and seasonal promotion mention.",
+        placementTier: "featured",
+        perks: [
+          "Everything in Standard",
+          "Top placement in Excursions",
+          "Featured excursion partner slot",
+          "Larger featured card",
+          "Seasonal promotion mention",
+        ],
+      },
     ],
-    highlighted: false,
   },
   {
-    id: "local-business-spotlight",
-    title: "Local Business Spotlight",
+    id: "business-listing",
+    title: "Local Business Listing",
     description:
-      "Ideal for attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
-    price: "$29",
-    period: "/ month",
-    inventory: "Up to 20 Standard Listings Available",
+      "Reach Pompano residents and newcomers with a dedicated business page in our local services directory.",
     bestFor:
       "Attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
-    placementTier: "standard",
-    perks: [
-      "Business logo",
-      "Business image",
-      "Website link",
-      "Contact information",
-      "Local business directory placement",
-      "Category visibility",
+    tiers: [
+      {
+        id: "business-listing-standard",
+        label: "Standard",
+        price: "$29",
+        period: "/ month",
+        inventory: "Standard Listings Available",
+        includes:
+          "Directory listing plus a dedicated business page with contact info and category placement.",
+        placementTier: "standard",
+        perks: [
+          "Dedicated /businesses/[your-business] page",
+          "Logo and cover image",
+          "Phone, email, and website links",
+          "Category placement in Local Businesses",
+        ],
+      },
+      {
+        id: "business-listing-featured",
+        label: "Featured",
+        price: "$59",
+        period: "/ month",
+        inventory: "Limited Featured Placement",
+        includes:
+          "Everything in Standard plus top placement, larger card, featured badge, and homepage/category visibility.",
+        placementTier: "featured",
+        perks: [
+          "Everything in Standard",
+          "Top placement in Local Businesses",
+          "Larger featured card",
+          "Featured badge",
+          "Homepage and category visibility",
+        ],
+      },
     ],
-    highlighted: false,
   },
+];
+
+export const addOnPackages: AdvertiseAddOn[] = [
   {
-    id: "real-estate-spotlight",
-    title: "Real Estate Spotlight",
+    id: "homepage-feature",
+    title: "Homepage Feature",
     description:
-      "Connect with buyers, renters, and snowbirds searching for homes in Pompano — right when they're ready to act.",
-    price: "$149",
+      "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
+    price: "$179",
     period: "/ month",
-    inventory: "Only 1 Featured Position Available",
-    bestFor:
-      "Realtors, mortgage professionals, title companies, inspectors, and real estate-related services.",
-    placementTier: "featured",
+    inventory: "Homepage Feature Available",
+    bestFor: "Businesses seeking maximum visibility across the entire website.",
     perks: [
       "Business logo",
       "Featured image",
-      "Website link",
-      "Featured spot on our Homes page",
-      "Agent profile with contact form",
-      "Neighborhood guide mention",
-      "Lead inquiry notifications",
+      "Site-wide premium placement",
+      "Dedicated promotion",
     ],
-    highlighted: false,
   },
   {
     id: "newsletter-sponsor",
@@ -142,36 +194,29 @@ export const advertisePackages = [
       "Show up in The Pompano Post — our friendly weekly email with restaurant picks, events, and local news.",
     price: "$59",
     period: "/ month",
-    inventory: "Up to 4 Sponsors Per Issue",
+    inventory: "Newsletter Sponsor Available",
     bestFor: "Any business seeking recurring local brand exposure.",
-    placementTier: null,
     perks: [
       "Logo placement",
       "Link in newsletter",
       "Mention in issue",
       "Featured sponsor section",
     ],
-    highlighted: false,
   },
-  {
-    id: "homepage-feature",
-    title: "Homepage Feature",
-    description:
-      "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
-    price: "$179",
-    period: "/ month",
-    inventory: "Only 1 Homepage Feature Available",
-    bestFor: "Businesses seeking maximum visibility across the entire website.",
-    placementTier: "featured",
-    perks: [
-      "Business logo",
-      "Featured image",
-      "Homepage placement",
-      "Premium visibility",
-      "Dedicated promotion",
-    ],
-    highlighted: false,
-  },
+];
+
+/** Flat options for contact form and deep links */
+export const advertisePackageOptions = [
+  ...listingPackages.flatMap((group) =>
+    group.tiers.map((tier) => ({
+      id: tier.id,
+      label: `${group.title} — ${tier.label} — ${tier.price}${tier.period}`,
+    })),
+  ),
+  ...addOnPackages.map((pkg) => ({
+    id: pkg.id,
+    label: `${pkg.title} — ${pkg.price}${pkg.period}`,
+  })),
 ] as const;
 
 export const advertiseTrustStats = [
@@ -211,9 +256,13 @@ export const advertiseWhyUs = [
 ] as const;
 
 export const advertisePackagesIntro =
-  "Affordable Pompano reaches local residents, visitors, renters, homebuyers, and vacation travelers actively researching Pompano Beach. Promote your business in front of a highly targeted local audience.";
+  "Affordable Pompano reaches local residents, visitors, renters, homebuyers, and vacation travelers actively researching Pompano Beach. Choose a directory listing — standard or featured — plus optional homepage and newsletter add-ons.";
+
+export function isValidAdvertisePackageId(packageId: string): boolean {
+  return advertisePackageOptions.some((p) => p.id === packageId);
+}
 
 export function getAdvertisePackageLabel(packageId: string): string {
-  const pkg = advertisePackages.find((p) => p.id === packageId);
-  return pkg ? `${pkg.title} — ${pkg.price}${pkg.period}` : packageId;
+  const option = advertisePackageOptions.find((p) => p.id === packageId);
+  return option ? option.label : packageId;
 }

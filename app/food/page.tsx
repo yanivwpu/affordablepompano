@@ -2,16 +2,19 @@ import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import CategoryPills from "@/components/CategoryPills";
 import ContentNotice from "@/components/ContentNotice";
+import DirectoryListingGrid from "@/components/DirectoryListingGrid";
 import FoodSpotCard from "@/components/FoodSpotCard";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
 import { foodCategories, foodSpots } from "@/lib/content";
+import { getListingsByType } from "@/lib/directory";
 import { foodImages } from "@/lib/foodImages";
 import { metadataForPage } from "@/lib/seo";
 
 export const metadata = metadataForPage("food");
 
 const featuredSpot = foodSpots.find((s) => s.featured);
+const restaurantListings = getListingsByType("restaurant");
 const categoriesWithSpots = foodCategories.filter((cat) =>
   foodSpots.some((s) => s.group === cat.id),
 );
@@ -44,6 +47,19 @@ export default function FoodPage() {
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AdSensePlaceholder size="leaderboard" label="Advertisement" />
+
+          {restaurantListings.length > 0 && (
+            <div id="partner-listings" className="mt-12 scroll-mt-28">
+              <SectionIntro
+                title="Restaurant Partner Listings"
+                description="Paid directory listings with dedicated restaurant pages. Featured partners appear first with larger cards and a featured badge. Editorial picks below are separate recommendations."
+              />
+              <DirectoryListingGrid
+                listings={restaurantListings}
+                advertisePackageId="restaurant-listing-standard"
+              />
+            </div>
+          )}
 
           {/* Featured spotlight */}
           {featuredSpot && (

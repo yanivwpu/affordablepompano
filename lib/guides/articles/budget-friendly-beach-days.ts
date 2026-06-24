@@ -14,6 +14,7 @@ export const budgetBeachDaysGuide: Guide = {
   updatedAt: "2026-06-23",
   relatedSlugs: [
     "best-free-things-to-do",
+    "best-beaches-pompano-beach",
     "happy-hours-near-the-beach",
     "first-timers-guide-pompano-beach",
   ],
