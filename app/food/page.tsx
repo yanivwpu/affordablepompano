@@ -1,8 +1,7 @@
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import CategoryPills from "@/components/CategoryPills";
 import ContentNotice from "@/components/ContentNotice";
-import DirectoryListingGrid from "@/components/DirectoryListingGrid";
+import FeaturedRestaurantCard from "@/components/FeaturedRestaurantCard";
 import FoodSpotCard from "@/components/FoodSpotCard";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
@@ -13,8 +12,9 @@ import { metadataForPage } from "@/lib/seo";
 
 export const metadata = metadataForPage("food");
 
-const featuredSpot = foodSpots.find((s) => s.featured);
-const restaurantListings = getListingsByType("restaurant");
+const featuredRestaurants = getListingsByType("restaurant").filter(
+  (listing) => listing.plan === "featured",
+);
 const categoriesWithSpots = foodCategories.filter((cat) =>
   foodSpots.some((s) => s.group === cat.id),
 );
@@ -34,7 +34,6 @@ export default function FoodPage() {
 
       <ContentNotice />
 
-      {/* Category navigation */}
       <section className="border-b border-sand-dark/40 bg-cream py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.2em] text-teal">
@@ -44,89 +43,52 @@ export default function FoodPage() {
         </div>
       </section>
 
-      <section className="bg-background py-16 sm:py-20">
+      <section className="bg-background py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AdSensePlaceholder size="leaderboard" label="Advertisement" />
-
-          {restaurantListings.length > 0 && (
-            <div id="partner-listings" className="mt-12 scroll-mt-28">
-              <SectionIntro
-                title="Restaurant Partner Listings"
-                description="Paid directory listings with dedicated restaurant pages. Featured partners appear first with larger cards and a featured badge. Editorial picks below are separate recommendations."
-              />
-              <DirectoryListingGrid
-                listings={restaurantListings}
-                advertisePackageId="restaurant-listing-standard"
-              />
-            </div>
-          )}
-
-          {/* Featured spotlight */}
-          {featuredSpot && (
-            <div className="mt-12">
+          {featuredRestaurants.length > 0 && (
+            <div id="featured-restaurants" className="scroll-mt-28">
               <p className="mb-6 flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
                 <span className="text-[8px] text-coral" aria-hidden="true">
                   &#9670;
                 </span>
-                Editor&apos;s Spotlight
+                Featured Restaurants
                 <span className="text-[8px] text-coral" aria-hidden="true">
                   &#9670;
                 </span>
               </p>
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <FoodSpotCard {...featuredSpot} featured />
+              <div className="mx-auto max-w-5xl space-y-6">
+                {featuredRestaurants.map((listing) => (
+                  <FeaturedRestaurantCard key={listing.id} listing={listing} />
+                ))}
               </div>
-              <AdSensePlaceholder
-                label="Sponsored"
-                size="rectangle"
-                className="mt-12 sm:mt-16"
-              />
             </div>
           )}
 
           {categoriesWithSpots.map((cat, index) => {
-            const spots = foodSpots.filter(
-              (s) => s.group === cat.id && !s.featured,
-            );
+            const spots = foodSpots.filter((s) => s.group === cat.id);
             if (spots.length === 0) return null;
 
             return (
-              <div key={cat.id}>
-                <div
-                  id={cat.id}
-                  className={`scroll-mt-28 ${index > 0 || featuredSpot ? "mt-16 sm:mt-20" : "mt-12"}`}
-                >
-                  <SectionIntro
-                    title={cat.title}
-                    description={cat.description}
-                  />
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {spots.map((spot) => (
-                      <FoodSpotCard key={spot.title} {...spot} />
-                    ))}
-                  </div>
+              <div
+                key={cat.id}
+                id={cat.id}
+                className={`scroll-mt-28 ${
+                  index > 0 || featuredRestaurants.length > 0
+                    ? "mt-14 sm:mt-16"
+                    : ""
+                }`}
+              >
+                <SectionIntro title={cat.title} description={cat.description} />
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {spots.map((spot) => (
+                    <FoodSpotCard key={spot.title} {...spot} />
+                  ))}
                 </div>
-
-                {index === 1 && (
-                  <AdSensePlaceholder
-                    label="Advertisement"
-                    size="banner"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
-
-                {index === 3 && (
-                  <AdSensePlaceholder
-                    label="Sponsored"
-                    size="rectangle"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
               </div>
             );
           })}
 
-          <div className="mt-16 sm:mt-20">
+          <div className="mt-14 sm:mt-16">
             <AffiliateDisclaimer />
           </div>
         </div>

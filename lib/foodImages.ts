@@ -32,6 +32,10 @@ export const foodImages = {
     src: "/images/food/palm-brunch.jpg",
     alt: "Weekend brunch spread at a bright Florida café",
   },
+  wholeGreenCafe: {
+    src: "/images/food/palm-brunch.jpg",
+    alt: "Fresh healthy breakfast bowls and smoothies at a Florida cafe",
+  },
   tacoReef: {
     src: "/images/food/taco-reef.jpg",
     alt: "Fresh fish tacos at a casual Florida beachside counter",
