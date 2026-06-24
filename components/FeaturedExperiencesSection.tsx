@@ -28,8 +28,12 @@ export default function FeaturedExperiencesSection() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {viatorExperiences.map((experience) => (
-            <ViatorExperienceCard key={experience.id} {...experience} />
+          {viatorExperiences.map((experience, index) => (
+            <ViatorExperienceCard
+              key={experience.id}
+              {...experience}
+              priority={index === 0}
+            />
           ))}
         </div>
 

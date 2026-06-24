@@ -7,6 +7,7 @@ type ViatorExperienceCardProps = {
   href: string;
   image: string;
   imageAlt: string;
+  priority?: boolean;
 };
 
 export default function ViatorExperienceCard({
@@ -16,6 +17,7 @@ export default function ViatorExperienceCard({
   href,
   image,
   imageAlt,
+  priority = false,
 }: ViatorExperienceCardProps) {
   return (
     <article className="group card-hover florida-border-top flex h-full flex-col overflow-hidden rounded-sm border border-sand-dark/60 bg-cream shadow-sm">
@@ -24,7 +26,8 @@ export default function ViatorExperienceCard({
           src={image}
           alt={imageAlt}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover brightness-110 saturate-[1.08] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />
