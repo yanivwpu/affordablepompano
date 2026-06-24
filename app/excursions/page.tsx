@@ -3,6 +3,7 @@ import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import CategoryPills from "@/components/CategoryPills";
 import ContentNotice from "@/components/ContentNotice";
 import EditorialCard from "@/components/EditorialCard";
+import FeaturedExperiencesSection from "@/components/FeaturedExperiencesSection";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
 import { excursionCategories, excursions } from "@/lib/content";
@@ -30,6 +31,8 @@ export default function ExcursionsPage() {
       />
 
       <ContentNotice />
+
+      <FeaturedExperiencesSection />
 
       <section className="border-b border-sand-dark/40 bg-cream py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
