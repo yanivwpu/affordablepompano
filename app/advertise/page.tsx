@@ -4,6 +4,7 @@ import ImagePageHero from "@/components/ImagePageHero";
 import {
   advertiseBenefits,
   advertisePackages,
+  advertisePackagesIntro,
   advertiseTrustStats,
   advertiseWhyUs,
 } from "@/lib/advertise";
@@ -124,9 +125,7 @@ export default function AdvertisePage() {
               Packages that fit your business
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-navy/70">
-              No surprise fees, no &ldquo;request a quote&rdquo; runaround — just honest
-              monthly pricing for local businesses who want to grow with us.
-              Multi-month bundles available.
+              {advertisePackagesIntro}
             </p>
           </div>
 

@@ -1,4 +1,5 @@
 import { images } from "@/lib/images";
+import { foodImages } from "@/lib/foodImages";
 
 export type FoodGroup =
   | "seafood"
@@ -144,88 +145,8 @@ export const guideCategories = [
   },
 ] as const;
 
-export const featuredGuides = [
-  {
-    title: "First-Timer's Guide to Pompano Beach",
-    excerpt:
-      "Parking tips, pier walks, and the best free spots — everything you need for a great first visit.",
-    category: "Guide",
-    group: "visiting" as const,
-    image: images.pier,
-    imageAlt: images.pierAlt,
-    tall: true,
-  },
-  {
-    title: "Budget-Friendly Beach Days",
-    excerpt:
-      "Free beach access, affordable chair rentals, and picnic spots that keep more money in your pocket.",
-    category: "Guide",
-    group: "budget" as const,
-    image: images.sunnyBeach,
-    imageAlt: images.sunnyBeachAlt,
-    tall: false,
-  },
-  {
-    title: "Neighborhood Spotlight: Old Pompano",
-    excerpt:
-      "Walkable streets, local shops, and a friendly community feel — a great area for everyday living.",
-    category: "Guide",
-    group: "living" as const,
-    image: images.palmStreet,
-    imageAlt: images.palmStreetAlt,
-    tall: false,
-  },
-  {
-    title: "Seasonal Events Calendar",
-    excerpt:
-      "Fishing tournaments, beach festivals, and free waterfront concerts throughout the year.",
-    category: "Guide",
-    group: "visiting" as const,
-    image: images.goldenBeach,
-    imageAlt: images.goldenBeachAlt,
-    tall: true,
-  },
-  {
-    title: "Best Free Things To Do",
-    excerpt:
-      "Pier fishing, beach walks, and public parks — fun Pompano experiences that cost nothing.",
-    category: "Guide",
-    group: "budget" as const,
-    image: images.pierWalk,
-    imageAlt: images.pierWalkAlt,
-    tall: false,
-  },
-  {
-    title: "Moving to Pompano Beach",
-    excerpt:
-      "Honest info on cost of living, neighborhoods, and why locals love calling this place home.",
-    category: "Living",
-    group: "living" as const,
-    image: images.palmBeach,
-    imageAlt: images.palmBeachAlt,
-    tall: true,
-  },
-  {
-    title: "Parking & Pier Access Tips",
-    excerpt:
-      "Where to park for free, best times to visit the pier, and how to avoid weekend crowds.",
-    category: "Guide",
-    group: "visiting" as const,
-    image: images.pompanoPier,
-    imageAlt: images.pompanoPierAlt,
-    tall: false,
-  },
-  {
-    title: "Happy Hours Near the Beach",
-    excerpt:
-      "Affordable drinks and bites at sunny waterfront spots — a local's guide to saving after sunset.",
-    category: "Guide",
-    group: "budget" as const,
-    image: images.floridaPierSunset,
-    imageAlt: images.floridaPierSunsetAlt,
-    tall: false,
-  },
-];
+export { featuredGuides } from "@/lib/guides";
+export type { GuideGroup } from "@/lib/guides/types";
 
 export const foodSpots = [
   {
@@ -242,8 +163,8 @@ export const foodSpots = [
     ],
     category: "Seafood",
     group: "seafood" as FoodGroup,
-    image: images.fishermansDock,
-    imageAlt: images.fishermansDockAlt,
+    image: foodImages.fishermansDock.src,
+    imageAlt: foodImages.fishermansDock.alt,
     meta: ["Harbor Village", "Lunch & Dinner"],
     priceRange: "$$",
     badge: "Editor's Pick",
@@ -266,8 +187,8 @@ export const foodSpots = [
     ],
     category: "Seafood",
     group: "seafood" as FoodGroup,
-    image: images.pierHouse,
-    imageAlt: images.pierHouseAlt,
+    image: foodImages.pierHouse.src,
+    imageAlt: foodImages.pierHouse.alt,
     meta: ["Pier District", "Waterfront Deck"],
     priceRange: "$$",
     badge: "Local Favorite",
@@ -289,8 +210,8 @@ export const foodSpots = [
     ],
     category: "Seafood",
     group: "seafood" as FoodGroup,
-    image: images.pelicanRawBar,
-    imageAlt: images.pelicanRawBarAlt,
+    image: foodImages.pelicanRawBar.src,
+    imageAlt: foodImages.pelicanRawBar.alt,
     meta: ["Atlantic Blvd", "Raw Bar & Small Plates"],
     priceRange: "$$",
     actionLabel: "Book a Table",
@@ -311,8 +232,8 @@ export const foodSpots = [
     ],
     category: "Waterfront",
     group: "waterfront" as FoodGroup,
-    image: images.intracoastalSunset,
-    imageAlt: images.intracoastalSunsetAlt,
+    image: foodImages.oceansEdge.src,
+    imageAlt: foodImages.oceansEdge.alt,
     meta: ["Intracoastal Waterway", "Sunset Dining"],
     priceRange: "$$$",
     badge: "Sunset Spot",
@@ -334,8 +255,8 @@ export const foodSpots = [
     ],
     category: "Waterfront",
     group: "waterfront" as FoodGroup,
-    image: images.rustyAnchorPatio,
-    imageAlt: images.rustyAnchorPatioAlt,
+    image: foodImages.rustyAnchor.src,
+    imageAlt: foodImages.rustyAnchor.alt,
     meta: ["North Ocean Blvd", "Bar & Grill"],
     priceRange: "$$",
     actionLabel: "Book a Table",
@@ -356,8 +277,8 @@ export const foodSpots = [
     ],
     category: "Breakfast",
     group: "breakfast" as FoodGroup,
-    image: images.sunriseCafe,
-    imageAlt: images.sunriseCafeAlt,
+    image: foodImages.sunriseCafe.src,
+    imageAlt: foodImages.sunriseCafe.alt,
     meta: ["East Atlantic Blvd", "Open Daily 7am–2pm"],
     priceRange: "$",
     actionLabel: "Book a Table",
@@ -378,8 +299,8 @@ export const foodSpots = [
     ],
     category: "Brunch",
     group: "breakfast" as FoodGroup,
-    image: images.coralBrunch,
-    imageAlt: images.coralBrunchAlt,
+    image: foodImages.palmBrunch.src,
+    imageAlt: foodImages.palmBrunch.alt,
     meta: ["Old Pompano", "Sat & Sun Brunch"],
     priceRange: "$$",
     actionLabel: "Book a Table",
@@ -400,8 +321,8 @@ export const foodSpots = [
     ],
     category: "Cheap Eats",
     group: "cheap-eats" as FoodGroup,
-    image: images.tacoReefShack,
-    imageAlt: images.tacoReefShackAlt,
+    image: foodImages.tacoReef.src,
+    imageAlt: foodImages.tacoReef.alt,
     meta: ["Beach Blvd", "Walk-Up Counter"],
     priceRange: "$",
     actionLabel: "Order Now",
@@ -422,8 +343,8 @@ export const foodSpots = [
     ],
     category: "Cheap Eats",
     group: "cheap-eats" as FoodGroup,
-    image: images.harborMarket,
-    imageAlt: images.harborMarketAlt,
+    image: foodImages.harborFishMarket.src,
+    imageAlt: foodImages.harborFishMarket.alt,
     meta: ["Pompano Harbor", "Market & Deli"],
     priceRange: "$",
     actionLabel: "Order Now",
@@ -444,8 +365,8 @@ export const foodSpots = [
     ],
     category: "Italian",
     group: "italian" as FoodGroup,
-    image: images.nonnasItalian,
-    imageAlt: images.nonnasItalianAlt,
+    image: foodImages.nonnasItalian.src,
+    imageAlt: foodImages.nonnasItalian.alt,
     meta: ["Atlantic Blvd", "Dinner Nightly"],
     priceRange: "$$",
     actionLabel: "Book a Table",
@@ -466,8 +387,8 @@ export const foodSpots = [
     ],
     category: "Local Favorite",
     group: "local" as FoodGroup,
-    image: images.sandbarGrill,
-    imageAlt: images.sandbarGrillAlt,
+    image: foodImages.sandbarSocial.src,
+    imageAlt: foodImages.sandbarSocial.alt,
     meta: ["Ocean Blvd", "Happy Hour Daily"],
     priceRange: "$$",
     actionLabel: "Book a Table",

@@ -18,4 +18,4 @@ export const footerLinks = [
 export const CONTENT_PLACEHOLDER =
   "Full reviews and details coming soon — we're adding local picks every week.";
 
-export const ADVERTISE_EMAIL = "advertise@affordablepompano.com";
+export const ADVERTISE_EMAIL = "hello@affordablepompano.com";

@@ -6,7 +6,7 @@ import FoodSpotCard from "@/components/FoodSpotCard";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
 import { foodCategories, foodSpots } from "@/lib/content";
-import { images } from "@/lib/images";
+import { foodImages } from "@/lib/foodImages";
 import { metadataForPage } from "@/lib/seo";
 
 export const metadata = metadataForPage("food");
@@ -23,8 +23,8 @@ export default function FoodPage() {
         eyebrow="Food & Eats"
         title="Where to Eat in Pompano Beach"
         description="Honest local picks for seafood, waterfront sunsets, budget tacos, and weekend brunch — with must-try dishes, local tips, and booking links."
-        image={images.foodHero}
-        imageAlt={images.foodHeroAlt}
+        image={foodImages.foodHero.src}
+        imageAlt={foodImages.foodHero.alt}
         primaryCta={{ label: "Seafood Picks", href: "#seafood" }}
         secondaryCta={{ label: "Cheap Eats", href: "#cheap-eats" }}
       />

@@ -51,9 +51,13 @@ export default function Home() {
             linkHref="/guides"
             linkLabel="All Guides"
           />
-          <div className="masonry-grid">
+          <div className="guide-cards-grid">
             {featuredGuides.slice(0, 4).map((guide) => (
-              <ContentCard key={guide.title} {...guide} href="/guides" />
+              <ContentCard
+                key={guide.slug}
+                {...guide}
+                comingSoon={false}
+              />
             ))}
           </div>
         </div>

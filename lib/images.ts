@@ -49,11 +49,12 @@ export const images = {
   palmBeach: unsplash("photo-1638945657559-24972f58788a", 1200),
   palmBeachAlt: "Palm-lined Florida beach with turquoise ocean",
 
-  palmStreet: unsplash("photo-1583212296533-92ee8453fb82"),
-  palmStreetAlt: "Palm-lined sunny street near the Florida coast",
+  palmStreet: "/images/guides/neighborhood-street.jpg",
+  palmStreetAlt:
+    "Palm-lined neighborhood street in South Florida near the Atlantic coast",
 
-  keysBeach: unsplash("photo-1689933251513-72c7d0e69d94"),
-  keysBeachAlt: "Sunny Florida Keys beach with palms and blue water",
+  keysBeach: unsplash("photo-1645771845014-7077d5d0f058", 1200),
+  keysBeachAlt: "Sunny Atlantic beach with pier near Pompano Beach, Florida",
 
   pompanoLandmark: unsplash("photo-1702003201618-955fee10a2b4"),
   pompanoLandmarkAlt: "Sunny Pompano Beach waterfront",
@@ -67,8 +68,9 @@ export const images = {
   sellHome: unsplash("photo-1573220983618-156ea86f9c17", 900),
   sellHomeAlt: "Golden hour on a warm South Florida shoreline",
 
-  longTermRental: unsplash("photo-1689933251513-72c7d0e69d94", 900),
-  longTermRentalAlt: "Palm-lined sunny Florida beach living",
+  longTermRental: "/images/homes/long-term-rental.jpg",
+  longTermRentalAlt:
+    "Palm-lined residential street in a South Florida neighborhood",
 
   vacationRental: unsplash("photo-1573220983618-156ea86f9c17", 900),
   vacationRentalAlt: "Golden-hour Florida beach vacation scene",
@@ -101,7 +103,7 @@ export const images = {
   localGrillAlt: "Sunny Florida palms near a local neighborhood grill",
 
   /** Food & Eats — unique verified Florida / Pompano Beach photo per card */
-  foodHero: unsplash("photo-1703556891303-99ed089279e6", 1800),
+  foodHero: "/images/food/food-hero.jpg",
   foodHeroAlt:
     "Pompano Beach fishing pier at sunset with warm sky and Atlantic Ocean",
 
@@ -137,9 +139,8 @@ export const images = {
   tacoReefShackAlt:
     "Fresh fish tacos at a casual Pompano Beach shore-side shack",
 
-  harborMarket: unsplash("photo-1689933251513-72c7d0e69d94", 1000),
-  harborMarketAlt:
-    "Sunny Florida harbor with palms and turquoise water near fresh seafood markets",
+  harborMarket: "/images/food/harbor-fish-market.jpg",
+  harborMarketAlt: "Fresh whole fish on ice at a seafood market counter",
 
   nonnasItalian: unsplash("photo-1414235077428-338989a2e8c0", 1000),
   nonnasItalianAlt:

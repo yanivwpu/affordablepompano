@@ -1,33 +1,99 @@
+export const SPONSORSHIP_INQUIRY_EMAIL = "hello@affordablepompano.com";
+
 export const advertisePackages = [
   {
     id: "featured-restaurant",
     title: "Featured Restaurant / Business",
     description:
-      "Be the first name locals and visitors see when they browse where to eat, shop, and go in Pompano Beach.",
+      "Premium placement at the top of our Food & Eats section for restaurants, cafes, bars, and local businesses seeking maximum visibility.",
     price: "$99",
     period: "/ month",
+    inventory: "Featured Spot Available",
     idealFor: "Restaurants, cafés, bars & local shops",
     perks: [
-      "Featured placement on Food & Eats",
-      "Photo, description & direct link",
-      "“Local Favorite” badge option",
-      "Included in homepage rotation",
+      "Business logo displayed",
+      "Featured business image",
+      "Website link",
+      "Phone button",
+      "Featured badge",
+      "Premium visibility",
+      "Newsletter mention",
+      "Top placement in Food & Eats",
     ],
     highlighted: true,
+  },
+  {
+    id: "restaurant-directory",
+    title: "Restaurant Directory Listing",
+    description:
+      "Affordable visibility for restaurants and cafes looking to reach local residents and visitors.",
+    price: "$29",
+    period: "/ month",
+    inventory: "Multiple Standard Listings Available",
+    idealFor: "Restaurants, cafés & local eateries",
+    perks: [
+      "Business logo",
+      "Business image",
+      "Website link",
+      "Phone button",
+      "Listed in Food & Eats",
+      "Category visibility",
+    ],
+    highlighted: false,
   },
   {
     id: "excursion-partner",
     title: "Excursion & Activity Partner",
     description:
-      "Reach people actively planning things to do — fishing trips, tours, rentals, and beach-day adventures.",
+      "Perfect for fishing charters, boat tours, rentals, attractions, and beach-day experiences.",
     price: "$79",
     period: "/ month",
-    idealFor: "Charters, tours, rentals & activities",
+    inventory: "Featured Partner Available",
+    idealFor: "Charters, tours, rentals & attractions",
     perks: [
-      "Featured Excursions listing",
-      "Book-now button & affiliate link",
-      "Category spotlight tag",
-      "Seasonal promo mention",
+      "Business logo",
+      "Featured image",
+      "Website link",
+      "Featured badge",
+      "Top placement in Excursions",
+      "Seasonal promotion mention",
+    ],
+    highlighted: false,
+  },
+  {
+    id: "excursion-listing",
+    title: "Excursion Listing",
+    description:
+      "Affordable visibility for tours, activities, charters, rentals, and attractions.",
+    price: "$29",
+    period: "/ month",
+    inventory: "Multiple Standard Listings Available",
+    idealFor: "Tours, rentals & local activities",
+    perks: [
+      "Business logo",
+      "Business image",
+      "Website link",
+      "Listed in Excursions",
+      "Category visibility",
+    ],
+    highlighted: false,
+  },
+  {
+    id: "local-business-spotlight",
+    title: "Local Business Spotlight",
+    description:
+      "Ideal for attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
+    price: "$29",
+    period: "/ month",
+    inventory: "Multiple Standard Listings Available",
+    idealFor: "Attorneys, insurance, contractors & services",
+    perks: [
+      "Business logo",
+      "Business image",
+      "Website link",
+      "Contact information",
+      "Local business directory placement",
+      "Category visibility",
     ],
     highlighted: false,
   },
@@ -38,8 +104,12 @@ export const advertisePackages = [
       "Connect with buyers, renters, and snowbirds searching for homes in Pompano — right when they're ready to act.",
     price: "$149",
     period: "/ month",
+    inventory: "Limited Spots Available",
     idealFor: "Agents, brokerages & property managers",
     perks: [
+      "Business logo",
+      "Featured image",
+      "Website link",
       "Featured spot on our Homes page",
       "Agent profile with contact form",
       "Neighborhood guide mention",
@@ -54,12 +124,13 @@ export const advertisePackages = [
       "Show up in The Pompano Post — our friendly weekly email with restaurant picks, events, and local news.",
     price: "$59",
     period: "/ month",
+    inventory: "Up to 4 Sponsors Per Issue",
     idealFor: "Any business with a special offer",
     perks: [
-      "Logo & one-line offer in email",
-      "Click-through link to your site",
-      "Reach engaged local subscribers",
-      "Flexible start date",
+      "Logo placement",
+      "Link in newsletter",
+      "Mention in issue",
+      "Featured sponsor section",
     ],
     highlighted: false,
   },
@@ -70,12 +141,14 @@ export const advertisePackages = [
       "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
     price: "$179",
     period: "/ month",
+    inventory: "Featured Placement Available",
     idealFor: "Openings, events & high-impact pushes",
     perks: [
-      "Homepage banner rotation",
-      "Cross-page mentions",
-      "Priority newsletter inclusion",
-      "Dedicated placement support",
+      "Business logo",
+      "Featured image",
+      "Homepage placement",
+      "Premium visibility",
+      "Dedicated promotion",
     ],
     highlighted: false,
   },
@@ -111,8 +184,16 @@ export const advertiseBenefits = [
 ] as const;
 
 export const advertiseWhyUs = [
-  "Your ad appears where people already want help — not buried in generic search results.",
+  "Featured placements put you first — standard listings keep you visible at a lower monthly cost.",
   "Every page is built around Pompano Beach homes, restaurants, and activities.",
   "Simple monthly pricing with no hidden fees or long-term contracts required.",
   "You work with a local team that knows the community — not a distant call center.",
 ] as const;
+
+export const advertisePackagesIntro =
+  "Affordable Pompano reaches local residents, visitors, renters, homebuyers, and vacation travelers actively researching Pompano Beach. Promote your business in front of a highly targeted local audience.";
+
+export function getAdvertisePackageLabel(packageId: string): string {
+  const pkg = advertisePackages.find((p) => p.id === packageId);
+  return pkg ? `${pkg.title} — ${pkg.price}${pkg.period}` : packageId;
+}

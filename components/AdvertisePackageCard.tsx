@@ -30,9 +30,12 @@ export default function AdvertisePackageCard({ pkg }: { pkg: Package }) {
           {pkg.title}
         </h3>
 
-        <div className="mt-4 flex items-baseline gap-1 border-b border-sand-dark/30 pb-4">
-          <span className="font-display text-4xl text-coral">{pkg.price}</span>
-          <span className="text-sm font-medium text-navy/55">{pkg.period}</span>
+        <div className="mt-4 flex flex-col gap-1 border-b border-sand-dark/30 pb-4">
+          <div className="flex items-baseline gap-1">
+            <span className="font-display text-4xl text-coral">{pkg.price}</span>
+            <span className="text-sm font-medium text-navy/55">{pkg.period}</span>
+          </div>
+          <p className="text-xs font-semibold text-teal">{pkg.inventory}</p>
         </div>
 
         <p className="mt-4 text-sm leading-relaxed text-navy/70">

@@ -1,10 +1,10 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import ContentCard from "@/components/ContentCard";
-import ContentNotice from "@/components/ContentNotice";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
-import { featuredGuides, guideCategories } from "@/lib/content";
+import { guideCategories } from "@/lib/content";
+import { featuredGuides } from "@/lib/guides";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 
@@ -23,8 +23,6 @@ export default function GuidesPage() {
         secondaryCta={{ label: "Budget Tips", href: "#budget" }}
       />
 
-      <ContentNotice />
-
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AdSensePlaceholder size="leaderboard" label="Advertisement" />
@@ -40,9 +38,13 @@ export default function GuidesPage() {
                   className={`scroll-mt-28 ${index > 0 ? "mt-16 sm:mt-20" : "mt-12"}`}
                 >
                   <SectionIntro title={cat.title} description={cat.description} />
-                  <div className="masonry-grid">
+                  <div className="guide-cards-grid">
                     {guides.map((guide) => (
-                      <ContentCard key={guide.title} {...guide} />
+                      <ContentCard
+                        key={guide.slug}
+                        {...guide}
+                        comingSoon={false}
+                      />
                     ))}
                   </div>
                 </div>

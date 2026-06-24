@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { images } from "@/lib/images";
+import { foodImages } from "@/lib/foodImages";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://affordablepompano.com";
@@ -34,8 +35,8 @@ export const pageSeo = {
     description:
       "Discover top Pompano Beach restaurants — seafood, waterfront dining, brunch, and cheap eats. Local picks with prices and reserve-a-table links.",
     path: "/food",
-    image: images.foodHero,
-    imageAlt: images.foodHeroAlt,
+    image: foodImages.foodHero.src,
+    imageAlt: foodImages.foodHero.alt,
   },
   excursions: {
     title: "Things To Do in Pompano Beach FL | Affordable Pompano",
@@ -131,6 +132,134 @@ export function metadataForPage(
   key: keyof typeof pageSeo,
 ): Metadata {
   return createPageMetadata(pageSeo[key]);
+}
+
+type ArticleMetadataInput = {
+  title: string;
+  description: string;
+  path: string;
+  image: string;
+  imageAlt: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+export function createArticleMetadata({
+  title,
+  description,
+  path,
+  image,
+  imageAlt,
+  publishedAt,
+  updatedAt,
+}: ArticleMetadataInput): Metadata {
+  const seoTitle = `${title} | Affordable Pompano`;
+  const url = `${SITE_URL}${path}`;
+
+  return {
+    title: seoTitle,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      type: "article",
+      locale: "en_US",
+      url,
+      siteName: SITE_NAME,
+      title: seoTitle,
+      description,
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: imageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seoTitle,
+      description,
+      images: [image],
+    },
+  };
+}
+
+export function createArticleSchema(article: ArticleMetadataInput) {
+  const url = `${SITE_URL}${article.path}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    image: article.image,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    inLanguage: "en-US",
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  };
+}
+
+export function createGuideBreadcrumbSchema(title: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Guides",
+        item: `${SITE_URL}/guides`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: title,
+        item: `${SITE_URL}${path}`,
+      },
+    ],
+  };
+}
+
+export function createGuideFaqSchema(
+  faq: { question: string; answer: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
 }
 
 export const websiteSchema = {

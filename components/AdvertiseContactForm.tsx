@@ -1,7 +1,10 @@
 "use client";
 
-import { advertisePackages } from "@/lib/advertise";
-import { ADVERTISE_EMAIL } from "@/lib/navigation";
+import {
+  advertisePackages,
+  getAdvertisePackageLabel,
+  SPONSORSHIP_INQUIRY_EMAIL,
+} from "@/lib/advertise";
 import { FormEvent, useEffect, useState } from "react";
 
 export default function AdvertiseContactForm() {
@@ -24,23 +27,49 @@ export default function AdvertiseContactForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    const packageLabel =
+      form.package === "custom"
+        ? "Custom partnership"
+        : form.package
+          ? getAdvertisePackageLabel(form.package)
+          : "Not specified";
+
+    const subject = encodeURIComponent(
+      `Sponsorship Inquiry — ${form.business || form.name}`,
+    );
+    const body = encodeURIComponent(
+      [
+        "Sponsorship inquiry from AffordablePompano.com",
+        "",
+        `Name: ${form.name}`,
+        `Business: ${form.business}`,
+        `Reply email: ${form.email}`,
+        `Package: ${packageLabel}`,
+        "",
+        "Message:",
+        form.message || "(none)",
+      ].join("\n"),
+    );
+
+    window.location.href = `mailto:${SPONSORSHIP_INQUIRY_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <div className="rounded-sm border border-teal/30 bg-teal/10 px-6 py-8 text-center">
-        <p className="font-display text-xl text-navy">You&apos;re on the list!</p>
+        <p className="font-display text-xl text-navy">Inquiry sent!</p>
         <p className="mt-2 text-sm text-navy/70">
-          Thanks for applying — we&apos;ll confirm availability and next steps
-          within 1–2 business days. Questions? Email us at{" "}
+          Your email app should open with your message addressed to{" "}
           <a
-            href={`mailto:${ADVERTISE_EMAIL}`}
+            href={`mailto:${SPONSORSHIP_INQUIRY_EMAIL}`}
             className="font-semibold text-teal hover:text-teal-light"
           >
-            {ADVERTISE_EMAIL}
+            {SPONSORSHIP_INQUIRY_EMAIL}
           </a>
-          .
+          . If it didn&apos;t open, copy your details and email us directly —
+          we&apos;ll confirm availability within 1–2 business days.
         </p>
       </div>
     );
@@ -148,6 +177,16 @@ export default function AdvertiseContactForm() {
       >
         Apply to Sponsor
       </button>
+
+      <p className="text-xs text-navy/50">
+        Inquiries go to{" "}
+        <a
+          href={`mailto:${SPONSORSHIP_INQUIRY_EMAIL}`}
+          className="font-medium text-teal hover:text-teal-light"
+        >
+          {SPONSORSHIP_INQUIRY_EMAIL}
+        </a>
+      </p>
     </form>
   );
 }
