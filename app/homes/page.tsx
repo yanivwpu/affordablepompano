@@ -1,4 +1,5 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
+import FeaturedLocalRealtor from "@/components/FeaturedLocalRealtor";
 import HomesBrowseSection from "@/components/HomesBrowseSection";
 import HomesLeadForm from "@/components/HomesLeadForm";
 import ImagePageHero from "@/components/ImagePageHero";
@@ -54,6 +55,8 @@ export default function HomesPage() {
           <HomesBrowseSection />
         </div>
       </section>
+
+      <FeaturedLocalRealtor />
 
       <section className="border-y border-sand-dark/40 bg-background py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
