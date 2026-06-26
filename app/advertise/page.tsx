@@ -3,6 +3,7 @@ import {
   AddOnPackageCard,
   ListingPackageCard,
 } from "@/components/AdvertisePackageCard";
+import ExclusiveHomesPlacementBanner from "@/components/ExclusiveHomesPlacementBanner";
 import ImagePageHero from "@/components/ImagePageHero";
 import {
   addOnPackages,
@@ -113,9 +114,9 @@ export default function AdvertisePage() {
       </section>
 
       {/* Pricing */}
-      <section id="packages" className="scroll-mt-24 bg-warm-white py-16 sm:py-20">
+      <section id="packages" className="scroll-mt-24 bg-warm-white py-12 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
+          <div className="mb-8 text-center">
             <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
               <span className="text-[8px] text-coral" aria-hidden="true">
                 &#9670;
@@ -133,13 +134,15 @@ export default function AdvertisePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <div className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-4">
             {listingPackages.map((pkg) => (
               <ListingPackageCard key={pkg.id} pkg={pkg} />
             ))}
           </div>
 
-          <div className="mt-10 text-center">
+          <ExclusiveHomesPlacementBanner />
+
+          <div className="mt-8 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal">
               Add-Ons
             </p>
@@ -148,7 +151,7 @@ export default function AdvertisePage() {
             </h3>
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="mt-5 grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
             {addOnPackages.map((pkg) => (
               <AddOnPackageCard key={pkg.id} pkg={pkg} />
             ))}

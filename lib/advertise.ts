@@ -6,16 +6,20 @@ export const FEATURED_PLACEMENT_NOTE =
 export const STANDARD_PLACEMENT_NOTE =
   "Standard listings give your business a dedicated page and steady visibility in the directory.";
 
+export const EXCLUSIVE_PLACEMENT_NOTE =
+  "This premium placement is shown as the Featured Local Realtor card directly below the Homes search and results. Limited to one business at a time.";
+
 export type AdvertiseTier = {
   id: string;
   label: string;
-  subtitle: string;
+  subtitle?: string;
   price: string;
   period: string;
   inventory: string;
   includes: string;
-  placementTier: "standard" | "featured";
+  placementTier: "standard" | "featured" | "exclusive";
   perks: string[];
+  placementNote?: string;
 };
 
 export type AdvertisePackageGroup = {
@@ -141,7 +145,7 @@ export const listingPackages: AdvertisePackageGroup[] = [
     description:
       "Reach Pompano residents and newcomers with a dedicated business page in our local services directory.",
     bestFor:
-      "Attorneys, insurance agents, mortgage brokers, photographers, contractors, medical practices, and local service businesses.",
+      "Attorneys, insurance agents, photographers, contractors, medical practices, and local service businesses.",
     tiers: [
       {
         id: "business-listing-standard",
@@ -182,7 +186,91 @@ export const listingPackages: AdvertisePackageGroup[] = [
       },
     ],
   },
+  {
+    id: "real-estate-professional-listing",
+    title: "Real Estate Professional Listing",
+    description:
+      "Perfect for professionals serving home buyers, sellers, investors, and property owners throughout Pompano Beach.",
+    bestFor:
+      "Realtors, property managers, title companies, mortgage lenders, home inspectors, and real estate attorneys.",
+    tiers: [
+      {
+        id: "real-estate-professional-listing-standard",
+        label: "Standard Listing",
+        price: "$29",
+        period: "/ month",
+        inventory: "Standard Listings Available",
+        includes:
+          "Dedicated professional profile with logo, cover image, business description, and contact links in the Real Estate Professionals directory.",
+        placementTier: "standard",
+        perks: [
+          "Dedicated SEO-friendly professional profile page",
+          "Logo and cover image",
+          "Business description",
+          "Website and contact information",
+          "Category placement",
+          "Google Maps and contact links",
+          "Search-friendly profile page",
+        ],
+      },
+      {
+        id: "real-estate-professional-listing-featured",
+        label: "Featured Listing",
+        subtitle:
+          "Best for professionals who want maximum exposure and priority placement.",
+        price: "$99",
+        period: "/ month",
+        inventory: "Featured Placement Available",
+        includes:
+          "Everything in Standard plus featured badge, larger premium card, priority directory placement, and higher visibility across the site.",
+        placementTier: "featured",
+        perks: [
+          "Everything in Standard",
+          "Featured badge",
+          "Larger premium card",
+          "Priority placement in the Real Estate Professionals directory",
+          "Featured in relevant real estate guides",
+          "Higher visibility throughout the site",
+        ],
+      },
+    ],
+  },
 ];
+
+export type ExclusiveHomesPlacementPackage = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  price: string;
+  period: string;
+  inventory: string;
+  ctaLabel: string;
+  perks: string[];
+  placementNote: string;
+};
+
+export const exclusiveHomesPagePlacement: ExclusiveHomesPlacementPackage = {
+  id: "real-estate-homes-page-placement",
+  title: "👑 Exclusive Homes Page Placement",
+  subtitle: "Limited to one business at a time.",
+  description:
+    "Maximum visibility on the Homes page for real estate professionals.",
+  price: "$149",
+  period: "/ month",
+  inventory: "Exclusive Homes Page Placement Available",
+  ctaLabel: "Reserve Exclusive Homes Placement",
+  perks: [
+    "Everything in Featured Listing",
+    "Largest profile card",
+    "Exclusive card below MLS search/results",
+    "Headshot & brokerage logo",
+    "Direct call, email & website buttons",
+    "Featured on Homes Page badge",
+    "Maximum exposure to buyers, sellers, renters and investors",
+  ],
+  placementNote: EXCLUSIVE_PLACEMENT_NOTE,
+};
 
 export const addOnPackages: AdvertiseAddOn[] = [
   {
@@ -204,7 +292,7 @@ export const addOnPackages: AdvertiseAddOn[] = [
   },
   {
     id: "newsletter-sponsor",
-    title: "The Pompano Post Newsletter Sponsor",
+    title: "📰 The Pompano Post Newsletter Sponsor",
     description:
       "Show up in The Pompano Post — our friendly weekly email with restaurant picks, events, and local news.",
     price: "$59",
@@ -228,6 +316,10 @@ export const advertisePackageOptions = [
       label: `${group.title} — ${tier.label} — ${tier.price}${tier.period}`,
     })),
   ),
+  {
+    id: exclusiveHomesPagePlacement.id,
+    label: `${exclusiveHomesPagePlacement.title} — ${exclusiveHomesPagePlacement.price}${exclusiveHomesPagePlacement.period}`,
+  },
   ...addOnPackages.map((pkg) => ({
     id: pkg.id,
     label: `${pkg.title} — ${pkg.price}${pkg.period}`,

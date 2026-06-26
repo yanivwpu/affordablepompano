@@ -1,9 +1,11 @@
 import Link from "next/link";
 import {
+  EXCLUSIVE_PLACEMENT_NOTE,
   FEATURED_PLACEMENT_NOTE,
   STANDARD_PLACEMENT_NOTE,
   type AdvertiseAddOn,
   type AdvertisePackageGroup,
+  type AdvertiseTier,
 } from "@/lib/advertise";
 
 type ListingPackageCardProps = {
@@ -13,6 +15,24 @@ type ListingPackageCardProps = {
 type AddOnPackageCardProps = {
   pkg: AdvertiseAddOn;
 };
+
+function tierSurfaceClass(placementTier: AdvertiseTier["placementTier"]): string {
+  if (placementTier === "exclusive") {
+    return "border-coral/35 bg-coral/5 ring-1 ring-coral/15";
+  }
+  if (placementTier === "featured") {
+    return "border-teal/30 bg-teal/5";
+  }
+  return "border-sand-dark/50 bg-sand/20";
+}
+
+function tierPlacementNote(tier: AdvertiseTier): string | null {
+  if (tier.placementTier === "standard") return null;
+  if (tier.placementNote) return tier.placementNote;
+  if (tier.placementTier === "exclusive") return EXCLUSIVE_PLACEMENT_NOTE;
+  if (tier.placementTier === "featured") return FEATURED_PLACEMENT_NOTE;
+  return STANDARD_PLACEMENT_NOTE;
+}
 
 export function ListingPackageCard({ pkg }: ListingPackageCardProps) {
   return (
@@ -24,89 +44,86 @@ export function ListingPackageCard({ pkg }: ListingPackageCardProps) {
       }`}
     >
       {pkg.highlighted && (
-        <p className="bg-teal px-4 py-2 text-center text-[10px] font-bold uppercase tracking-widest text-cream">
+        <p className="bg-teal px-3 py-1.5 text-center text-[10px] font-bold uppercase tracking-widest text-cream">
           Most Popular
         </p>
       )}
 
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <h3 className="font-display text-xl font-medium leading-snug text-navy sm:text-2xl">
+      <div className="flex flex-1 flex-col p-4 sm:p-5">
+        <h3 className="font-display text-lg font-medium leading-snug text-navy xl:text-xl">
           {pkg.title}
         </h3>
 
-        <p className="mt-4 text-sm leading-relaxed text-navy/70">
+        <p className="mt-2 text-xs leading-relaxed text-navy/70 sm:text-sm">
           {pkg.description}
         </p>
 
-        <div className="mt-4">
+        <div className="mt-3">
           <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy/45">
             Best For
           </p>
-          <p className="mt-1.5 text-xs leading-relaxed text-navy/60">
+          <p className="mt-1 text-[11px] leading-relaxed text-navy/60 sm:text-xs">
             {pkg.bestFor}
           </p>
         </div>
 
-        <div className="mt-6 space-y-5">
+        <div className="mt-4 flex flex-1 flex-col gap-3">
           {pkg.tiers.map((tier) => {
-            const placementNote =
-              tier.placementTier === "featured"
-                ? FEATURED_PLACEMENT_NOTE
-                : STANDARD_PLACEMENT_NOTE;
+            const placementNote = tierPlacementNote(tier);
 
             return (
               <div
                 key={tier.id}
-                className={`rounded-sm border p-5 ${
-                  tier.placementTier === "featured"
-                    ? "border-teal/30 bg-teal/5"
-                    : "border-sand-dark/50 bg-sand/20"
-                }`}
+                className={`flex flex-1 flex-col rounded-sm border p-3.5 sm:p-4 ${tierSurfaceClass(tier.placementTier)}`}
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-teal">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-teal sm:text-xs">
                     {tier.label}
                   </p>
                   <div className="flex items-baseline gap-1">
-                    <span className="font-display text-3xl text-coral">
+                    <span className="font-display text-2xl text-coral sm:text-3xl">
                       {tier.price}
                     </span>
-                    <span className="text-sm font-medium text-navy/55">
+                    <span className="text-xs font-medium text-navy/55">
                       {tier.period}
                     </span>
                   </div>
                 </div>
 
-                <p className="mt-2 text-xs leading-relaxed text-navy/65">
-                  {tier.subtitle}
-                </p>
+                {tier.subtitle && (
+                  <p className="mt-1.5 text-[11px] leading-relaxed text-navy/65 sm:text-xs">
+                    {tier.subtitle}
+                  </p>
+                )}
 
-                <p className="mt-2 text-xs font-semibold text-teal">
+                <p className="mt-1.5 text-[11px] font-semibold text-teal sm:text-xs">
                   {tier.inventory}
                 </p>
-                <p className="mt-2 text-xs leading-relaxed text-navy/60">
+                <p className="mt-1.5 text-[11px] leading-relaxed text-navy/60 sm:text-xs">
                   {tier.includes}
                 </p>
 
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-2.5 flex-1 space-y-1.5">
                   {tier.perks.map((perk) => (
                     <li
                       key={perk}
-                      className="flex items-start gap-2.5 text-sm text-navy/65"
+                      className="flex items-start gap-2 text-[11px] text-navy/65 sm:text-xs"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" />
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-teal" />
                       {perk}
                     </li>
                   ))}
                 </ul>
 
-                <p className="mt-4 text-xs leading-relaxed text-navy/50">
-                  {placementNote}
-                </p>
+                {placementNote && (
+                  <p className="mt-2 text-[10px] leading-relaxed text-navy/50 sm:text-[11px]">
+                    {placementNote}
+                  </p>
+                )}
 
                 <Link
                   href={`/advertise?package=${tier.id}#contact`}
-                  className="mt-4 inline-flex w-full items-center justify-center rounded-sm bg-coral px-4 py-3 text-sm font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light"
+                  className="mt-3 inline-flex w-full items-center justify-center rounded-sm bg-coral px-3 py-2.5 text-xs font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light sm:text-sm"
                 >
                   Reserve {tier.label} Spot
                 </Link>
