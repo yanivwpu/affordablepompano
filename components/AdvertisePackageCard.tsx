@@ -77,6 +77,10 @@ export function ListingPackageCard({ pkg }: ListingPackageCardProps) {
                   </div>
                 </div>
 
+                <p className="mt-2 text-xs leading-relaxed text-navy/65">
+                  {tier.subtitle}
+                </p>
+
                 <p className="mt-2 text-xs font-semibold text-teal">
                   {tier.inventory}
                 </p>
@@ -122,6 +126,9 @@ export function AddOnPackageCard({ pkg }: AddOnPackageCardProps) {
         <h3 className="font-display text-xl font-medium leading-snug text-navy sm:text-2xl">
           {pkg.title}
         </h3>
+        {pkg.tagline && (
+          <p className="mt-1.5 text-xs font-medium text-teal">{pkg.tagline}</p>
+        )}
 
         <div className="mt-4 flex flex-col gap-1 border-b border-sand-dark/30 pb-4">
           <div className="flex items-baseline gap-1">

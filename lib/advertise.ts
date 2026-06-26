@@ -1,14 +1,15 @@
 export const SPONSORSHIP_INQUIRY_EMAIL = "hello@affordablepompano.com";
 
 export const FEATURED_PLACEMENT_NOTE =
-  "Featured placements receive larger visual presentation, premium positioning, and enhanced visibility compared to standard listings.";
+  "Featured listings are upgraded placements with a larger card, featured badge, and priority position in their category. Multiple featured listings can appear at the same time.";
 
 export const STANDARD_PLACEMENT_NOTE =
-  "Standard listings appear within the directory alongside other local businesses.";
+  "Standard listings give your business a dedicated page and steady visibility in the directory.";
 
 export type AdvertiseTier = {
   id: string;
   label: string;
+  subtitle: string;
   price: string;
   period: string;
   inventory: string;
@@ -29,6 +30,7 @@ export type AdvertisePackageGroup = {
 export type AdvertiseAddOn = {
   id: string;
   title: string;
+  tagline?: string;
   description: string;
   price: string;
   period: string;
@@ -49,7 +51,9 @@ export const listingPackages: AdvertisePackageGroup[] = [
     tiers: [
       {
         id: "restaurant-listing-standard",
-        label: "Standard",
+        label: "Standard Listing",
+        subtitle:
+          "Great for businesses that want a professional online presence and local visibility.",
         price: "$29",
         period: "/ month",
         inventory: "Standard Listings Available",
@@ -65,10 +69,12 @@ export const listingPackages: AdvertisePackageGroup[] = [
       },
       {
         id: "restaurant-listing-featured",
-        label: "Featured",
+        label: "Featured Listing",
+        subtitle:
+          "Best for businesses that want maximum exposure and priority placement.",
         price: "$99",
         period: "/ month",
-        inventory: "Limited Featured Placement",
+        inventory: "Featured Placement Available",
         includes:
           "Everything in Standard plus top placement, larger card, featured badge, and newsletter mention.",
         placementTier: "featured",
@@ -92,7 +98,9 @@ export const listingPackages: AdvertisePackageGroup[] = [
     tiers: [
       {
         id: "excursion-listing-standard",
-        label: "Standard",
+        label: "Standard Listing",
+        subtitle:
+          "Great for businesses that want a professional online presence and local visibility.",
         price: "$29",
         period: "/ month",
         inventory: "Standard Listings Available",
@@ -108,10 +116,12 @@ export const listingPackages: AdvertisePackageGroup[] = [
       },
       {
         id: "excursion-listing-featured",
-        label: "Featured",
+        label: "Featured Listing",
+        subtitle:
+          "Best for businesses that want maximum exposure and priority placement.",
         price: "$79",
         period: "/ month",
-        inventory: "Limited Featured Placement",
+        inventory: "Featured Placement Available",
         includes:
           "Everything in Standard plus top placement, larger card, featured badge, and seasonal promotion mention.",
         placementTier: "featured",
@@ -135,7 +145,9 @@ export const listingPackages: AdvertisePackageGroup[] = [
     tiers: [
       {
         id: "business-listing-standard",
-        label: "Standard",
+        label: "Standard Listing",
+        subtitle:
+          "Great for businesses that want a professional online presence and local visibility.",
         price: "$29",
         period: "/ month",
         inventory: "Standard Listings Available",
@@ -151,10 +163,12 @@ export const listingPackages: AdvertisePackageGroup[] = [
       },
       {
         id: "business-listing-featured",
-        label: "Featured",
+        label: "Featured Listing",
+        subtitle:
+          "Best for businesses that want maximum exposure and priority placement.",
         price: "$59",
         period: "/ month",
-        inventory: "Limited Featured Placement",
+        inventory: "Featured Placement Available",
         includes:
           "Everything in Standard plus top placement, larger card, featured badge, and homepage/category visibility.",
         placementTier: "featured",
@@ -173,12 +187,13 @@ export const listingPackages: AdvertisePackageGroup[] = [
 export const addOnPackages: AdvertiseAddOn[] = [
   {
     id: "homepage-feature",
-    title: "Homepage Feature",
+    title: "⭐ Exclusive Homepage Feature",
+    tagline: "Limited to one business at a time.",
     description:
       "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
     price: "$179",
     period: "/ month",
-    inventory: "Homepage Feature Available",
+    inventory: "Exclusive Homepage Feature Available",
     bestFor: "Businesses seeking maximum visibility across the entire website.",
     perks: [
       "Business logo",
@@ -189,7 +204,7 @@ export const addOnPackages: AdvertiseAddOn[] = [
   },
   {
     id: "newsletter-sponsor",
-    title: "Newsletter Sponsor",
+    title: "The Pompano Post Newsletter Sponsor",
     description:
       "Show up in The Pompano Post — our friendly weekly email with restaurant picks, events, and local news.",
     price: "$59",

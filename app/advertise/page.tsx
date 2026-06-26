@@ -144,7 +144,7 @@ export default function AdvertisePage() {
               Add-Ons
             </p>
             <h3 className="font-display mt-2 text-2xl font-medium text-navy">
-              Extra visibility beyond your listing
+              Promote your business even further
             </h3>
           </div>
 
@@ -156,7 +156,8 @@ export default function AdvertisePage() {
 
           <p className="mt-8 text-center text-sm text-navy/50">
             All prices in USD. Cancel anytime with 30 days notice. Founding
-            partner rates locked in for your first 6 months.
+            Member pricing is available for a limited time while Affordable
+            Pompano continues to grow its local audience.
           </p>
         </div>
       </section>
