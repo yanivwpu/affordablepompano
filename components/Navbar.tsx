@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import BrandLogo from "@/components/BrandLogo";
 import { navLinks } from "@/lib/navigation";
 
 export default function Navbar() {
@@ -15,15 +16,8 @@ export default function Navbar() {
         className="h-0.5 bg-gradient-to-r from-teal via-coral to-sunset"
         aria-hidden="true"
       />
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6 lg:px-8">
-        <Link href="/" className="group shrink-0">
-          <span className="font-display text-xl font-medium tracking-tight text-navy transition-colors group-hover:text-teal sm:text-2xl">
-            Affordable Pompano
-          </span>
-          <span className="mt-0.5 block text-[11px] italic tracking-wide text-foreground/55 sm:text-xs">
-            Pompano Beach, Florida
-          </span>
-        </Link>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2 sm:px-6 sm:py-2.5 lg:px-8">
+        <BrandLogo />
 
         <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((link) => {
@@ -50,7 +44,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-sm p-2 text-navy lg:hidden"
+          className="inline-flex shrink-0 items-center justify-center rounded-sm p-1.5 text-navy lg:hidden"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen(!open)}

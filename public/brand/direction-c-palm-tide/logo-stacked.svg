@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" aria-label="Affordable Pompano stacked">
+  <g transform="translate(168, 32)">
+    <path d="M32 58 Q10 44 14 26 Q18 8 32 4 Q46 8 50 26 Q54 44 32 58 Z" fill="#2A8B8B"/>
+    <path d="M32 50 Q22 40 24 28 Q26 16 32 12 Q38 16 40 28 Q42 40 32 50" fill="#3BAFAF" opacity="0.4"/>
+    <path d="M32 50 L32 12" stroke="#1B3A4B" stroke-width="1" opacity="0.2"/>
+    <path d="M8 62 Q32 54 56 62" stroke="#E07A5F" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  </g>
+  <text x="200" y="168" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="32" font-weight="500" fill="#1B3A4B">Affordable</text>
+  <text x="200" y="208" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="32" font-weight="500" fill="#1B3A4B">Pompano</text>
+  <text x="200" y="238" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="13" font-style="italic" fill="#1B3A4B" opacity="0.65">Pompano Beach, Florida</text>
+</svg>

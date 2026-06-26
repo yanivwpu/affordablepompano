@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import Footer from "@/components/Footer";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
@@ -76,7 +77,25 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    other: [
+      {
+        rel: "icon",
+        url: "/icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
+  },
 };
+
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 export default function RootLayout({
   children,
@@ -94,6 +113,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhachatChatWidget />
+        {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>
   );

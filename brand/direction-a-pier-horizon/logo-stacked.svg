@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" role="img" aria-label="Affordable Pompano">
+  <title>Affordable Pompano  Stacked</title>
+  <g transform="translate(160, 48)">
+    <rect x="24" y="36" width="4" height="44" rx="1" fill="#1B3A4B"/>
+    <rect x="48" y="24" width="4" height="56" rx="1" fill="#1B3A4B"/>
+    <rect x="72" y="36" width="4" height="44" rx="1" fill="#1B3A4B"/>
+    <rect x="20" y="24" width="60" height="3" rx="1" fill="#1B3A4B"/>
+    <path d="M12 76 Q40 66 68 76" stroke="#2A8B8B" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M12 84 Q40 74 68 84" stroke="#2A8B8B" stroke-width="2" stroke-linecap="round" opacity="0.45" fill="none"/>
+  </g>
+  <text x="200" y="168" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="32" font-weight="500" fill="#1B3A4B">Affordable</text>
+  <text x="200" y="208" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="32" font-weight="500" fill="#1B3A4B">Pompano</text>
+  <text x="200" y="238" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="13" font-style="italic" fill="#1B3A4B" opacity="0.65">Pompano Beach, Florida</text>
+  <rect x="140" y="252" width="120" height="3" rx="1" fill="#E07A5F" opacity="0.85"/>
+</svg>

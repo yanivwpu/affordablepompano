@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-label="AP monogram">
+  <circle cx="32" cy="32" r="28" stroke="#2A8B8B" stroke-width="2.5" fill="#FFFCF7"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Playfair Display, Georgia, serif" font-size="22" font-weight="600" fill="#1B3A4B">AP</text>
+  <path d="M10 50 Q32 44 54 50" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

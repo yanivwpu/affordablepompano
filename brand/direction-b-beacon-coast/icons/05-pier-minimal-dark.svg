@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-label="Pier on navy">
+  <rect width="64" height="64" fill="#1B3A4B"/>
+  <rect x="12" y="28" width="2" height="14" fill="#FFFCF7"/>
+  <rect x="24" y="24" width="2" height="18" fill="#FFFCF7"/>
+  <rect x="36" y="28" width="2" height="14" fill="#FFFCF7"/>
+  <rect x="10" y="24" width="30" height="2" fill="#FFFCF7"/>
+  <path d="M8 46 Q20 42 32 46" stroke="#3BAFAF" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

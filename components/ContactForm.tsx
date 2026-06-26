@@ -1,15 +1,15 @@
 "use client";
 
-import { SPONSORSHIP_INQUIRY_EMAIL } from "@/lib/advertise";
-import { REALTOR_EMAIL } from "@/lib/images";
+import { CONTACT_EMAIL } from "@/lib/navigation";
 import { FormEvent, useState } from "react";
 
 const subjectLabels: Record<string, string> = {
-  homes: "Homes & real estate",
-  food: "Restaurant recommendation",
-  excursions: "Things to do",
-  advertise: "Advertising & sponsorship",
-  other: "General inquiry",
+  general: "General Question",
+  "real-estate": "Real Estate",
+  advertising: "Advertising / Sponsorship",
+  restaurant: "Restaurant Listing",
+  excursion: "Excursion Listing",
+  business: "Local Business Listing",
 };
 
 export default function ContactForm() {
@@ -24,16 +24,9 @@ export default function ContactForm() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const isSponsorship = form.subject === "advertise";
-    const destination = isSponsorship
-      ? SPONSORSHIP_INQUIRY_EMAIL
-      : REALTOR_EMAIL;
     const subjectLabel = subjectLabels[form.subject] ?? form.subject;
-    const subjectPrefix = isSponsorship
-      ? "Sponsorship Inquiry"
-      : "Contact Form";
     const subject = encodeURIComponent(
-      `${subjectPrefix} — ${subjectLabel} — ${form.name}`,
+      `Contact Form — ${subjectLabel} — ${form.name}`,
     );
     const body = encodeURIComponent(
       [
@@ -48,7 +41,7 @@ export default function ContactForm() {
       ].join("\n"),
     );
 
-    window.location.href = `mailto:${destination}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
@@ -57,16 +50,8 @@ export default function ContactForm() {
       <div className="rounded-sm border border-teal/30 bg-teal/10 px-6 py-8 text-center">
         <p className="font-display text-xl text-navy">Message sent!</p>
         <p className="mt-2 text-sm text-navy/70">
-          Your email app should open with your message addressed to{" "}
-          <a
-            href={`mailto:${form.subject === "advertise" ? SPONSORSHIP_INQUIRY_EMAIL : REALTOR_EMAIL}`}
-            className="font-semibold text-teal hover:text-teal-light"
-          >
-            {form.subject === "advertise"
-              ? SPONSORSHIP_INQUIRY_EMAIL
-              : REALTOR_EMAIL}
-          </a>
-          . We&apos;ll get back to you within 1–2 business days.
+          Your email app should open with your message ready to send. We&apos;ll
+          get back to you within 1–2 business days.
         </p>
       </div>
     );
@@ -120,11 +105,12 @@ export default function ContactForm() {
           className={inputClass}
         >
           <option value="">What can we help with?</option>
-          <option value="homes">Homes & real estate</option>
-          <option value="food">Restaurant recommendation</option>
-          <option value="excursions">Things to do</option>
-          <option value="advertise">Advertising & sponsorship</option>
-          <option value="other">Something else</option>
+          <option value="general">General Question</option>
+          <option value="real-estate">Real Estate</option>
+          <option value="advertising">Advertising / Sponsorship</option>
+          <option value="restaurant">Restaurant Listing</option>
+          <option value="excursion">Excursion Listing</option>
+          <option value="business">Local Business Listing</option>
         </select>
       </div>
 
@@ -153,19 +139,12 @@ export default function ContactForm() {
       <p className="text-xs text-navy/50">
         Prefer email? Reach us at{" "}
         <a
-          href={`mailto:${REALTOR_EMAIL}`}
+          href={`mailto:${CONTACT_EMAIL}`}
           className="font-medium text-teal hover:text-teal-light"
         >
-          {REALTOR_EMAIL}
+          {CONTACT_EMAIL}
         </a>
-        {". "}
-        Sponsorship inquiries:{" "}
-        <a
-          href={`mailto:${SPONSORSHIP_INQUIRY_EMAIL}`}
-          className="font-medium text-teal hover:text-teal-light"
-        >
-          {SPONSORSHIP_INQUIRY_EMAIL}
-        </a>
+        .
       </p>
     </form>
   );
