@@ -1,8 +1,8 @@
 import ContactRealtorCTA from "@/components/ContactRealtorCTA";
-import ContentCard from "@/components/ContentCard";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import GuideRelatedContent from "@/components/GuideRelatedContent";
 import GuideArticleSchema from "@/components/GuideArticleSchema";
 import { GuideRichText } from "@/components/GuideRichText";
-import { getRelatedGuides, guidePath } from "@/lib/guides";
 import { getGuideExploreLinks } from "@/lib/guides/exploreLinks";
 import type { Guide } from "@/lib/guides/types";
 import { guideCategories } from "@/lib/content";
@@ -23,10 +23,22 @@ function formatDate(iso: string): string {
 }
 
 export default function GuideArticleView({ guide }: GuideArticleViewProps) {
-  const related = getRelatedGuides(guide);
   const exploreLinks = getGuideExploreLinks(guide);
   const categoryLabel =
     guideCategories.find((c) => c.id === guide.group)?.title ?? "Guide";
+  const pillarHref =
+    guide.group === "living"
+      ? "/homes"
+      : guide.group === "budget" ||
+          guide.slug.includes("restaurant") ||
+          guide.slug.includes("breakfast") ||
+          guide.slug.includes("happy-hour") ||
+          guide.slug.includes("seafood") ||
+          guide.slug.includes("waterfront")
+        ? "/food"
+        : guide.group === "visiting"
+          ? "/excursions"
+          : undefined;
 
   return (
     <>
@@ -34,33 +46,27 @@ export default function GuideArticleView({ guide }: GuideArticleViewProps) {
 
       <article className="bg-background">
         <div className="border-b border-sand-dark/40 bg-cream py-4">
-          <nav
-            aria-label="Breadcrumb"
-            className="mx-auto max-w-3xl px-4 text-sm text-navy/60 sm:px-6"
-          >
-            <ol className="flex flex-wrap items-center gap-1.5">
-              <li>
-                <Link href="/" className="transition-colors hover:text-teal">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-navy/35">
-                /
-              </li>
-              <li>
-                <Link
-                  href="/guides"
-                  className="transition-colors hover:text-teal"
-                >
-                  Guides
-                </Link>
-              </li>
-              <li aria-hidden="true" className="text-navy/35">
-                /
-              </li>
-              <li className="font-medium text-navy">{guide.title}</li>
-            </ol>
-          </nav>
+          <Breadcrumbs
+            className="mx-auto max-w-3xl px-4 sm:px-6"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Guides", href: "/guides" },
+              ...(pillarHref
+                ? [
+                    {
+                      label:
+                        pillarHref === "/food"
+                          ? "Food"
+                          : pillarHref === "/homes"
+                            ? "Homes"
+                            : "Excursions",
+                      href: pillarHref,
+                    },
+                  ]
+                : []),
+              { label: guide.title },
+            ]}
+          />
         </div>
 
         <header className="relative min-h-[40vh] overflow-hidden sm:min-h-[45vh]">
@@ -246,42 +252,7 @@ export default function GuideArticleView({ guide }: GuideArticleViewProps) {
           </aside>
         </div>
 
-        {related.length > 0 && (
-          <section className="border-t border-sand-dark/40 bg-sand py-14 sm:py-16">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div className="mb-8 text-center">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-teal">
-                  Keep Reading
-                </p>
-                <h2 className="font-display mt-2 text-2xl font-medium text-navy sm:text-3xl">
-                  Related Guides
-                </h2>
-              </div>
-              <div className="guide-cards-grid">
-                {related.map((relatedGuide) => (
-                  <ContentCard
-                    key={relatedGuide.slug}
-                    title={relatedGuide.title}
-                    excerpt={relatedGuide.excerpt}
-                    category={relatedGuide.category}
-                    image={relatedGuide.image}
-                    imageAlt={relatedGuide.imageAlt}
-                    href={guidePath(relatedGuide.slug)}
-                    comingSoon={false}
-                  />
-                ))}
-              </div>
-              <p className="mt-8 text-center">
-                <Link
-                  href="/guides"
-                  className="text-sm font-semibold text-coral transition-colors hover:text-coral-light"
-                >
-                  View all guides &rarr;
-                </Link>
-              </p>
-            </div>
-          </section>
-        )}
+        <GuideRelatedContent guide={guide} />
       </article>
     </>
   );

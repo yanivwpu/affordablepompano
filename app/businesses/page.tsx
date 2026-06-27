@@ -1,8 +1,15 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import CategoryPills from "@/components/CategoryPills";
-import DirectoryListingGrid from "@/components/DirectoryListingGrid";
 import ImagePageHero from "@/components/ImagePageHero";
+import PillarHubSection from "@/components/PillarHubSection";
+import PillarIntro from "@/components/PillarIntro";
 import SectionIntro from "@/components/SectionIntro";
-import { businessCategories, getListingsByType } from "@/lib/directory";
+import {
+  businessCategories,
+  getCategoriesForType,
+} from "@/lib/directory";
+import { businessesPillar } from "@/lib/guides/pillarContent";
+import { businessesPillarEditorial } from "@/lib/guides/pillarEditorial";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 import Link from "next/link";
@@ -10,22 +17,38 @@ import Link from "next/link";
 export const metadata = metadataForPage("businesses");
 
 export default function BusinessesPage() {
-  const allListings = getListingsByType("business");
+  const allCategories = getCategoriesForType("business");
 
   return (
     <>
+      <div className="border-b border-sand-dark/40 bg-cream py-4">
+        <Breadcrumbs
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Local Businesses" },
+          ]}
+        />
+      </div>
+
       <ImagePageHero
         eyebrow="Local Businesses"
         title="Pompano Beach Business Directory"
         description="Attorneys, insurance agents, contractors, medical practices, and local services — trusted businesses serving Pompano Beach residents and newcomers."
         image={images.palmBeach}
         imageAlt={images.palmBeachAlt}
-        primaryCta={{ label: "Browse Categories", href: "#categories" }}
+        primaryCta={{ label: "Partner Listings", href: "#partner-listings" }}
         secondaryCta={{
-          label: "List Your Business",
-          href: "/advertise?package=business-listing-standard#contact",
+          label: "Browse Categories",
+          href: "#categories",
         }}
       />
+
+      <PillarIntro editorial={businessesPillarEditorial} />
+
+      <div id="partner-listings">
+        <PillarHubSection pillar={businessesPillar} maxCategories={8} />
+      </div>
 
       <section
         id="categories"
@@ -33,7 +56,7 @@ export default function BusinessesPage() {
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <p className="mb-4 text-center text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-            Browse by Category
+            All Categories
           </p>
           <CategoryPills
             categories={businessCategories.map((cat) => ({
@@ -47,16 +70,12 @@ export default function BusinessesPage() {
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionIntro
-            title="Partner Listings"
-            description="Paid directory listings with dedicated business pages. Featured partners appear first with larger cards and a featured badge."
-          />
-          <DirectoryListingGrid
-            listings={allListings}
-            advertisePackageId="business-listing-standard"
+            title="Directory Categories"
+            description="Every category supports dedicated partner listings as local businesses join the directory."
           />
 
-          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {businessCategories.map((cat) => (
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {allCategories.map((cat) => (
               <div
                 key={cat.id}
                 id={cat.id}

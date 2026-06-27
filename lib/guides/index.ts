@@ -32,7 +32,7 @@ export function getAllGuideSlugs(): string[] {
   return allSlugs(guides);
 }
 
-export function getRelatedGuides(guide: Guide, limit = 3): Guide[] {
+export function getRelatedGuides(guide: Guide, limit = 6): Guide[] {
   return findRelated(guides, guide, limit);
 }
 

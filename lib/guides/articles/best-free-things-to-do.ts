@@ -99,7 +99,7 @@ export const freeThingsGuide: Guide = {
       type: "section",
       heading: "When to add one paid activity",
       paragraphs: [
-        "Free days stack beautifully with one splurge — snorkel trip, kayak tour, or parasail from our [[Excursions directory|/excursions]]. Mixing keeps budgets intact without feeling deprived.",
+        "Free days stack beautifully with one splurge — snorkel trip, [[boat tour|/guides/best-boat-tours-pompano-beach]], kayak tour, or parasail from our [[Excursions directory|/excursions]]. Mixing keeps budgets intact without feeling deprived.",
         "If you're considering moving here, free routines preview daily life better than a single expensive tour ever could.",
       ],
     },

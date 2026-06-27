@@ -25,6 +25,19 @@ export function getGuideExploreLinks(guide: Guide): GuideExploreLink[] {
     });
   }
 
+  const hubLink =
+    guide.group === "living"
+      ? { label: "Homes Hub", href: "/homes", description: "Buying guides, neighborhoods, and local business directory." }
+      : FOOD_GUIDE_SLUGS.has(guide.slug)
+        ? { label: "Food Hub", href: "/food", description: "Restaurant directory and local dining guides." }
+        : guide.group === "visiting"
+          ? { label: "Excursions Hub", href: "/excursions", description: "Things to do, charters, and excursion listings." }
+          : null;
+
+  if (hubLink && !hrefs.has(hubLink.href)) {
+    links.unshift(hubLink);
+  }
+
   if (
     (guide.group === "visiting" || guide.group === "budget") &&
     !hasHref(links, (href) => href.includes("/excursions"))

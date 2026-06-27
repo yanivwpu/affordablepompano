@@ -43,7 +43,7 @@ export const waterfrontRestaurantsGuide: Guide = {
       heading: "Two waterfronts, two different evenings",
       paragraphs: [
         "Pompano Beach waterfront dining isn't one experience — it's a choice between Atlantic surf and Intracoastal calm. Ocean-facing spots along North Ocean Boulevard (A1A) put you next to breaking waves, pier lights, and the open horizon. Intracoastal restaurants face the waterway — slower current, passing yachts, and sunsets that paint the western sky behind mangrove edges rather than empty ocean.",
-        "Locals rotate between both. Atlantic decks feel like vacation — salt air, louder surf, beach crowds spilling in after sand time. Intracoastal decks feel like Florida boating culture — dock lines, harbor traffic, and the kind of evening where you watch a fishing tournament weigh-in from your appetizer plate.",
+        "Locals rotate between both. Atlantic decks feel like vacation — salt air, louder surf, beach crowds spilling in after sand time. Intracoastal decks feel like Florida boating culture — dock lines, harbor traffic, and the kind of evening where you watch a fishing tournament weigh-in from your appetizer plate. For dock-to-table specifics, our [[Best Seafood Restaurants|/guides/best-seafood-restaurants-pompano-beach]] guide covers harbor favorites in depth.",
         "Our [[Waterfront directory|/food#waterfront]] maps specific venues. This guide helps you pick the right water for tonight's mood, budget, and parking tolerance.",
       ],
     },

@@ -43,7 +43,7 @@ export const happyHourGuidePompano: Guide = {
       heading: "Happy hour as a social map — not just a discount clock",
       paragraphs: [
         "If you've already read our [[Happy Hours Near the Beach|/guides/happy-hours-near-the-beach]] guide, you know the basics: typical 4–7 p.m. windows, waterfront view premiums, and appetizer math that beats full entrée tabs. This article takes a different angle — how Pompano residents actually move through the week socially, which neighborhoods cluster good bars, and where live music, tournament crowds, and after-work rituals reshape the same drink specials tourists see on a chalkboard.",
-        "Pompano doesn't have a single bar district like Fort Lauderdale's Las Olas. Instead, happy hour energy spreads along Atlantic Boulevard strip malls, Old Pompano's walkable pockets, and A1A ocean patios — each with a different crowd, noise level, and parking story. Understanding that geography matters more than memorizing one restaurant's two-dollar beer clock.",
+        "Pompano doesn't have a single bar district like Fort Lauderdale's Las Olas. Instead, happy hour energy spreads along Atlantic Boulevard strip malls, Old Pompano's walkable pockets, and A1A ocean patios — each with a different crowd, noise level, and parking story. Pair this crawl with our [[seafood|/guides/best-seafood-restaurants-pompano-beach]] and [[waterfront|/guides/best-waterfront-restaurants-pompano-beach]] guides when you want dinner after drinks.",
         "Use our [[Food & Eats directory|/food]] for venue specifics. Use this guide to plan a Tuesday harbor crawl, a Friday live-music night, or a rain-delayed indoor session that still feels like vacation.",
       ],
     },

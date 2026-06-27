@@ -1,5 +1,6 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import ContentCard from "@/components/ContentCard";
+import DirectoryListingCard from "@/components/DirectoryListingCard";
 import EditorialCard from "@/components/EditorialCard";
 import Hero from "@/components/Hero";
 import HomesSection from "@/components/HomesSection";
@@ -7,15 +8,22 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import SectionHeader from "@/components/SectionHeader";
 import {
   excursions,
-  featuredGuides,
   foodSpots,
 } from "@/lib/content";
+import {
+  getFeaturedListings,
+} from "@/lib/directory";
+import { featuredGuides } from "@/lib/guides";
 import { metadataForPage } from "@/lib/seo";
 import { siteTagline } from "@/lib/navigation";
+import Link from "next/link";
 
 export const metadata = metadataForPage("home");
 
 export default function Home() {
+  const featuredRestaurants = getFeaturedListings("restaurant", 3);
+  const featuredExcursions = getFeaturedListings("excursion", 3);
+  const featuredBusinesses = getFeaturedListings("business", 3);
   return (
     <>
       <Hero />
@@ -52,7 +60,7 @@ export default function Home() {
             linkLabel="All Guides"
           />
           <div className="guide-cards-grid">
-            {featuredGuides.slice(0, 4).map((guide) => (
+            {featuredGuides.slice(0, 6).map((guide) => (
               <ContentCard
                 key={guide.slug}
                 {...guide}
@@ -70,23 +78,39 @@ export default function Home() {
             title="Great Local Food, Fair Prices"
             description="Pier-side seafood, sunny cafés, and casual taco spots — the places locals love, at prices that make sense."
             linkHref="/food"
-            linkLabel="All Restaurants"
+            linkLabel="Food Hub"
           />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {foodSpots.slice(0, 4).map((spot) => {
-              const {
-                actionLabel: _a,
-                actionHref: _b,
-                reviewsHref: _c,
-                whyLocalsLove: _d,
-                bestDishes: _e,
-                ...preview
-              } = spot;
-              return (
-                <EditorialCard key={spot.title} {...preview} href="/food" />
-              );
-            })}
-          </div>
+          {featuredRestaurants.length > 0 ? (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredRestaurants.map((listing) => (
+                <DirectoryListingCard key={listing.id} listing={listing} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {foodSpots.slice(0, 3).map((spot) => {
+                const {
+                  actionLabel: _a,
+                  actionHref: _b,
+                  reviewsHref: _c,
+                  whyLocalsLove: _d,
+                  bestDishes: _e,
+                  ...preview
+                } = spot;
+                return (
+                  <EditorialCard key={spot.title} {...preview} href="/food" />
+                );
+              })}
+            </div>
+          )}
+          <p className="mt-8 text-center">
+            <Link
+              href="/guides/best-seafood-restaurants-pompano-beach"
+              className="text-sm font-semibold text-coral transition-colors hover:text-coral-light"
+            >
+              Read our seafood guide &rarr;
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -101,28 +125,63 @@ export default function Home() {
             title="Sunny Adventures Await"
             description="Snorkeling, fishing, kayaking, and more — bright-day fun on the water for every budget."
             linkHref="/excursions"
-            linkLabel="All Excursions"
+            linkLabel="Excursions Hub"
           />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {excursions.slice(0, 4).map((excursion) => {
-              const {
-                actionLabel: _a,
-                actionHref: _b,
-                secondaryActionLabel: _c,
-                secondaryActionHref: _d,
-                ...preview
-              } = excursion;
-              return (
-                <EditorialCard
-                  key={excursion.title}
-                  {...preview}
-                  href="/excursions"
-                />
-              );
-            })}
-          </div>
+          {featuredExcursions.length > 0 ? (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredExcursions.map((listing) => (
+                <DirectoryListingCard key={listing.id} listing={listing} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {excursions.slice(0, 3).map((excursion) => {
+                const {
+                  actionLabel: _a,
+                  actionHref: _b,
+                  secondaryActionLabel: _c,
+                  secondaryActionHref: _d,
+                  ...preview
+                } = excursion;
+                return (
+                  <EditorialCard
+                    key={excursion.title}
+                    {...preview}
+                    href="/excursions"
+                  />
+                );
+              })}
+            </div>
+          )}
+          <p className="mt-8 text-center">
+            <Link
+              href="/guides/best-things-to-do-pompano-beach"
+              className="text-sm font-semibold text-coral transition-colors hover:text-coral-light"
+            >
+              See our things-to-do guide &rarr;
+            </Link>
+          </p>
         </div>
       </section>
+
+      {featuredBusinesses.length > 0 && (
+        <section className="border-t border-sand-dark/40 bg-sand py-16 sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionHeader
+              eyebrow="Local Businesses"
+              title="Trusted Pompano Pros"
+              description="Real estate, title, insurance, and home services for residents and newcomers."
+              linkHref="/businesses"
+              linkLabel="Business Directory"
+            />
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredBusinesses.map((listing) => (
+                <DirectoryListingCard key={listing.id} listing={listing} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <HomesSection />
       <NewsletterSignup />

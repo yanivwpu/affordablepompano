@@ -94,7 +94,7 @@ export const bestBeachesGuide: Guide = {
       paragraphs: [
         "Pompano's Intracoastal shoreline is not a surf beach — it's mangrove edges, marina docks, and seawalls with occasional sandy pockets. Families with toddlers sometimes prefer wading on the waterway side where chop is minimal, but Atlantic beaches remain the swimming destination.",
         "Waterfront parks along the Intracoastal offer picnic tables, boat-watching, and sunset views facing the mainland skyline — a different vibe than ocean horizon sunsets. Harbor restaurants on the waterway make strong dinner stops after an Atlantic beach day.",
-        "Kayak launches let you explore the Intracoastal without ocean swell. Calm-water paddling complements a surf beach morning; book guided options through our [[water adventures|/excursions#water]] section if you want equipment handled for you.",
+        "Kayak launches let you explore the Intracoastal without ocean swell. Calm-water paddling complements a surf beach morning; book guided options through our [[water adventures|/excursions#water]] section or pair a beach morning with an afternoon [[boat tour|/guides/best-boat-tours-pompano-beach]] when you want narrated sightseeing without paddling.",
       ],
     },
     {

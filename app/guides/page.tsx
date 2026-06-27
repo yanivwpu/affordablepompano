@@ -1,5 +1,6 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import ContentCard from "@/components/ContentCard";
 import ImagePageHero from "@/components/ImagePageHero";
 import SectionIntro from "@/components/SectionIntro";
@@ -13,6 +14,16 @@ export const metadata = metadataForPage("guides");
 export default function GuidesPage() {
   return (
     <>
+      <div className="border-b border-sand-dark/40 bg-cream py-4">
+        <Breadcrumbs
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Guides" },
+          ]}
+        />
+      </div>
+
       <ImagePageHero
         eyebrow="Guides"
         title="Helpful Guides for Every Visit"

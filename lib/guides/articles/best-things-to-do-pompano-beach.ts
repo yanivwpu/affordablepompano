@@ -79,7 +79,7 @@ export const bestThingsToDoGuide: Guide = {
       heading: "Intracoastal, harbor, and Hillsboro Inlet",
       paragraphs: [
         "The Intracoastal side of Pompano feels like a different trip: yachts, drawbridges, and waterfront restaurants facing calmer water than the ocean beach. Kayak and paddle launches let you explore mangrove edges and watch manatees in cooler months without open-ocean swell.",
-        "Boat tours through Hillsboro Inlet — the narrow passage between Pompano and Hillsboro Beach — combine lighthouse views, coastal mansions, and frequent dolphin sightings. Sunset cruises here face west across the waterway; Atlantic beach sunsets face the horizon over open water. Both are worth doing on a multi-day trip.",
+        "Boat tours through Hillsboro Inlet — the narrow passage between Pompano and Hillsboro Beach — combine lighthouse views, coastal mansions, and frequent dolphin sightings. See our [[Best Boat Tours|/guides/best-boat-tours-pompano-beach]] guide for operator types, sunset cruises, and booking tips. Sunset cruises here face west across the waterway; Atlantic beach sunsets face the horizon over open water. Both are worth doing on a multi-day trip.",
         "Seafood lunch at a harbor deck is a legitimate activity, not just fuel. Our [[Food & Eats directory|/food]] highlights dockside catches and Intracoastal patios where locals eat after a morning on the water.",
       ],
     },

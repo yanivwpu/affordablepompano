@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { directoryPath, type DirectoryListing } from "@/lib/directory";
+import { sponsorBadgeLabel } from "@/lib/directory/sponsorship";
 
 type DirectoryListingCardProps = {
   listing: DirectoryListing;
@@ -11,6 +12,7 @@ export default function DirectoryListingCard({
 }: DirectoryListingCardProps) {
   const isFeatured = listing.plan === "featured";
   const href = directoryPath(listing.type, listing.slug);
+  const sponsorBadge = sponsorBadgeLabel(listing);
 
   return (
     <article
@@ -45,6 +47,11 @@ export default function DirectoryListingCard({
             {isFeatured && (
               <span className="rounded-sm bg-coral px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-cream">
                 Featured
+              </span>
+            )}
+            {sponsorBadge && sponsorBadge !== "Featured" && (
+              <span className="rounded-sm bg-teal px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-cream">
+                {sponsorBadge}
               </span>
             )}
             {listing.isDemo && (

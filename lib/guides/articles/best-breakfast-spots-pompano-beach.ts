@@ -68,7 +68,7 @@ export const breakfastSpotsGuide: Guide = {
       heading: "Weekend brunch and patio culture",
       paragraphs: [
         "[[The Palm Brunch House|/food#breakfast]] in Old Pompano is where locals celebrate birthdays, houseguests, and sunny Saturdays without a specific occasion. Lobster benedict, avocado toast with poached eggs, mimosa flights, and a palm-shaded patio that feels like a backyard party — reservations help on Sunday when everyone had the same idea.",
-        "Brunch pacing is slower than diner pacing. Plan ninety minutes minimum, tip well on bottomless mimosa service, and don't schedule an 11 a.m. fishing charter if you're brunching at noon — you'll rush the meal that was supposed to be the point.",
+        "Brunch pacing is slower than diner pacing. Plan ninety minutes minimum, tip well on bottomless mimosa service, and don't schedule an 11 a.m. fishing charter if you're brunching at noon — you'll rush the meal that was supposed to be the point. After brunch, our [[weekend guide|/guides/weekend-guide-pompano-beach]] maps the rest of a Saturday from pier to harbor.",
         "Old Pompano's walkable corridor means you can brunch, stroll neighborhood shops, and avoid A1A traffic until early afternoon. Pair with our [[Weekend Guide|/guides/weekend-guide-pompano-beach]] for Sunday structure.",
       ],
     },

@@ -1,16 +1,12 @@
+import { businessCategories as categoryDefinitions } from "./categories";
 import type { DirectoryListing } from "./types";
 
-export const businessCategories = [
-  { id: "attorneys", title: "Attorneys", description: "Estate, real estate, and business law serving Pompano Beach." },
-  { id: "insurance", title: "Insurance Agents", description: "Home, auto, flood, and commercial coverage for Broward County." },
-  { id: "mortgage", title: "Mortgage Brokers", description: "Purchase, refinance, and snowbird financing specialists." },
-  { id: "photographers", title: "Photographers", description: "Portrait, real estate, and event photography in South Florida." },
-  { id: "contractors", title: "Contractors", description: "Remodeling, roofing, HVAC, and hurricane-hardening contractors." },
-  { id: "medical", title: "Medical Practices", description: "Primary care, dental, and specialty clinics near Pompano Beach." },
-  { id: "inspectors", title: "Home Inspectors", description: "Licensed inspectors for buyers, sellers, and insurance wind mitigations." },
-  { id: "title", title: "Title Companies", description: "Closing and title services for Broward real estate transactions." },
-  { id: "services", title: "Local Services", description: "Accountants, cleaners, landscapers, and everyday local pros." },
-] as const;
+/** Re-export shared category taxonomy for hub pages and filters */
+export const businessCategories = categoryDefinitions.map((cat) => ({
+  id: cat.id,
+  title: cat.title,
+  description: cat.description,
+}));
 
 export type BusinessCategoryId = (typeof businessCategories)[number]["id"];
 

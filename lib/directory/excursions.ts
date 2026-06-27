@@ -10,7 +10,7 @@ export const excursionListings: DirectoryListing[] = [
     name: "Pompano Reef Charters",
     type: "excursion",
     category: "Fishing Charters",
-    categoryId: "fishing",
+    categoryId: "fishing-charters",
     plan: "featured",
     shortDescription:
       "Half-day offshore and reef fishing charters departing from Pompano Beach — mahi, snapper, and family-friendly crews.",

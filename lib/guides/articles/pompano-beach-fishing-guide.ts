@@ -67,7 +67,7 @@ export const fishingGuide: Guide = {
       type: "section",
       heading: "Charter fishing: offshore and inshore",
       paragraphs: [
-        "Half-day and three-quarter-day offshore charters from Pompano and Hillsboro Inlet marinas target mahi-mahi, kingfish, snapper, and sailfish depending on season. Boats leave early — 7 a.m. departures are common — to beat afternoon storms and maximize bite windows. Most charters include tackle and bait; gratuity for the mate is customary.",
+        "Half-day and three-quarter-day offshore charters from Pompano and Hillsboro Inlet marinas target mahi-mahi, kingfish, snapper, and sailfish depending on season. Boats leave early — 7 a.m. departures are common — to beat afternoon storms and maximize bite windows. Most charters include tackle and bait; gratuity for the mate is customary. For sightseeing-only trips on the same waterways, see our [[Best Boat Tours|/guides/best-boat-tours-pompano-beach]] guide.",
         "Inshore and reef trips suit families and first-timers who want action without hours in heavy seas. Shorter runs, lighter tackle, and calmer water keep kids and non-anglers comfortable while still pulling table fish or sport species near structure.",
         "Book ahead through our [[fishing charters|/excursions#fishing]] overview or browse [[Viator fishing trips|/excursions#featured-experiences]] for aggregated deep-sea and inshore listings with reviews and instant booking — especially important during snowbird peak when slots sell out.",
       ],

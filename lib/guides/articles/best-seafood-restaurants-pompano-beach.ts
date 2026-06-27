@@ -43,7 +43,7 @@ export const seafoodRestaurantsGuide: Guide = {
       heading: "What makes Pompano seafood different",
       paragraphs: [
         "Pompano Beach earned its name from a fish — and the city still lives up to that heritage through harbor docks, working fish markets, and restaurants that source from Atlantic and Gulf fleets landing nearby. You're not eating frozen fillets shipped from thousands of miles away; you're eating what South Florida boats brought in this week, prepared with citrus, butter, and the confidence that comes from cooking fish daily.",
-        "The seafood scene splits into three zones visitors should know: the pier and A1A beach strip (casual, loud, sunset-forward), the Pompano Harbor and Intracoastal corridor (dockside, boat traffic, old Florida), and Atlantic Boulevard inland (raw bars, grills, and neighborhood spots with easier parking). Each has a different price curve and vibe — mixing them across a trip beats eating the same waterfront markup every night.",
+        "The seafood scene splits into three zones visitors should know: the pier and A1A beach strip (casual, loud, sunset-forward), the Pompano Harbor and Intracoastal corridor (dockside, boat traffic, old Florida), and Atlantic Boulevard inland (raw bars, grills, and neighborhood spots with easier parking). Cross-reference our [[waterfront dining guide|/guides/best-waterfront-restaurants-pompano-beach]] and [[breakfast spots|/guides/best-breakfast-spots-pompano-beach]] when you want to bookend a seafood dinner with a proper morning meal.",
         "Our full [[Seafood directory|/food#seafood]] lists dishes, price ranges, and reservation links. This guide explains where locals actually go and what to order when you sit down.",
       ],
     },

@@ -70,7 +70,7 @@ export const weekendGuide: Guide = {
       heading: "Saturday morning: beach, pier, or boat",
       paragraphs: [
         "Saturday belongs to the water. Locals on A1A are walking dogs, casting from the pier, and claiming shaded umbrella spots before 10 a.m. — especially November through April when snowbird season packs the shoreline. Arrive early for parking near the pier, or plan to park slightly north or south and walk in along the public beach access paths.",
-        "Your main fork: stay on land or get on a boat. Land lovers stack a pier walk, a few hours of swimming near a lifeguard station, and a cheap lunch from [[Taco Reef Beach Shack|/food#cheap-eats]] or the harbor fish market. Water lovers should book a [[half-day snorkel or fishing charter|/excursions#fishing]] — Saturday morning departures beat afternoon thunderstorm risk in summer.",
+        "Your main fork: stay on land or get on a boat. Land lovers stack a pier walk, a few hours of swimming near a lifeguard station, and a cheap lunch from [[Taco Reef Beach Shack|/food#cheap-eats]] or the harbor fish market. Water lovers should book a [[half-day snorkel or fishing charter|/excursions#fishing]] or a [[Hillsboro Inlet boat tour|/guides/best-boat-tours-pompano-beach]] — Saturday morning departures beat afternoon thunderstorm risk in summer.",
         "If you're traveling with kids, keep the morning simple: sand, snacks from a cooler, and pier fishing with rented gear beats overscheduling. Families who push one structured activity before noon and leave the afternoon open report better weekends than those who book back-to-back tours.",
       ],
     },

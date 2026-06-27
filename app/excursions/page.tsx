@@ -1,10 +1,12 @@
-import DirectoryListingGrid from "@/components/DirectoryListingGrid";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import FeaturedExcursionPartnerSlot from "@/components/FeaturedExcursionPartnerSlot";
 import FeaturedExperiencesSection from "@/components/FeaturedExperiencesSection";
 import ImagePageHero from "@/components/ImagePageHero";
+import PillarHubSection from "@/components/PillarHubSection";
+import PillarIntro, { PillarMoreGuidesTeaser } from "@/components/PillarIntro";
 import PopularWaysToExplore from "@/components/PopularWaysToExplore";
-import SectionIntro from "@/components/SectionIntro";
-import { getListingsByType } from "@/lib/directory";
+import { excursionsPillar } from "@/lib/guides/pillarContent";
+import { excursionsPillarEditorial } from "@/lib/guides/pillarEditorial";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
@@ -12,11 +14,19 @@ import Link from "next/link";
 
 export const metadata = metadataForPage("excursions");
 
-const excursionListings = getListingsByType("excursion");
-
 export default function ExcursionsPage() {
   return (
     <>
+      <div className="border-b border-sand-dark/40 bg-cream py-4">
+        <Breadcrumbs
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Excursions" },
+          ]}
+        />
+      </div>
+
       <ImagePageHero
         eyebrow="Excursions"
         title="Things To Do in Pompano Beach"
@@ -24,35 +34,28 @@ export default function ExcursionsPage() {
         image={images.goldenBeach}
         imageAlt={images.goldenBeachAlt}
         primaryCta={{
-          label: "Browse Experiences",
+          label: "Book Experiences",
           href: "#featured-experiences",
         }}
         secondaryCta={{
-          label: "Explore Pompano",
-          href: "#explore-pompano",
+          label: "Local Guides",
+          href: "#excursion-guides",
         }}
       />
+
+      <PillarIntro editorial={excursionsPillarEditorial} />
 
       <FeaturedExperiencesSection />
 
       <FeaturedExcursionPartnerSlot />
 
-      {excursionListings.length > 0 && (
-        <section className="border-b border-sand-dark/40 bg-background py-14 sm:py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <SectionIntro
-              title="Excursion Partner Listings"
-              description="Paid directory listings with dedicated excursion pages. Featured partners receive top placement, a featured badge, and seasonal promotion mentions."
-            />
-            <DirectoryListingGrid
-              listings={excursionListings}
-              advertisePackageId="excursion-listing-standard"
-            />
-          </div>
-        </section>
-      )}
+      <div id="excursion-guides">
+        <PillarHubSection pillar={excursionsPillar} />
+      </div>
 
       <PopularWaysToExplore />
+
+      <PillarMoreGuidesTeaser labels={excursionsPillarEditorial.futureGuideLabels} />
 
       <section className="relative min-h-[280px] overflow-hidden sm:min-h-[300px]">
         <Image

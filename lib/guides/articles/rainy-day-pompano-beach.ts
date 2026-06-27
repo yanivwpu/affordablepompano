@@ -83,7 +83,7 @@ export const rainyDayGuide: Guide = {
       type: "section",
       heading: "Indoor and short-drive escapes",
       paragraphs: [
-        "A full-day tropical depression is rare but possible. When Pompano won't dry out, locals drive twenty to forty minutes: Butterfly World in Coconut Creek, the Museum of Discovery and Science in Fort Lauderdale, or an afternoon matinee at the Isle Casino Racing Pompano Park complex when you want air conditioning and entertainment under one roof.",
+        "A full-day tropical depression is rare but possible. When Pompano won't dry out, locals drive twenty to forty minutes: Butterfly World in Coconut Creek, the Museum of Discovery and Science in Fort Lauderdale, or an afternoon matinee at the Isle Casino Racing Pompano Park complex when you want air conditioning and entertainment under one roof. Covered [[boat tours on the Intracoastal|/guides/best-boat-tours-pompano-beach]] sometimes still run when Atlantic surf is rough — call ahead before you assume everything on the water is cancelled.",
         "Lauderdale-by-the Sea and Hillsboro Inlet Lighthouse are north along A1A — sometimes a narrow weather band soaks Pompano while the next town is bright. Check radar before committing to a direction; don't assume the whole coast is gray.",
         "Shopping runs along Atlantic Boulevard and Federal Highway aren't glamorous, but Publix and big-box stops let you restock coolers and rain gear cheaply — part of the [[budget beach day|/guides/budget-friendly-beach-days]] playbook when outdoor plans pause.",
       ],

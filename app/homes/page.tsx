@@ -1,9 +1,14 @@
 import AdSensePlaceholder from "@/components/AdSensePlaceholder";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import FeaturedLocalRealtor from "@/components/FeaturedLocalRealtor";
 import HomesBrowseSection from "@/components/HomesBrowseSection";
 import HomesLeadForm from "@/components/HomesLeadForm";
 import ImagePageHero from "@/components/ImagePageHero";
-import { images, REALTOR_EMAIL, REALTOR_PHONE, REALTOR_PHONE_HREF } from "@/lib/images";
+import PillarHubSection from "@/components/PillarHubSection";
+import PillarIntro, { PillarMoreGuidesTeaser } from "@/components/PillarIntro";
+import { images, REALTOR_PHONE, REALTOR_PHONE_HREF } from "@/lib/images";
+import { homesPillar } from "@/lib/guides/pillarContent";
+import { homesPillarEditorial } from "@/lib/guides/pillarEditorial";
 import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +18,16 @@ export const metadata = metadataForPage("homes");
 export default function HomesPage() {
   return (
     <>
+      <div className="border-b border-sand-dark/40 bg-cream py-4">
+        <Breadcrumbs
+          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Homes" },
+          ]}
+        />
+      </div>
+
       <ImagePageHero
         eyebrow="Homes"
         title="Pompano Beach Homes & Rentals"
@@ -20,7 +35,7 @@ export default function HomesPage() {
         image={images.pompanoPier}
         imageAlt={images.pompanoPierAlt}
         primaryCta={{ label: "Search Listings", href: "#listings" }}
-        secondaryCta={{ label: "Get Property Alerts", href: "#alerts" }}
+        secondaryCta={{ label: "Living Guides", href: "#living-guides" }}
         size="compact"
       />
 
@@ -47,9 +62,11 @@ export default function HomesPage() {
         </div>
       </div>
 
+      <PillarIntro editorial={homesPillarEditorial} />
+
       <section
         id="listings"
-        className="scroll-mt-24 bg-background py-6 sm:py-8"
+        className="scroll-mt-24 border-b border-sand-dark/40 bg-background py-6 sm:py-8"
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <HomesBrowseSection />
@@ -57,6 +74,10 @@ export default function HomesPage() {
       </section>
 
       <FeaturedLocalRealtor />
+
+      <div id="living-guides">
+        <PillarHubSection pillar={homesPillar} />
+      </div>
 
       <section className="border-y border-sand-dark/40 bg-background py-8 sm:py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -142,6 +163,8 @@ export default function HomesPage() {
           className="my-10 sm:my-12"
         />
       </div>
+
+      <PillarMoreGuidesTeaser labels={homesPillarEditorial.futureGuideLabels} />
 
       <section className="relative min-h-[280px] overflow-hidden">
         <Image

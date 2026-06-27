@@ -69,7 +69,7 @@ export const familyFriendlyGuide: Guide = {
       paragraphs: [
         "Calm Intracoastal kayaking and paddleboarding suit elementary-age kids and nervous swimmers better than open Atlantic chop. Guided rentals and lessons appear on our [[water adventures|/excursions#water]] page — morning slots beat wind and boat wake.",
         "Parasailing and jet skis along the beach strip work for teens and adventurous tweens with weight minimums; parents should read age policies carefully. Younger kids often prefer banana boats or double kayak seats with an adult doing the work.",
-        "Snorkel tours vary in intensity — reef trips with short swims and flotation available beat long offshore rides for families new to salt water. Fishing charters split into inshore half-days (shorter, calmer) and offshore runs better reserved for teens comfortable on big swells. See [[fishing options|/excursions#fishing]] and [[featured experiences|/excursions#featured-experiences]] for bookable family-rated trips.",
+        "Snorkel tours vary in intensity — reef trips with short swims and flotation available beat long offshore rides for families new to salt water. Fishing charters split into inshore half-days (shorter, calmer) and offshore runs better reserved for teens comfortable on big swells. For narrated dolphin cruises and lighthouse sightseeing, see our [[Best Boat Tours|/guides/best-boat-tours-pompano-beach]] guide. See [[fishing options|/excursions#fishing]] and [[featured experiences|/excursions#featured-experiences]] for bookable family-rated trips.",
       ],
     },
     {

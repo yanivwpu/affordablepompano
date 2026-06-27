@@ -1,3 +1,4 @@
+import { guideLinkGraph } from "@/lib/guides/linkGraph";
 import type { Guide } from "@/lib/guides/types";
 
 export function guidePath(slug: string): string {
@@ -18,12 +19,14 @@ export function getAllGuideSlugs(guides: Guide[]): string[] {
 export function getRelatedGuides(
   guides: Guide[],
   guide: Guide,
-  limit = 3,
+  limit = 6,
 ): Guide[] {
   const picked: Guide[] = [];
   const seen = new Set<string>([guide.slug]);
 
-  for (const slug of guide.relatedSlugs) {
+  const graphSlugs = guideLinkGraph[guide.slug] ?? [];
+
+  for (const slug of [...guide.relatedSlugs, ...graphSlugs]) {
     const related = getGuideBySlug(guides, slug);
     if (related && !seen.has(related.slug)) {
       picked.push(related);
