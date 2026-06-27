@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "G-LPS1RR2ZFS";
+
 const nextConfig: NextConfig = {
+  env: {
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: gaMeasurementId,
+  },
   images: {
     remotePatterns: [
       {

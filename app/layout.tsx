@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { DM_Sans, Playfair_Display } from "next/font/google";
+import { Suspense } from "react";
 import Footer from "@/components/Footer";
+import GoogleAnalyticsRouteTracker from "@/components/GoogleAnalyticsRouteTracker";
 import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 import Navbar from "@/components/Navbar";
 import WhachatChatWidget from "@/components/WhachatChatWidget";
+import { getGaMeasurementId } from "@/lib/analytics";
 import {
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_ALT,
@@ -95,7 +98,7 @@ export const metadata: Metadata = {
   },
 };
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const gaMeasurementId = getGaMeasurementId();
 
 export default function RootLayout({
   children,
@@ -113,8 +116,13 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <WhachatChatWidget />
-        {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
+        {gaMeasurementId ? (
+          <Suspense fallback={null}>
+            <GoogleAnalyticsRouteTracker measurementId={gaMeasurementId} />
+          </Suspense>
+        ) : null}
       </body>
+      {gaMeasurementId ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
     </html>
   );
 }
