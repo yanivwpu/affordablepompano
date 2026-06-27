@@ -9,7 +9,12 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_auto_1fr] lg:items-start lg:gap-12">
           <div className="max-w-sm">
-            <BrandLogo variant="horizontal" href="/" className="!h-12 !w-[17.5rem] sm:!h-[3.25rem] sm:!w-[19rem]" />
+            <BrandLogo
+              variant="horizontal"
+              href="/"
+              wordmarkClassName="text-lg sm:text-xl"
+              taglineClassName="text-[10px] sm:text-[11px]"
+            />
             <p className="mt-3 text-sm leading-relaxed text-foreground/65">
               {siteTagline}
             </p>

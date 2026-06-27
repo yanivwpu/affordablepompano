@@ -5,31 +5,29 @@ type BrandLogoProps = {
   theme?: "light" | "dark";
   href?: string;
   className?: string;
+  wordmarkClassName?: string;
+  taglineClassName?: string;
   priority?: boolean;
 };
 
-function HorizontalLogo({
+/** Wave + sun mark — unchanged from Direction A (02-wave-sun) */
+function WaveSunMark({
   theme,
   className,
 }: {
   theme: "light" | "dark";
   className?: string;
 }) {
-  const wordmark = theme === "light" ? "#1B3A4B" : "#FFFCF7";
-  const tagline = theme === "light" ? "#1B3A4B" : "#FFFCF7";
-  const taglineOpacity = theme === "light" ? 0.65 : 0.75;
   const wave = theme === "light" ? "#2A8B8B" : "#3BAFAF";
 
   return (
     <svg
-      viewBox="0 0 520 72"
+      viewBox="0 0 56 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Affordable Pompano - Pompano Beach, Florida"
-      className={`block h-[3.75rem] w-[min(22rem,72vw)] sm:h-16 sm:w-[23rem] ${className ?? ""}`}
+      aria-hidden="true"
+      className={`block h-9 w-12 shrink-0 sm:h-10 sm:w-[3.25rem] ${className ?? ""}`}
     >
-      <title>Affordable Pompano</title>
       <g transform="translate(0, 4)">
         <path
           d="M4 32 Q16 24 28 32 T52 32"
@@ -46,28 +44,45 @@ function HorizontalLogo({
         />
         <circle cx="44" cy="14" r="6" fill="#F4A261" opacity="0.9" />
       </g>
-      <text
-        x="56"
-        y="34"
-        fill={wordmark}
-        fontSize="26"
-        fontWeight="500"
-        style={{ fontFamily: "var(--font-playfair), Georgia, serif" }}
-      >
-        Affordable Pompano
-      </text>
-      <text
-        x="57"
-        y="52"
-        fill={tagline}
-        fillOpacity={taglineOpacity}
-        fontSize="11"
-        fontStyle="italic"
-        style={{ fontFamily: "var(--font-dm-sans), Arial, sans-serif" }}
-      >
-        Pompano Beach, Florida
-      </text>
     </svg>
+  );
+}
+
+function HorizontalLogo({
+  theme,
+  className,
+  wordmarkClassName,
+  taglineClassName,
+}: {
+  theme: "light" | "dark";
+  className?: string;
+  wordmarkClassName?: string;
+  taglineClassName?: string;
+}) {
+  const wordmark =
+    theme === "light"
+      ? "font-display text-xl font-medium tracking-tight text-navy transition-colors group-hover:text-teal sm:text-2xl"
+      : "font-display text-xl font-medium tracking-tight text-cream transition-colors group-hover:text-coral-light sm:text-2xl";
+
+  const tagline =
+    theme === "light"
+      ? "mt-0.5 block text-[11px] italic tracking-wide text-foreground/55 sm:text-xs"
+      : "mt-0.5 block text-[11px] italic tracking-wide text-cream/70 sm:text-xs";
+
+  return (
+    <div
+      className={`flex min-w-0 items-center gap-2.5 sm:gap-3 ${className ?? ""}`}
+    >
+      <WaveSunMark theme={theme} />
+      <div className="min-w-0 leading-none">
+        <span className={`block ${wordmark} ${wordmarkClassName ?? ""}`}>
+          Affordable Pompano
+        </span>
+        <span className={`${tagline} ${taglineClassName ?? ""}`}>
+          Pompano Beach, Florida
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -152,10 +167,17 @@ export default function BrandLogo({
   theme = "light",
   href = "/",
   className = "",
+  wordmarkClassName,
+  taglineClassName,
 }: BrandLogoProps) {
   const logo =
     variant === "horizontal" ? (
-      <HorizontalLogo theme={theme} className={className} />
+      <HorizontalLogo
+        theme={theme}
+        className={className}
+        wordmarkClassName={wordmarkClassName}
+        taglineClassName={taglineClassName}
+      />
     ) : (
       <StackedLogo theme={theme} className={className} />
     );
@@ -165,7 +187,11 @@ export default function BrandLogo({
   }
 
   return (
-    <Link href={href} className="group inline-flex shrink-0 items-center">
+    <Link
+      href={href}
+      className="group inline-flex shrink-0 items-center"
+      aria-label="Affordable Pompano - Pompano Beach, Florida"
+    >
       {logo}
     </Link>
   );
