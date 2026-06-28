@@ -11,6 +11,8 @@ export type PillarQuickLink = {
 
 export type PillarEditorial = {
   introParagraphs: string[];
+  /** Shorter above-the-fold version — full introParagraphs remain for SEO body */
+  introShort?: string[];
   sections: PillarEditorialSection[];
   quickLinks: PillarQuickLink[];
   /** Short labels only — rendered as a single bottom teaser, not cards */
@@ -18,6 +20,9 @@ export type PillarEditorial = {
 };
 
 export const foodPillarEditorial: PillarEditorial = {
+  introShort: [
+    "Pompano Beach eats like a working waterfront town — Atlantic Boulevard diners, harbor raw bars, and Intracoastal sunset decks. Whether you are here for a weekend or snowbird season, the best meals come from knowing which corridor to hit on which night.",
+  ],
   introParagraphs: [
     "Pompano Beach eats like a working waterfront town, not a theme-park food court. Atlantic Boulevard carries everyday diners and raw bars where locals grab oysters after a beach morning. The harbor and Intracoastal corridor serves dockside snapper, conch fritters, and sunset decks facing yacht traffic instead of open surf. Whether you are flying into Fort Lauderdale-Hollywood International Airport (FLL) for a long weekend or wintering here as a snowbird, the best meals usually come from knowing which strip to use on which night — not from booking the first oceanfront table you see on A1A.",
   ],
@@ -64,7 +69,7 @@ export const foodPillarEditorial: PillarEditorial = {
     },
     {
       label: "List Your Restaurant",
-      href: "/advertise?package=restaurant-listing-standard#contact",
+      href: "/advertise?package=business-listing#contact",
       description: "Featured placement in the Pompano restaurant directory.",
     },
   ],
@@ -72,6 +77,9 @@ export const foodPillarEditorial: PillarEditorial = {
 };
 
 export const homesPillarEditorial: PillarEditorial = {
+  introShort: [
+    "Pompano Beach sits in the sweet spot of Broward County — close to Fort Lauderdale and Miami for work and airports, with Atlantic-access neighborhoods that still beat Boca-level premiums. Start with live inventory below, then dig into neighborhood guides when you are ready to compare blocks.",
+  ],
   introParagraphs: [
     "Pompano Beach sits in the sweet spot of Broward County — close enough to Fort Lauderdale and Miami for work and airports, yet far enough from the highest price-per-square-foot zip codes that buyers and renters still find Atlantic-access neighborhoods without Boca-level premiums. Condos along A1A, single-family streets west of Federal Highway, and Intracoastal-adjacent pockets each trade off walkability, flood insurance, HOA rules, and daily commute patterns differently. This page is for anyone searching live inventory, comparing neighborhoods, or assembling the local pros — lenders, title, inspectors — who make a Broward closing actually close.",
   ],
@@ -126,6 +134,9 @@ export const homesPillarEditorial: PillarEditorial = {
 };
 
 export const excursionsPillarEditorial: PillarEditorial = {
+  introShort: [
+    "Pompano Beach splits naturally between pier mornings, reef afternoons, and golden-hour cruises through Hillsboro Inlet. Mix free beach time with one booked charter or boat tour — then explore partner listings and local guides below.",
+  ],
   introParagraphs: [
     "Pompano Beach is a water town squeezed between the Atlantic Ocean and the Intracoastal Waterway — which means your activity list naturally splits into pier and beach mornings, reef and offshore afternoons, and golden-hour cruises through Hillsboro Inlet. You do not need a week of tickets to have a full trip: locals mix free pier walks and public beach time with one booked charter or boat tour, then spend the savings on harbor seafood. This page connects bookable experiences, partner excursion listings, and in-depth local guides so you can plan a single day or an entire snowbird season without bouncing between generic tourism sites.",
   ],
@@ -150,7 +161,7 @@ export const excursionsPillarEditorial: PillarEditorial = {
       heading: "Book experiences and support local operators",
       paragraphs: [
         "Featured experiences below aggregate bookable tours with reviews and transparent pricing — fishing, snorkeling, parasailing, and more. Partner listings in our excursion directory include dedicated pages with phone, maps, and direct booking links; featured partners receive top placement and clear sponsorship labels.",
-        "Independent charter captains and tour operators can [[list an excursion|/advertise?package=excursion-listing-standard#contact]] without rebuilding their web presence from scratch — one profile page, category placement, and internal links from guides that already rank for Pompano search traffic.",
+        "Independent charter captains and tour operators can [[list an excursion|/advertise?package=business-listing#contact]] without rebuilding their web presence from scratch — one profile page, category placement, and internal links from guides that already rank for Pompano search traffic.",
       ],
     },
   ],
@@ -180,6 +191,9 @@ export const excursionsPillarEditorial: PillarEditorial = {
 };
 
 export const businessesPillarEditorial: PillarEditorial = {
+  introShort: [
+    "Buying or maintaining a home in Pompano means hiring Broward County pros who know local flood zones, HOA timelines, and hurricane prep — not generic national directories. Browse trusted partners below by category.",
+  ],
   introParagraphs: [
     "Moving to Pompano Beach — or buying a second home here — means hiring local pros who know Broward County timelines, not generic national brands that treat your closing like any other Florida file. Flood insurance quotes differ block by block. Wind-mitigation inspections change premiums. Title companies that understand HOA estoppels save weeks on condo purchases. This directory exists so residents and relocators find attorneys, lenders, inspectors, contractors, and everyday services with dedicated profile pages, direct contact links, and category placement across Affordable Pompano's living and buying guides.",
   ],
@@ -197,7 +211,7 @@ export const businessesPillarEditorial: PillarEditorial = {
       paragraphs: [
         "Browse by category below or jump from our [[Homes hub|/homes]] and neighborhood guides when a specific professional need comes up — insurance while comparing flood quotes, an inspector after your offer is accepted, a roofer after a wind-mit report.",
         "Partner listings are paid placements clearly labeled on profile pages. Editorial guides remain independent; sponsorship never changes which neighborhoods or buying advice we recommend.",
-        "If you serve Pompano Beach or Broward County and want a permanent profile page plus internal links from high-traffic living guides, see our [[advertise page|/advertise?package=business-listing-standard#contact]] for standard and featured packages.",
+        "If you serve Pompano Beach or Broward County and want a permanent profile page plus internal links from high-traffic living guides, see our [[advertise page|/advertise?package=business-listing#contact]] for listing and featured packages.",
       ],
     },
     {
@@ -226,7 +240,7 @@ export const businessesPillarEditorial: PillarEditorial = {
     },
     {
       label: "Advertise",
-      href: "/advertise?package=business-listing-standard#contact",
+      href: "/advertise?package=business-listing#contact",
       description: "List your business in this directory.",
     },
   ],

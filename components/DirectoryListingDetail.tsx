@@ -1,6 +1,8 @@
 import DirectoryListingCard from "@/components/DirectoryListingCard";
 import DirectoryListingSchema from "@/components/DirectoryListingSchema";
+import ListingActionButtons from "@/components/ListingActionButtons";
 import { getRelatedListings, type DirectoryListing } from "@/lib/directory";
+import { getEmailAddress, getUsableUrl } from "@/lib/directory/listingLinks";
 import { SPONSORSHIP_INQUIRY_EMAIL } from "@/lib/advertise";
 import Image from "next/image";
 import Link from "next/link";
@@ -146,15 +148,15 @@ export default function DirectoryListingDetail({
                       </dd>
                     </div>
                   )}
-                  {listing.email && (
+                  {getEmailAddress(listing.email) && (
                     <div>
                       <dt className="font-semibold text-navy">Email</dt>
                       <dd className="mt-1">
                         <a
-                          href={`mailto:${listing.email}`}
+                          href={`mailto:${getEmailAddress(listing.email)}`}
                           className="text-teal hover:text-teal-light"
                         >
-                          {listing.email}
+                          {getEmailAddress(listing.email)}
                         </a>
                       </dd>
                     </div>
@@ -168,15 +170,9 @@ export default function DirectoryListingDetail({
                 </dl>
 
                 <div className="mt-6 flex flex-col gap-2.5">
-                  <a
-                    href={listing.primaryCtaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center rounded-sm bg-coral px-4 py-3.5 text-sm font-bold tracking-wide text-cream hover:bg-coral-light"
-                  >
-                    {listing.primaryCtaLabel}
-                  </a>
-                  {listing.secondaryCtaUrl && listing.secondaryCtaLabel && (
+                  <ListingActionButtons listing={listing} />
+
+                  {getUsableUrl(listing.secondaryCtaUrl) && listing.secondaryCtaLabel && (
                     <a
                       href={listing.secondaryCtaUrl}
                       target="_blank"
@@ -184,16 +180,6 @@ export default function DirectoryListingDetail({
                       className="inline-flex items-center justify-center rounded-sm border-2 border-teal/25 bg-white/60 px-4 py-3.5 text-sm font-semibold text-teal hover:border-teal hover:bg-teal hover:text-cream"
                     >
                       {listing.secondaryCtaLabel}
-                    </a>
-                  )}
-                  {listing.mapsUrl && (
-                    <a
-                      href={listing.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center rounded-sm border border-sand-dark/60 px-4 py-3 text-sm font-semibold text-navy/70 hover:border-teal hover:text-teal"
-                    >
-                      Open in Google Maps
                     </a>
                   )}
                 </div>

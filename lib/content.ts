@@ -168,9 +168,6 @@ export const foodSpots = [
     meta: ["Harbor Village", "Lunch & Dinner"],
     priceRange: "$$",
     badge: "Local Favorite",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/fishermans-dock",
-    reviewsHref: "https://example.com/fishermans-dock/reviews",
   },
   {
     title: "The Pier House Kitchen",
@@ -191,9 +188,6 @@ export const foodSpots = [
     meta: ["Pier District", "Waterfront Deck"],
     priceRange: "$$",
     badge: "Local Favorite",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/pier-house-kitchen",
-    reviewsHref: "https://example.com/pier-house-kitchen/reviews",
   },
   {
     title: "Pelican Reef Raw Bar",
@@ -213,9 +207,6 @@ export const foodSpots = [
     imageAlt: foodImages.pelicanRawBar.alt,
     meta: ["Atlantic Blvd", "Raw Bar & Small Plates"],
     priceRange: "$$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/pelican-reef",
-    reviewsHref: "https://example.com/pelican-reef/reviews",
   },
   {
     title: "Ocean's Edge",
@@ -236,9 +227,6 @@ export const foodSpots = [
     meta: ["Intracoastal Waterway", "Sunset Dining"],
     priceRange: "$$$",
     badge: "Sunset Spot",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/oceans-edge",
-    reviewsHref: "https://example.com/oceans-edge/reviews",
   },
   {
     title: "Rusty Anchor Tavern",
@@ -258,9 +246,6 @@ export const foodSpots = [
     imageAlt: foodImages.rustyAnchor.alt,
     meta: ["North Ocean Blvd", "Bar & Grill"],
     priceRange: "$$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/rusty-anchor",
-    reviewsHref: "https://example.com/rusty-anchor/reviews",
   },
   {
     title: "Sunrise Cafe Pompano",
@@ -280,9 +265,6 @@ export const foodSpots = [
     imageAlt: foodImages.sunriseCafe.alt,
     meta: ["East Atlantic Blvd", "Open Daily 7am–2pm"],
     priceRange: "$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/sunrise-cafe-pompano",
-    reviewsHref: "https://example.com/sunrise-cafe-pompano/reviews",
   },
   {
     title: "The Palm Brunch House",
@@ -302,9 +284,6 @@ export const foodSpots = [
     imageAlt: foodImages.palmBrunch.alt,
     meta: ["Old Pompano", "Sat & Sun Brunch"],
     priceRange: "$$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/palm-brunch-house",
-    reviewsHref: "https://example.com/palm-brunch-house/reviews",
   },
   {
     title: "Taco Reef Beach Shack",
@@ -324,9 +303,6 @@ export const foodSpots = [
     imageAlt: foodImages.tacoReef.alt,
     meta: ["Beach Blvd", "Walk-Up Counter"],
     priceRange: "$",
-    actionLabel: "Order Now",
-    actionHref: "https://example.com/taco-reef",
-    reviewsHref: "https://example.com/taco-reef/reviews",
   },
   {
     title: "Pompano Harbor Fish Market",
@@ -346,9 +322,6 @@ export const foodSpots = [
     imageAlt: foodImages.harborFishMarket.alt,
     meta: ["Pompano Harbor", "Market & Deli"],
     priceRange: "$",
-    actionLabel: "Order Now",
-    actionHref: "https://example.com/harbor-fish-market",
-    reviewsHref: "https://example.com/harbor-fish-market/reviews",
   },
   {
     title: "Nonna's Coastal Kitchen",
@@ -368,9 +341,6 @@ export const foodSpots = [
     imageAlt: foodImages.nonnasItalian.alt,
     meta: ["Atlantic Blvd", "Dinner Nightly"],
     priceRange: "$$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/nonnas-coastal-kitchen",
-    reviewsHref: "https://example.com/nonnas-coastal-kitchen/reviews",
   },
   {
     title: "The Sandbar Social",
@@ -390,9 +360,6 @@ export const foodSpots = [
     imageAlt: foodImages.sandbarSocial.alt,
     meta: ["Ocean Blvd", "Happy Hour Daily"],
     priceRange: "$$",
-    actionLabel: "Book a Table",
-    actionHref: "https://example.com/sandbar-social",
-    reviewsHref: "https://example.com/sandbar-social/reviews",
   },
 ];
 
@@ -409,10 +376,6 @@ export const excursions = [
     priceRange: "From $55",
     badge: "Most Popular",
     featured: true,
-    actionLabel: "Book This Tour",
-    actionHref: "https://example.com/pompano-reef-snorkel",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/pompano-reef-snorkel/details",
   },
   {
     title: "Intracoastal Kayak & Manatee Tour",
@@ -424,10 +387,6 @@ export const excursions = [
     imageAlt: images.kayakAlt,
     meta: ["2–3 Hours", "Easy Pace", "Wildlife"],
     priceRange: "From $40",
-    actionLabel: "Book This Tour",
-    actionHref: "https://example.com/intracoastal-kayak",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/intracoastal-kayak/details",
   },
   {
     title: "Atlantic Reef Scuba Dive",
@@ -439,10 +398,6 @@ export const excursions = [
     imageAlt: images.snorkelingAlt,
     meta: ["Half Day", "Certified Divers", "Gear Included"],
     priceRange: "From $95",
-    actionLabel: "Book This Tour",
-    actionHref: "https://example.com/atlantic-reef-dive",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/atlantic-reef-dive/details",
   },
   {
     title: "Pompano Beach Deep Sea Fishing",
@@ -455,10 +410,6 @@ export const excursions = [
     meta: ["Half Day", "4–5 Hours", "All Ages"],
     priceRange: "From $85",
     badge: "Top Rated",
-    actionLabel: "Book Charter",
-    actionHref: "https://example.com/deep-sea-fishing-pompano",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/deep-sea-fishing-pompano/details",
   },
   {
     title: "Pompano Beach Pier Fishing",
@@ -470,10 +421,6 @@ export const excursions = [
     imageAlt: images.pierFishingAlt,
     meta: ["Flexible Hours", "Self-Guided", "All Ages"],
     priceRange: "From $15",
-    actionLabel: "Get Tickets",
-    actionHref: "https://example.com/pompano-pier-fishing",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/pompano-pier-fishing/details",
   },
   {
     title: "Gold Coast Sunset Catamaran",
@@ -486,10 +433,6 @@ export const excursions = [
     meta: ["2 Hours", "Sunset Departure", "All Ages"],
     priceRange: "From $65",
     badge: "Romantic Pick",
-    actionLabel: "Book This Tour",
-    actionHref: "https://example.com/sunset-catamaran",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/sunset-catamaran/details",
   },
   {
     title: "Boat Tour to Hillsboro Inlet",
@@ -501,10 +444,6 @@ export const excursions = [
     imageAlt: images.floridaPierSunsetAlt,
     meta: ["90 Minutes", "Guided Tour", "Family Friendly"],
     priceRange: "From $45",
-    actionLabel: "Book This Tour",
-    actionHref: "https://example.com/hillsboro-inlet-tour",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/hillsboro-inlet-tour/details",
   },
   {
     title: "Pompano Parasailing Adventure",
@@ -517,10 +456,6 @@ export const excursions = [
     meta: ["45–60 Min", "Tandem Available", "Age 6+"],
     priceRange: "From $80",
     badge: "Thrilling",
-    actionLabel: "Book Adventure",
-    actionHref: "https://example.com/pompano-parasailing",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/pompano-parasailing/details",
   },
   {
     title: "Coastal Boardwalk Bike Rental",
@@ -532,10 +467,6 @@ export const excursions = [
     imageAlt: images.boardwalkAlt,
     meta: ["2 Hours", "Self-Guided", "Family Friendly"],
     priceRange: "From $20",
-    actionLabel: "Get Tickets",
-    actionHref: "https://example.com/boardwalk-bikes",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/boardwalk-bikes/details",
   },
   {
     title: "Fern Forest Nature Preserve",
@@ -547,9 +478,5 @@ export const excursions = [
     imageAlt: images.palmStreetAlt,
     meta: ["1–2 Hours", "Easy Trail", "Free Parking"],
     priceRange: "Free–$5",
-    actionLabel: "Get Tickets",
-    actionHref: "https://example.com/fern-forest-nature",
-    secondaryActionLabel: "Learn More",
-    secondaryActionHref: "https://example.com/fern-forest-nature/details",
   },
 ];

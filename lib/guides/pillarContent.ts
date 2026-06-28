@@ -32,21 +32,25 @@ export const foodPillar: PillarConfig = {
     { slug: "best-breakfast-spots-pompano-beach" },
     { slug: "happy-hour-guide-pompano-beach" },
     { slug: "happy-hours-near-the-beach" },
-    { slug: "best-free-things-to-do" },
   ],
   directoryCategoryIds: [
     "seafood",
-    "waterfront",
     "breakfast",
-    "brunch",
     "coffee",
+    "waterfront",
     "happy-hour",
+    "italian",
+    "pizza",
+    "mexican",
+    "sushi",
+    "fine-dining",
+    "family-dining",
   ],
   directoryType: "restaurant",
   directoryTitle: "Featured Restaurants",
   directoryDescription:
     "Partner listings with dedicated pages, hours, maps, and direct contact links.",
-  advertisePackageId: "restaurant-listing-standard",
+  advertisePackageId: "business-listing",
   advertiseCtaLabel: "List Your Restaurant",
 };
 
@@ -76,8 +80,8 @@ export const homesPillar: PillarConfig = {
   directoryTitle: "Trusted Local Businesses",
   directoryDescription:
     "Lenders, title companies, insurance agents, and home pros serving Pompano buyers and residents.",
-  advertisePackageId: "business-listing-standard",
-  advertiseCtaLabel: "List Your Business",
+  advertisePackageId: "featured-realtor",
+  advertiseCtaLabel: "Feature Your Practice",
 };
 
 export const excursionsPillar: PillarConfig = {
@@ -105,7 +109,7 @@ export const excursionsPillar: PillarConfig = {
   directoryTitle: "Featured Excursions",
   directoryDescription:
     "Charter captains and tour operators with dedicated listing pages and booking links.",
-  advertisePackageId: "excursion-listing-standard",
+  advertisePackageId: "business-listing",
   advertiseCtaLabel: "List Your Excursion",
 };
 
@@ -135,8 +139,8 @@ export const businessesPillar: PillarConfig = {
   directoryTitle: "Partner Listings",
   directoryDescription:
     "Paid directory profiles with dedicated pages, contact details, and category placement.",
-  advertisePackageId: "business-listing-standard",
-  advertiseCtaLabel: "Advertise With Us",
+  advertisePackageId: "business-listing",
+  advertiseCtaLabel: "Get Listed",
 };
 
 export function resolvePillarGuides(

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { getUsableUrl } from "@/lib/directory/listingLinks";
 
 export type FoodSpotCardProps = {
   title: string;
@@ -38,7 +39,8 @@ export default function FoodSpotCard({
 }: FoodSpotCardProps) {
   const [showWhy, setShowWhy] = useState(false);
   const [showDishes, setShowDishes] = useState(false);
-  const reviewsLink = reviewsHref ?? actionHref ?? "#";
+  const bookingHref = getUsableUrl(actionHref);
+  const reviewsLink = getUsableUrl(reviewsHref);
 
   return (
     <article
@@ -141,9 +143,9 @@ export default function FoodSpotCard({
         )}
 
         <div className="mt-5 flex flex-1 flex-col justify-end gap-3">
-          {actionHref && (
+          {bookingHref && (
             <a
-              href={actionHref}
+              href={bookingHref}
               target="_blank"
               rel="noopener noreferrer sponsored"
               className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-coral px-4 py-3.5 text-sm font-bold tracking-wide text-cream shadow-md transition-all hover:bg-coral-light hover:shadow-lg"
@@ -155,15 +157,21 @@ export default function FoodSpotCard({
             </a>
           )}
 
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-            <a
-              href={reviewsLink}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="inline-flex items-center justify-center rounded-sm border border-teal/30 bg-teal/5 px-3 py-2.5 text-center text-xs font-semibold text-teal transition-colors hover:bg-teal hover:text-cream"
-            >
-              See Reviews &amp; Prices
-            </a>
+          <div
+            className={`grid grid-cols-1 gap-2 ${
+              reviewsLink ? "sm:grid-cols-3" : "sm:grid-cols-2"
+            }`}
+          >
+            {reviewsLink && (
+              <a
+                href={reviewsLink}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="inline-flex items-center justify-center rounded-sm border border-teal/30 bg-teal/5 px-3 py-2.5 text-center text-xs font-semibold text-teal transition-colors hover:bg-teal hover:text-cream"
+              >
+                See Reviews &amp; Prices
+              </a>
+            )}
             <button
               type="button"
               onClick={() => setShowWhy((v) => !v)}

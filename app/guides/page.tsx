@@ -1,4 +1,3 @@
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import AffiliateDisclaimer from "@/components/AffiliateDisclaimer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContentCard from "@/components/ContentCard";
@@ -36,8 +35,6 @@ export default function GuidesPage() {
 
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AdSensePlaceholder size="leaderboard" label="Advertisement" />
-
           {guideCategories.map((cat, index) => {
             const guides = featuredGuides.filter((g) => g.group === cat.id);
             if (guides.length === 0) return null;
@@ -46,7 +43,7 @@ export default function GuidesPage() {
               <div key={cat.id}>
                 <div
                   id={cat.id}
-                  className={`scroll-mt-28 ${index > 0 ? "mt-16 sm:mt-20" : "mt-12"}`}
+                  className={`scroll-mt-28 ${index > 0 ? "mt-16 sm:mt-20" : ""}`}
                 >
                   <SectionIntro title={cat.title} description={cat.description} />
                   <div className="guide-cards-grid">
@@ -59,22 +56,6 @@ export default function GuidesPage() {
                     ))}
                   </div>
                 </div>
-
-                {index === 0 && (
-                  <AdSensePlaceholder
-                    label="Sponsored"
-                    size="rectangle"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
-
-                {index === 1 && (
-                  <AdSensePlaceholder
-                    label="Advertisement"
-                    size="banner"
-                    className="mt-12 sm:mt-16"
-                  />
-                )}
               </div>
             );
           })}

@@ -99,6 +99,25 @@ body {
   }
 }
 
+.guide-cards-grid--subtle .group {
+  border-color: rgb(27 58 75 / 0.12);
+  box-shadow: none;
+}
+
+.guide-cards-grid--subtle .group:hover {
+  border-color: rgb(45 125 125 / 0.25);
+}
+
+.guide-cards-grid--subtle h3 {
+  font-size: 1.125rem;
+}
+
+@media (min-width: 640px) {
+  .guide-cards-grid--subtle h3 {
+    font-size: 1.25rem;
+  }
+}
+
 .hero-gradient {
   background: linear-gradient(
     180deg,

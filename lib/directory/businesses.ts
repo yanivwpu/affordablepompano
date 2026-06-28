@@ -27,8 +27,6 @@ export const businessListings: DirectoryListing[] = [
     image: "/images/guides/suburban-neighborhood.jpg",
     imageAlt: "Professional office building in a South Florida business district",
     phone: "(954) 555-0195",
-    email: "hello@example.com",
-    websiteUrl: "https://example.com/atlantic-title",
     primaryCtaLabel: "Contact Office",
     primaryCtaUrl: "mailto:hello@affordablepompano.com?subject=Atlantic%20Title%20inquiry",
     address: "400 E Atlantic Blvd, Pompano Beach, FL 33060",

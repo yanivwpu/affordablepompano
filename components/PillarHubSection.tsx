@@ -13,10 +13,12 @@ import Link from "next/link";
 
 type PillarHubSectionProps = {
   pillar: PillarConfig;
-  /** Hide directory block when the parent page renders listings elsewhere */
+  showGuides?: boolean;
   showDirectory?: boolean;
-  /** Limit category grid size so the page stays scannable */
+  showCategories?: boolean;
   maxCategories?: number;
+  id?: string;
+  className?: string;
 };
 
 function collectDirectoryListings(
@@ -49,8 +51,12 @@ function collectDirectoryListings(
 
 export default function PillarHubSection({
   pillar,
+  showGuides = true,
   showDirectory = true,
+  showCategories = true,
   maxCategories = 6,
+  id,
+  className = "",
 }: PillarHubSectionProps) {
   const guideCards = pillarGuideCards(guides, pillar.guides);
   const directoryListings = collectDirectoryListings(pillar);
@@ -65,34 +71,17 @@ export default function PillarHubSection({
         ? "excursions"
         : "businesses";
 
-  return (
-    <>
-      <section className="border-b border-sand-dark/40 bg-sand py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionIntro
-            title={pillar.guidesTitle}
-            description={
-              pillar.guidesDescription ??
-              `In-depth local guides curated for ${pillar.hubLabel.toLowerCase()}.`
-            }
-          />
-          <div className="guide-cards-grid">
-            {guideCards.map((guide) => (
-              <ContentCard key={guide.slug} {...guide} comingSoon={false} />
-            ))}
-          </div>
-          <p className="mt-8 text-center">
-            <Link
-              href="/guides"
-              className="text-sm font-semibold text-coral transition-colors hover:text-coral-light"
-            >
-              Browse all guides &rarr;
-            </Link>
-          </p>
-        </div>
-      </section>
+  const hasDirectory = showDirectory && directoryListings.length > 0;
+  const hasGuides = showGuides && guideCards.length > 0;
+  const hasCategories = showCategories && categories.length > 0;
 
-      {showDirectory && (
+  if (!hasDirectory && !hasGuides && !hasCategories) {
+    return null;
+  }
+
+  return (
+    <div id={id} className={className}>
+      {hasDirectory && (
         <section className="border-b border-sand-dark/40 bg-background py-14 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionIntro
@@ -105,7 +94,6 @@ export default function PillarHubSection({
             <DirectoryListingGrid
               listings={directoryListings}
               advertisePackageId={pillar.advertisePackageId}
-              emptyLabel={`Partner ${listingNoun} appear here as listings are added.`}
             />
             <p className="mt-8 text-center">
               <Link
@@ -119,7 +107,7 @@ export default function PillarHubSection({
         </section>
       )}
 
-      {categories.length > 0 && (
+      {hasCategories && (
         <section className="border-b border-sand-dark/40 bg-cream py-12 sm:py-14">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <SectionIntro
@@ -145,6 +133,33 @@ export default function PillarHubSection({
           </div>
         </section>
       )}
-    </>
+
+      {hasGuides && (
+        <section className="border-b border-sand-dark/40 bg-sand py-14 sm:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <SectionIntro
+              title={pillar.guidesTitle}
+              description={
+                pillar.guidesDescription ??
+                `In-depth local guides curated for ${pillar.hubLabel.toLowerCase()}.`
+              }
+            />
+            <div className="guide-cards-grid">
+              {guideCards.map((guide) => (
+                <ContentCard key={guide.slug} {...guide} comingSoon={false} />
+              ))}
+            </div>
+            <p className="mt-8 text-center">
+              <Link
+                href="/guides"
+                className="text-sm font-semibold text-coral transition-colors hover:text-coral-light"
+              >
+                Browse all guides &rarr;
+              </Link>
+            </p>
+          </div>
+        </section>
+      )}
+    </div>
   );
 }

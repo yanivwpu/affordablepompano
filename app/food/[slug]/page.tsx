@@ -37,7 +37,7 @@ export default async function RestaurantListingPage({
       listing={listing}
       sectionLabel="Food & Eats"
       sectionPath="/food"
-      claimPackageId="restaurant-listing-standard"
+      claimPackageId="business-listing"
     />
   );
 }

@@ -4,6 +4,7 @@ import {
   advertisePackageOptions,
   getAdvertisePackageLabel,
   isValidAdvertisePackageId,
+  resolvePackageId,
   SPONSORSHIP_INQUIRY_EMAIL,
 } from "@/lib/advertise";
 import { FormEvent, useEffect, useState } from "react";
@@ -22,7 +23,7 @@ export default function AdvertiseContactForm() {
     const params = new URLSearchParams(window.location.search);
     const pkg = params.get("package");
     if (pkg && isValidAdvertisePackageId(pkg)) {
-      setForm((prev) => ({ ...prev, package: pkg }));
+      setForm((prev) => ({ ...prev, package: resolvePackageId(pkg) }));
     }
   }, []);
 
@@ -37,11 +38,11 @@ export default function AdvertiseContactForm() {
           : "Not specified";
 
     const subject = encodeURIComponent(
-      `Sponsorship Inquiry — ${form.business || form.name}`,
+      `Listing Inquiry — ${form.business || form.name}`,
     );
     const body = encodeURIComponent(
       [
-        "Sponsorship inquiry from AffordablePompano.com",
+        "Listing inquiry from AffordablePompano.com",
         "",
         `Name: ${form.name}`,
         `Business: ${form.business}`,
@@ -175,7 +176,7 @@ export default function AdvertiseContactForm() {
         type="submit"
         className="inline-flex w-full items-center justify-center rounded-sm bg-coral px-6 py-3.5 text-sm font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light sm:w-auto"
       >
-        Apply to Sponsor
+        Apply for Listing
       </button>
 
       <p className="text-xs text-navy/50">

@@ -1,4 +1,4 @@
-/** Local 16:9 guide images — subject-matched to Pompano Beach / South Florida */
+/** Local 16:9 guide images — unique per article for card grids */
 export const guideImages = {
   firstTimers: {
     src: "/images/guides/first-timers.jpg",
@@ -9,8 +9,8 @@ export const guideImages = {
     alt: "Public beach access along the Pompano Beach pier and Atlantic coast",
   },
   oldPompano: {
-    src: "/images/guides/neighborhood-street.jpg",
-    alt: "Palm-lined neighborhood street with parked cars in South Florida",
+    src: "/images/food/nonnas-italian.jpg",
+    alt: "Casual Italian dining on Atlantic Boulevard in Old Pompano",
   },
   seasonalEvents: {
     src: "/images/guides/seasonal-events.jpg",
@@ -33,63 +33,63 @@ export const guideImages = {
     alt: "Outdoor waterfront restaurant patio with palm trees along the Florida coast",
   },
   bestThingsToDo: {
-    src: "/images/guides/first-timers.jpg",
-    alt: "Pompano Beach pier and Atlantic shoreline — starting point for top local activities",
+    src: "/images/excursions/browse-all.webp",
+    alt: "Collage of Pompano Beach activities including water sports and coastal tours",
   },
   bestBeaches: {
-    src: "/images/guides/budget-beach-days.jpg",
-    alt: "Wide public beach along the Pompano Beach pier and Atlantic coast",
+    src: "/images/excursions/water-sports.webp",
+    alt: "Jet skis and beach activities along the Pompano Beach shoreline",
   },
   fishingGuide: {
-    src: "/images/guides/parking-pier-tips.jpg",
-    alt: "Pompano Beach fishing pier extending over the Atlantic Ocean",
+    src: "/images/excursions/fishing-charters.webp",
+    alt: "Deep sea fishing charter with angler holding a catch off Pompano Beach",
   },
   boatTours: {
-    src: "/images/guides/seasonal-events.jpg",
-    alt: "Golden hour sailboat view along the South Florida Atlantic coast",
+    src: "/images/excursions/boat-dolphin-tours.webp",
+    alt: "Boat tour along the South Florida coast near Hillsboro Inlet",
   },
   familyFriendly: {
-    src: "/images/guides/free-things-to-do.jpg",
-    alt: "Families enjoying the Pompano Beach pier and shoreline",
+    src: "/images/excursions/snorkeling-scuba.webp",
+    alt: "Snorkeling in clear Atlantic water near Pompano Beach reefs",
   },
   weekendGuide: {
-    src: "/images/guides/seasonal-events.jpg",
-    alt: "Sunset over the Atlantic coast at Pompano Beach",
+    src: "/images/food/harbor-fish-market.jpg",
+    alt: "Fresh seafood counter at the Pompano Beach harbor fish market",
   },
   rainyDay: {
-    src: "/images/guides/happy-hours.jpg",
-    alt: "Covered patio dining along the Florida Intracoastal waterfront",
+    src: "/images/food/rusty-anchor.jpg",
+    alt: "Covered patio dining at a casual Atlantic coast grill in Pompano Beach",
   },
   seafoodRestaurants: {
-    src: "/images/guides/happy-hours.jpg",
-    alt: "Fresh seafood served at a Florida waterfront restaurant",
+    src: "/images/food/fishermans-dock.jpg",
+    alt: "Fishing boats docked at a South Florida harbor seafood restaurant",
   },
   waterfrontRestaurants: {
-    src: "/images/guides/happy-hours.jpg",
-    alt: "Outdoor dining deck overlooking the Intracoastal Waterway",
+    src: "/images/food/oceans-edge.jpg",
+    alt: "Outdoor waterfront dining patio overlooking the Intracoastal Waterway",
   },
   breakfastSpots: {
-    src: "/images/guides/budget-beach-days.jpg",
-    alt: "Early morning sunlight on the Pompano Beach pier and Atlantic shoreline",
+    src: "/images/food/sunrise-cafe.jpg",
+    alt: "Classic eggs and breakfast plate at a sunny Florida café",
   },
   happyHourGuide: {
-    src: "/images/guides/happy-hours.jpg",
-    alt: "Waterfront happy hour patio with palm trees in Pompano Beach",
+    src: "/images/food/sandbar-social.jpg",
+    alt: "Tropical drinks and appetizers at a beachside happy hour patio",
   },
   neighborhoods: {
     src: "/images/guides/neighborhood-street.jpg",
     alt: "Palm-lined residential street in Pompano Beach",
   },
   costOfLiving: {
-    src: "/images/guides/suburban-neighborhood.jpg",
-    alt: "Single-family homes with palm trees in a Pompano Beach neighborhood",
+    src: "/images/homes/long-term-rental.jpg",
+    alt: "Palm-lined residential street in a South Florida neighborhood",
   },
   movingComplete: {
-    src: "/images/guides/suburban-neighborhood.jpg",
-    alt: "South Florida neighborhood homes near Pompano Beach",
+    src: "/images/food/palm-brunch.jpg",
+    alt: "Weekend brunch spread at a bright Florida café patio",
   },
   buyingHome: {
-    src: "/images/guides/suburban-neighborhood.jpg",
-    alt: "Residential street with palm trees in Broward County Florida",
+    src: "/images/food/pier-house.jpg",
+    alt: "Pompano Beach fishing pier and Atlantic shoreline near waterfront homes",
   },
 } as const;

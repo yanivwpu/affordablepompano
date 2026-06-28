@@ -64,7 +64,7 @@ export function getGuideExploreLinks(guide: Guide): GuideExploreLink[] {
   if (FOOD_GUIDE_SLUGS.has(guide.slug) && !hrefs.has("/advertise")) {
     links.push({
       label: "Restaurant Partners",
-      href: "/advertise?package=restaurant-listing-featured#contact",
+      href: "/advertise?package=featured-business#contact",
       description:
         "Local restaurants can apply for featured Food & Eats placement.",
     });

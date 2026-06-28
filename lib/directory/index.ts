@@ -14,6 +14,7 @@ import type { DirectoryListing, DirectoryType, ListingPlan } from "./types";
 export type {
   DirectoryListing,
   DirectoryType,
+  ListingDisplayBadge,
   ListingEvent,
   ListingHours,
   ListingHoursDay,
@@ -34,6 +35,19 @@ export {
 export { excursionListings } from "./excursions";
 export { restaurantListings } from "./restaurants";
 export { resolveListingSponsorship, sponsorBadgeLabel } from "./sponsorship";
+export { formatListingRating, getListingBadges } from "./listingDisplay";
+export {
+  getContactUrl,
+  getEmailAddress,
+  getMapsUrl,
+  getPhoneHref,
+  getPrimaryBookingLabel,
+  getPrimaryBookingUrl,
+  getReservationUrl,
+  getUsableUrl,
+  getWebsiteUrl,
+  isPlaceholderUrl,
+} from "./listingLinks";
 
 const allListings: DirectoryListing[] = [
   ...restaurantListings,
@@ -155,6 +169,35 @@ export function sortListings(listings: DirectoryListing[]): DirectoryListing[] {
     if (rankA !== rankB) return rankA - rankB;
     return a.name.localeCompare(b.name);
   });
+}
+
+export function getHubListings(
+  type: DirectoryType,
+  categoryIds: string[],
+  limit = 6,
+): DirectoryListing[] {
+  const seen = new Set<string>();
+  const result: DirectoryListing[] = [];
+
+  for (const categoryId of categoryIds) {
+    for (const listing of getListingsByCategory(type, categoryId)) {
+      if (seen.has(listing.id)) continue;
+      seen.add(listing.id);
+      result.push(listing);
+      if (result.length >= limit) return result;
+    }
+  }
+
+  if (result.length < limit) {
+    for (const listing of getListingsByType(type)) {
+      if (seen.has(listing.id)) continue;
+      seen.add(listing.id);
+      result.push(listing);
+      if (result.length >= limit) break;
+    }
+  }
+
+  return result;
 }
 
 export function getAllDirectorySitemapEntries(): {

@@ -37,7 +37,7 @@ export default async function ExcursionListingPage({
       listing={listing}
       sectionLabel="Excursions"
       sectionPath="/excursions"
-      claimPackageId="excursion-listing-standard"
+      claimPackageId="business-listing"
     />
   );
 }

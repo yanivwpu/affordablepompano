@@ -8,7 +8,7 @@ export default function FeaturedExperiencesSection() {
   return (
     <section
       id="featured-experiences"
-      className="scroll-mt-28 border-b border-sand-dark/40 bg-warm-white py-14 sm:py-16"
+      className="scroll-mt-28 border-b border-sand-dark/30 bg-warm-white py-16 sm:py-24"
       aria-labelledby="featured-experiences-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

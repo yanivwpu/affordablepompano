@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getUsableUrl } from "@/lib/directory/listingLinks";
 
 type EditorialCardProps = {
   title: string;
@@ -36,8 +37,10 @@ export default function EditorialCard({
   secondaryActionLabel = "Learn More",
   secondaryActionHref,
 }: EditorialCardProps) {
-  const hasAction = Boolean(actionLabel && actionHref);
-  const secondaryHref = secondaryActionHref ?? actionHref ?? href;
+  const actionLink = getUsableUrl(actionHref);
+  const secondaryLink = getUsableUrl(secondaryActionHref);
+  const hasAction = Boolean(actionLabel && actionLink);
+  const hasSecondary = Boolean(secondaryActionLabel && secondaryLink);
 
   const imageBlock = (
     <div
@@ -107,7 +110,7 @@ export default function EditorialCard({
       {hasAction ? (
         <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
           <a
-            href={actionHref}
+            href={actionLink}
             target="_blank"
             rel="noopener noreferrer sponsored"
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-sm bg-coral px-4 py-3.5 text-sm font-bold tracking-wide text-cream shadow-md transition-all hover:bg-coral-light hover:shadow-lg"
@@ -117,14 +120,16 @@ export default function EditorialCard({
               &rarr;
             </span>
           </a>
-          <a
-            href={secondaryHref}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            className="inline-flex flex-1 items-center justify-center rounded-sm border-2 border-teal/25 bg-white/60 px-4 py-3.5 text-sm font-semibold text-teal transition-colors hover:border-teal hover:bg-teal hover:text-cream"
-          >
-            {secondaryActionLabel}
-          </a>
+          {hasSecondary && (
+            <a
+              href={secondaryLink}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className="inline-flex flex-1 items-center justify-center rounded-sm border-2 border-teal/25 bg-white/60 px-4 py-3.5 text-sm font-semibold text-teal transition-colors hover:border-teal hover:bg-teal hover:text-cream"
+            >
+              {secondaryActionLabel}
+            </a>
+          )}
         </div>
       ) : (
         <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-coral transition-all group-hover:gap-3 group-hover:text-coral-light">

@@ -1,329 +1,162 @@
 export const SPONSORSHIP_INQUIRY_EMAIL = "hello@affordablepompano.com";
 
-export const FEATURED_PLACEMENT_NOTE =
-  "Featured listings are upgraded placements with a larger card, featured badge, and priority position in their category. Multiple featured listings can appear at the same time.";
-
-export const STANDARD_PLACEMENT_NOTE =
-  "Standard listings give your business a dedicated page and steady visibility in the directory.";
-
-export const EXCLUSIVE_PLACEMENT_NOTE =
-  "This premium placement is shown as the Featured Local Realtor card directly below the Homes search and results. Limited to one business at a time.";
-
-export type AdvertiseTier = {
-  id: string;
-  label: string;
-  subtitle?: string;
-  price: string;
-  period: string;
-  inventory: string;
-  includes: string;
-  placementTier: "standard" | "featured" | "exclusive";
-  perks: string[];
-  placementNote?: string;
-};
-
-export type AdvertisePackageGroup = {
+export type VisibilityPackage = {
   id: string;
   title: string;
-  description: string;
-  bestFor: string;
+  /** One-line positioning */
+  tagline: string;
+  price: string;
+  priceNote?: string;
+  period: string;
+  perks: string[];
+  ctaLabel: string;
+  note?: string;
+  badge?: string;
+  /** Visual treatment on the packages page */
+  variant?: "default" | "realtor" | "premium";
   highlighted?: boolean;
-  tiers: AdvertiseTier[];
 };
 
-export type AdvertiseAddOn = {
-  id: string;
-  title: string;
-  tagline?: string;
-  description: string;
-  price: string;
-  period: string;
-  inventory: string;
-  bestFor: string;
-  perks: string[];
-};
-
-export const listingPackages: AdvertisePackageGroup[] = [
-  {
-    id: "restaurant-listing",
-    title: "Restaurant Listing",
-    description:
-      "Get a dedicated restaurant page and placement in our Food & Eats directory — the listing itself is the product.",
-    bestFor:
-      "Restaurants, cafes, bars, coffee shops, bakeries, and local eateries.",
-    highlighted: true,
-    tiers: [
-      {
-        id: "restaurant-listing-standard",
-        label: "Standard Listing",
-        subtitle:
-          "Great for businesses that want a professional online presence and local visibility.",
-        price: "$29",
-        period: "/ month",
-        inventory: "Standard Listings Available",
-        includes:
-          "Directory listing plus a dedicated restaurant page with logo, cover image, and contact links.",
-        placementTier: "standard",
-        perks: [
-          "Dedicated /food/[your-business] page",
-          "Logo and cover image",
-          "Website and phone links",
-          "Category placement in Food & Eats",
-        ],
-      },
-      {
-        id: "restaurant-listing-featured",
-        label: "Featured Listing",
-        subtitle:
-          "Best for businesses that want maximum exposure and priority placement.",
-        price: "$99",
-        period: "/ month",
-        inventory: "Featured Placement Available",
-        includes:
-          "Everything in Standard plus top placement, larger card, featured badge, and newsletter mention.",
-        placementTier: "featured",
-        perks: [
-          "Everything in Standard",
-          "Top placement in Food & Eats",
-          "Larger featured card",
-          "Featured badge",
-          "Newsletter mention",
-        ],
-      },
-    ],
-  },
-  {
-    id: "excursion-listing",
-    title: "Excursion Listing",
-    description:
-      "List your charter, tour, rental, or attraction with a dedicated excursion page in our Things To Do directory.",
-    bestFor:
-      "Fishing charters, boat tours, watersports, rentals, attractions, and guided experiences.",
-    tiers: [
-      {
-        id: "excursion-listing-standard",
-        label: "Standard Listing",
-        subtitle:
-          "Great for businesses that want a professional online presence and local visibility.",
-        price: "$29",
-        period: "/ month",
-        inventory: "Standard Listings Available",
-        includes:
-          "Directory listing plus a dedicated excursion page with booking links and activity details.",
-        placementTier: "standard",
-        perks: [
-          "Dedicated /excursions/[your-business] page",
-          "Logo and cover image",
-          "Website and booking links",
-          "Category placement in Excursions",
-        ],
-      },
-      {
-        id: "excursion-listing-featured",
-        label: "Featured Listing",
-        subtitle:
-          "Best for businesses that want maximum exposure and priority placement.",
-        price: "$79",
-        period: "/ month",
-        inventory: "Featured Placement Available",
-        includes:
-          "Everything in Standard plus top placement, larger card, featured badge, and seasonal promotion mention.",
-        placementTier: "featured",
-        perks: [
-          "Everything in Standard",
-          "Top placement in Excursions",
-          "Featured excursion partner slot",
-          "Larger featured card",
-          "Seasonal promotion mention",
-        ],
-      },
-    ],
-  },
+/** General local business visibility — restaurants, excursions, pros, etc. */
+export const visibilityPackages: VisibilityPackage[] = [
   {
     id: "business-listing",
-    title: "Local Business Listing",
-    description:
-      "Reach Pompano residents and newcomers with a dedicated business page in our local services directory.",
-    bestFor:
-      "Attorneys, insurance agents, photographers, contractors, medical practices, and local service businesses.",
-    tiers: [
-      {
-        id: "business-listing-standard",
-        label: "Standard Listing",
-        subtitle:
-          "Great for businesses that want a professional online presence and local visibility.",
-        price: "$29",
-        period: "/ month",
-        inventory: "Standard Listings Available",
-        includes:
-          "Directory listing plus a dedicated business page with contact info and category placement.",
-        placementTier: "standard",
-        perks: [
-          "Dedicated /businesses/[your-business] page",
-          "Logo and cover image",
-          "Phone, email, and website links",
-          "Category placement in Local Businesses",
-        ],
-      },
-      {
-        id: "business-listing-featured",
-        label: "Featured Listing",
-        subtitle:
-          "Best for businesses that want maximum exposure and priority placement.",
-        price: "$59",
-        period: "/ month",
-        inventory: "Featured Placement Available",
-        includes:
-          "Everything in Standard plus top placement, larger card, featured badge, and homepage/category visibility.",
-        placementTier: "featured",
-        perks: [
-          "Everything in Standard",
-          "Top placement in Local Businesses",
-          "Larger featured card",
-          "Featured badge",
-          "Homepage and category visibility",
-        ],
-      },
+    title: "Business Listing",
+    tagline: "Be found by people exploring Pompano.",
+    price: "$29",
+    period: "/mo",
+    perks: [
+      "Business profile page",
+      "Category listing",
+      "Website, phone, and map",
+      "Local SEO visibility",
     ],
+    ctaLabel: "Get Listed",
   },
   {
-    id: "real-estate-professional-listing",
-    title: "Real Estate Professional Listing",
-    description:
-      "Perfect for professionals serving home buyers, sellers, investors, and property owners throughout Pompano Beach.",
-    bestFor:
-      "Realtors, property managers, title companies, mortgage lenders, home inspectors, and real estate attorneys.",
-    tiers: [
-      {
-        id: "real-estate-professional-listing-standard",
-        label: "Standard Listing",
-        price: "$29",
-        period: "/ month",
-        inventory: "Standard Listings Available",
-        includes:
-          "Dedicated professional profile with logo, cover image, business description, and contact links in the Real Estate Professionals directory.",
-        placementTier: "standard",
-        perks: [
-          "Dedicated SEO-friendly professional profile page",
-          "Logo and cover image",
-          "Business description",
-          "Website and contact information",
-          "Category placement",
-          "Google Maps and contact links",
-          "Search-friendly profile page",
-        ],
-      },
-      {
-        id: "real-estate-professional-listing-featured",
-        label: "Featured Listing",
-        subtitle:
-          "Best for professionals who want maximum exposure and priority placement.",
-        price: "$99",
-        period: "/ month",
-        inventory: "Featured Placement Available",
-        includes:
-          "Everything in Standard plus featured badge, larger premium card, priority directory placement, and higher visibility across the site.",
-        placementTier: "featured",
-        perks: [
-          "Everything in Standard",
-          "Featured badge",
-          "Larger premium card",
-          "Priority placement in the Real Estate Professionals directory",
-          "Featured in relevant real estate guides",
-          "Higher visibility throughout the site",
-        ],
-      },
+    id: "featured-business",
+    title: "Featured Business",
+    tagline: "Stand out in your category.",
+    price: "$59",
+    period: "/mo",
+    perks: [
+      "Featured placement",
+      "Featured badge",
+      "Enhanced profile",
+      "More visibility across the site",
     ],
+    ctaLabel: "Become Featured",
+    badge: "Most Popular",
+    highlighted: true,
+  },
+  {
+    id: "homepage-spotlight",
+    title: "Homepage Spotlight",
+    tagline: "Get premium exposure on the main site.",
+    price: "$149",
+    period: "/mo",
+    perks: [
+      "Homepage placement",
+      "Relevant hub page placement",
+      "Premium feature card",
+      "Great for restaurants, excursions, and local pros",
+    ],
+    ctaLabel: "Reserve Spotlight",
+    note: "Limited spots",
   },
 ];
 
-export type ExclusiveHomesPlacementPackage = {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  price: string;
-  period: string;
-  inventory: string;
-  ctaLabel: string;
-  perks: string[];
-  placementNote: string;
-};
-
-export const exclusiveHomesPagePlacement: ExclusiveHomesPlacementPackage = {
-  id: "real-estate-homes-page-placement",
-  title: "👑 Exclusive Homes Page Placement",
-  subtitle: "Limited to one business at a time.",
-  description:
-    "Maximum visibility on the Homes page for real estate professionals.",
+/** Real estate lead-generation placement — separate from directory listings */
+export const featuredRealtorPackage: VisibilityPackage = {
+  id: "featured-realtor",
+  title: "Featured Realtor",
+  tagline:
+    "Be the trusted local expert people see while browsing homes, rentals, and relocation content.",
   price: "$149",
-  period: "/ month",
-  inventory: "Exclusive Homes Page Placement Available",
-  ctaLabel: "Reserve Exclusive Homes Placement",
+  priceNote: "or higher",
+  period: "/mo",
   perks: [
-    "Everything in Featured Listing",
-    "Largest profile card",
-    "Exclusive card below MLS search/results",
-    "Headshot & brokerage logo",
-    "Direct call, email & website buttons",
-    "Featured on Homes Page badge",
-    "Maximum exposure to buyers, sellers, renters and investors",
+    "Featured on the Homes page",
+    "Placement near property search / home discovery",
+    "Lead-generation CTA",
+    "Great for buyers, sellers, investors, and relocation traffic",
   ],
-  placementNote: EXCLUSIVE_PLACEMENT_NOTE,
+  ctaLabel: "Reserve Realtor Feature",
+  note: "Limited availability",
+  variant: "realtor",
 };
 
-export const addOnPackages: AdvertiseAddOn[] = [
-  {
-    id: "homepage-feature",
-    title: "⭐ Exclusive Homepage Feature",
-    tagline: "Limited to one business at a time.",
-    description:
-      "Maximum visibility at the front door of Affordable Pompano — ideal for launches, events, or seasonal campaigns.",
-    price: "$179",
-    period: "/ month",
-    inventory: "Exclusive Homepage Feature Available",
-    bestFor: "Businesses seeking maximum visibility across the entire website.",
-    perks: [
-      "Business logo",
-      "Featured image",
-      "Site-wide premium placement",
-      "Dedicated promotion",
-    ],
-  },
-  {
-    id: "newsletter-sponsor",
-    title: "📰 The Pompano Post Newsletter Sponsor",
-    description:
-      "Show up in The Pompano Post — our friendly weekly email with restaurant picks, events, and local news.",
-    price: "$59",
-    period: "/ month",
-    inventory: "Newsletter Sponsor Available",
-    bestFor: "Any business seeking recurring local brand exposure.",
-    perks: [
-      "Logo placement",
-      "Link in newsletter",
-      "Mention in issue",
-      "Featured sponsor section",
-    ],
-  },
+export const categoryLeaderPackage: VisibilityPackage = {
+  id: "category-leader",
+  title: "Category Leader",
+  tagline: "Be the top recommendation in your category.",
+  price: "$299",
+  period: "/mo",
+  perks: [
+    "Top category placement",
+    "Exclusive category position",
+    "Premium visibility",
+    "Best for serious local businesses",
+  ],
+  ctaLabel: "Become Category Leader",
+  note: "Only 1 per category",
+  variant: "premium",
+};
+
+export const categoryLeaderExamples = [
+  "Seafood Category Leader",
+  "Insurance Category Leader",
+  "Mortgage Category Leader",
+  "Title & Closing Category Leader",
+  "Fishing Charter Category Leader",
+  "HVAC Category Leader",
+] as const;
+
+export const newsletterSpotlightPackage: VisibilityPackage = {
+  id: "newsletter-spotlight",
+  title: "The Pompano Post Newsletter Spotlight",
+  tagline: "Reach locals directly in their inbox.",
+  price: "$59",
+  period: "/mo",
+  perks: [
+    "Featured in local newsletter",
+    "Link to your business",
+    "Great for events, offers, and announcements",
+  ],
+  ctaLabel: "Reserve Newsletter Spot",
+};
+
+/** Maps legacy package IDs from older links to current packages */
+export const legacyPackageAliases: Record<string, string> = {
+  "restaurant-listing-standard": "business-listing",
+  "restaurant-listing-featured": "featured-business",
+  "excursion-listing-standard": "business-listing",
+  "excursion-listing-featured": "featured-business",
+  "business-listing-standard": "business-listing",
+  "business-listing-featured": "featured-business",
+  "real-estate-professional-listing-standard": "business-listing",
+  "real-estate-professional-listing-featured": "featured-business",
+  "real-estate-homes-page-placement": "featured-realtor",
+  "homepage-feature": "homepage-spotlight",
+  "newsletter-sponsor": "newsletter-spotlight",
+};
+
+export const allVisibilityPackages: VisibilityPackage[] = [
+  ...visibilityPackages,
+  featuredRealtorPackage,
+  categoryLeaderPackage,
 ];
 
 /** Flat options for contact form and deep links */
 export const advertisePackageOptions = [
-  ...listingPackages.flatMap((group) =>
-    group.tiers.map((tier) => ({
-      id: tier.id,
-      label: `${group.title} — ${tier.label} — ${tier.price}${tier.period}`,
-    })),
-  ),
-  {
-    id: exclusiveHomesPagePlacement.id,
-    label: `${exclusiveHomesPagePlacement.title} — ${exclusiveHomesPagePlacement.price}${exclusiveHomesPagePlacement.period}`,
-  },
-  ...addOnPackages.map((pkg) => ({
+  ...allVisibilityPackages.map((pkg) => ({
     id: pkg.id,
-    label: `${pkg.title} — ${pkg.price}${pkg.period}`,
+    label: `${pkg.title} — ${pkg.price}${pkg.priceNote ? ` ${pkg.priceNote}` : ""}${pkg.period}`,
   })),
+  {
+    id: newsletterSpotlightPackage.id,
+    label: `${newsletterSpotlightPackage.title} — ${newsletterSpotlightPackage.price}${newsletterSpotlightPackage.period}`,
+  },
 ] as const;
 
 export const advertiseTrustStats = [
@@ -356,20 +189,29 @@ export const advertiseBenefits = [
 ] as const;
 
 export const advertiseWhyUs = [
-  "Featured placements put you first — standard listings keep you visible at a lower monthly cost.",
+  "Featured placements help you stand out — listings keep you visible at a lower monthly cost.",
   "Every page is built around Pompano Beach homes, restaurants, and activities.",
   "Simple monthly pricing with no hidden fees or long-term contracts required.",
   "You work with a local team that knows the community — not a distant call center.",
 ] as const;
 
-export const advertisePackagesIntro =
-  "Affordable Pompano reaches local residents, visitors, renters, homebuyers, and vacation travelers actively researching Pompano Beach. Choose a directory listing — standard or featured — plus optional homepage and newsletter add-ons.";
+export function resolvePackageId(packageId: string): string {
+  return legacyPackageAliases[packageId] ?? packageId;
+}
 
 export function isValidAdvertisePackageId(packageId: string): boolean {
-  return advertisePackageOptions.some((p) => p.id === packageId);
+  const resolved = resolvePackageId(packageId);
+  return advertisePackageOptions.some((p) => p.id === resolved);
 }
 
 export function getAdvertisePackageLabel(packageId: string): string {
-  const option = advertisePackageOptions.find((p) => p.id === packageId);
+  const resolved = resolvePackageId(packageId);
+  const option = advertisePackageOptions.find((p) => p.id === resolved);
   return option ? option.label : packageId;
+}
+
+export function getVisibilityPackage(packageId: string): VisibilityPackage | undefined {
+  const resolved = resolvePackageId(packageId);
+  if (resolved === newsletterSpotlightPackage.id) return newsletterSpotlightPackage;
+  return allVisibilityPackages.find((p) => p.id === resolved);
 }

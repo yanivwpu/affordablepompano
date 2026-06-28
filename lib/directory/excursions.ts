@@ -20,9 +20,6 @@ export const excursionListings: DirectoryListing[] = [
     imageAlt:
       "Woman smiling on a deep sea fishing charter holding a large fish",
     phone: "(954) 555-0180",
-    websiteUrl: "https://example.com/pompano-reef-charters",
-    primaryCtaLabel: "Book a Charter",
-    primaryCtaUrl: "https://example.com/pompano-reef-charters/book",
     serviceArea: "Pompano Beach, Hillsboro Inlet & offshore Atlantic",
     mapsUrl: "https://maps.google.com/?q=Pompano+Beach+Fishing+Pier+FL",
     hours: "Daily departures · Reserve 24–48 hours ahead in season",

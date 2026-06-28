@@ -1,4 +1,3 @@
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import ContentCard from "@/components/ContentCard";
 import DirectoryListingCard from "@/components/DirectoryListingCard";
 import EditorialCard from "@/components/EditorialCard";
@@ -46,10 +45,6 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AdSensePlaceholder size="leaderboard" label="Advertisement" />
-      </div>
-
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -81,22 +76,19 @@ export default function Home() {
             linkLabel="Food Hub"
           />
           {featuredRestaurants.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {featuredRestaurants.map((listing) => (
-                <DirectoryListingCard key={listing.id} listing={listing} />
+                <DirectoryListingCard
+                  key={listing.id}
+                  listing={listing}
+                  featuredLayout="vertical"
+                />
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {foodSpots.slice(0, 3).map((spot) => {
-                const {
-                  actionLabel: _a,
-                  actionHref: _b,
-                  reviewsHref: _c,
-                  whyLocalsLove: _d,
-                  bestDishes: _e,
-                  ...preview
-                } = spot;
+                const { whyLocalsLove: _why, bestDishes: _dishes, ...preview } = spot;
                 return (
                   <EditorialCard key={spot.title} {...preview} href="/food" />
                 );
@@ -114,10 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AdSensePlaceholder size="rectangle" label="Sponsored" />
-      </div>
-
       <section className="bg-background py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeader
@@ -128,29 +116,24 @@ export default function Home() {
             linkLabel="Excursions Hub"
           />
           {featuredExcursions.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {featuredExcursions.map((listing) => (
-                <DirectoryListingCard key={listing.id} listing={listing} />
+                <DirectoryListingCard
+                  key={listing.id}
+                  listing={listing}
+                  featuredLayout="vertical"
+                />
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {excursions.slice(0, 3).map((excursion) => {
-                const {
-                  actionLabel: _a,
-                  actionHref: _b,
-                  secondaryActionLabel: _c,
-                  secondaryActionHref: _d,
-                  ...preview
-                } = excursion;
-                return (
-                  <EditorialCard
-                    key={excursion.title}
-                    {...preview}
-                    href="/excursions"
-                  />
-                );
-              })}
+              {excursions.slice(0, 3).map((excursion) => (
+                <EditorialCard
+                  key={excursion.title}
+                  {...excursion}
+                  href="/excursions"
+                />
+              ))}
             </div>
           )}
           <p className="mt-8 text-center">
@@ -174,9 +157,13 @@ export default function Home() {
               linkHref="/businesses"
               linkLabel="Business Directory"
             />
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {featuredBusinesses.map((listing) => (
-                <DirectoryListingCard key={listing.id} listing={listing} />
+                <DirectoryListingCard
+                  key={listing.id}
+                  listing={listing}
+                  featuredLayout="vertical"
+                />
               ))}
             </div>
           </div>

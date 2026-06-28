@@ -1,18 +1,39 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
-import FeaturedExcursionPartnerSlot from "@/components/FeaturedExcursionPartnerSlot";
 import FeaturedExperiencesSection from "@/components/FeaturedExperiencesSection";
+import HubCategoryGrid from "@/components/hub/HubCategoryGrid";
+import HubDirectorySection from "@/components/hub/HubDirectorySection";
+import HubFeaturedSection from "@/components/hub/HubFeaturedSection";
+import HubGuidesSection from "@/components/hub/HubGuidesSection";
 import ImagePageHero from "@/components/ImagePageHero";
-import PillarHubSection from "@/components/PillarHubSection";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import PillarIntro, { PillarMoreGuidesTeaser } from "@/components/PillarIntro";
-import PopularWaysToExplore from "@/components/PopularWaysToExplore";
-import { excursionsPillar } from "@/lib/guides/pillarContent";
+import {
+  getCategoriesForType,
+  getHubListings,
+} from "@/lib/directory";
+import { guides } from "@/lib/guides";
+import { excursionsPillar, pillarGuideCards } from "@/lib/guides/pillarContent";
 import { excursionsPillarEditorial } from "@/lib/guides/pillarEditorial";
+import { dedupeGuideCardImages } from "@/lib/guides/uniqueGuideImages";
 import { images } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = metadataForPage("excursions");
+
+const excursionCategoryNav = getCategoriesForType("excursion").filter((cat) =>
+  excursionsPillar.directoryCategoryIds.includes(cat.id),
+);
+
+const excursionListings = getHubListings(
+  excursionsPillar.directoryType,
+  excursionsPillar.directoryCategoryIds,
+);
+
+const excursionGuideCards = dedupeGuideCardImages(
+  pillarGuideCards(guides, excursionsPillar.guides),
+);
 
 export default function ExcursionsPage() {
   return (
@@ -38,22 +59,53 @@ export default function ExcursionsPage() {
           href: "#featured-experiences",
         }}
         secondaryCta={{
-          label: "Local Guides",
-          href: "#excursion-guides",
+          label: "Partner Listings",
+          href: "#featured-listings",
         }}
       />
 
-      <PillarIntro editorial={excursionsPillarEditorial} />
+      <PillarIntro editorial={excursionsPillarEditorial} mode="teaser" />
 
       <FeaturedExperiencesSection />
 
-      <FeaturedExcursionPartnerSlot />
+      <HubFeaturedSection
+        listings={excursionListings}
+        id="featured-listings"
+        eyebrow="Premium Picks"
+        title="Featured Excursions"
+        description="Partner charters and tour operators with dedicated listing pages, maps, and direct booking links."
+        advertisePackageId={excursionsPillar.advertisePackageId}
+        advertiseCtaLabel={excursionsPillar.advertiseCtaLabel}
+      />
 
-      <div id="excursion-guides">
-        <PillarHubSection pillar={excursionsPillar} />
-      </div>
+      <HubCategoryGrid
+        type="excursion"
+        categories={excursionCategoryNav}
+        eyebrow="Plan Your Day"
+        title="Browse by Activity"
+        description="Fishing charters, boat tours, snorkeling, kayaking, and family-friendly outings along the Pompano coast."
+      />
 
-      <PopularWaysToExplore />
+      <HubDirectorySection
+        listings={excursionListings}
+        id="excursion-directory"
+        eyebrow="Full Directory"
+        title="Excursion Directory"
+        description="Every partner excursion in our Pompano Beach directory — compare operators, contact details, and listing pages."
+        advertisePackageId={excursionsPillar.advertisePackageId}
+      />
+
+      <HubGuidesSection
+        guides={excursionGuideCards}
+        id="excursion-guides"
+        eyebrow="Editorial"
+        title={excursionsPillar.guidesTitle}
+        description={excursionsPillar.guidesDescription}
+      />
+
+      <PillarIntro editorial={excursionsPillarEditorial} mode="article" id="excursions-guide" />
+
+      <NewsletterSignup />
 
       <PillarMoreGuidesTeaser labels={excursionsPillarEditorial.futureGuideLabels} />
 
@@ -82,7 +134,7 @@ export default function ExcursionsPage() {
               Browse Experiences
             </Link>
             <Link
-              href="/guides"
+              href="#excursion-guides"
               className="inline-flex items-center justify-center rounded-sm border-2 border-cream/70 bg-cream/10 px-8 py-3.5 text-sm font-semibold text-cream backdrop-blur-sm transition-colors hover:bg-cream hover:text-navy"
             >
               Read Local Guides

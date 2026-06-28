@@ -1,4 +1,5 @@
 import type { DirectoryListing } from "./types";
+import { getEmailAddress, getWebsiteUrl } from "./listingLinks";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 import { directoryPath } from "./index";
 import type { Metadata } from "next";
@@ -56,7 +57,7 @@ export function createListingSchema(listing: DirectoryListing) {
     image: listing.image,
     url,
     telephone: listing.phone,
-    email: listing.email,
+    email: getEmailAddress(listing.email),
   };
 
   if (listing.address) {
@@ -77,8 +78,9 @@ export function createListingSchema(listing: DirectoryListing) {
     schema.openingHours = listing.hours;
   }
 
-  if (listing.websiteUrl) {
-    schema.sameAs = [listing.websiteUrl];
+  const website = getWebsiteUrl(listing);
+  if (website) {
+    schema.sameAs = [website];
   }
 
   if (listing.type === "restaurant" && listing.priceRange) {

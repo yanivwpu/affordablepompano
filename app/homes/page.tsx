@@ -1,19 +1,42 @@
-import AdSensePlaceholder from "@/components/AdSensePlaceholder";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import FeaturedLocalRealtor from "@/components/FeaturedLocalRealtor";
 import HomesBrowseSection from "@/components/HomesBrowseSection";
 import HomesLeadForm from "@/components/HomesLeadForm";
+import HubCategoryGrid from "@/components/hub/HubCategoryGrid";
+import HubDirectorySection from "@/components/hub/HubDirectorySection";
+import HubFeaturedSection from "@/components/hub/HubFeaturedSection";
+import HubGuidesSection from "@/components/hub/HubGuidesSection";
 import ImagePageHero from "@/components/ImagePageHero";
-import PillarHubSection from "@/components/PillarHubSection";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import PillarIntro, { PillarMoreGuidesTeaser } from "@/components/PillarIntro";
-import { images, REALTOR_PHONE, REALTOR_PHONE_HREF } from "@/lib/images";
-import { homesPillar } from "@/lib/guides/pillarContent";
+import { hubSectionSpacing } from "@/lib/hubLayout";
+import {
+  getCategoriesForType,
+  getHubListings,
+} from "@/lib/directory";
+import { guides } from "@/lib/guides";
+import { homesPillar, pillarGuideCards } from "@/lib/guides/pillarContent";
 import { homesPillarEditorial } from "@/lib/guides/pillarEditorial";
+import { dedupeGuideCardImages } from "@/lib/guides/uniqueGuideImages";
+import { images, REALTOR_PHONE, REALTOR_PHONE_HREF } from "@/lib/images";
 import { metadataForPage } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = metadataForPage("homes");
+
+const homesCategoryNav = getCategoriesForType("business").filter((cat) =>
+  homesPillar.directoryCategoryIds.includes(cat.id),
+);
+
+const homesBusinessListings = getHubListings(
+  homesPillar.directoryType,
+  homesPillar.directoryCategoryIds,
+);
+
+const homesGuideCards = dedupeGuideCardImages(
+  pillarGuideCards(guides, homesPillar.guides),
+);
 
 export default function HomesPage() {
   return (
@@ -30,12 +53,12 @@ export default function HomesPage() {
 
       <ImagePageHero
         eyebrow="Homes"
-        title="Pompano Beach Homes & Rentals"
+        title="Where Should You Live in Pompano Beach?"
         description="Search live MLS listings, schedule showings, and get property alerts from a local realtor who knows every neighborhood."
         image={images.pompanoPier}
         imageAlt={images.pompanoPierAlt}
         primaryCta={{ label: "Search Listings", href: "#listings" }}
-        secondaryCta={{ label: "Living Guides", href: "#living-guides" }}
+        secondaryCta={{ label: "Schedule a Showing", href: "#showing" }}
         size="compact"
       />
 
@@ -62,11 +85,11 @@ export default function HomesPage() {
         </div>
       </div>
 
-      <PillarIntro editorial={homesPillarEditorial} />
+      <PillarIntro editorial={homesPillarEditorial} mode="teaser" />
 
       <section
         id="listings"
-        className="scroll-mt-24 border-b border-sand-dark/40 bg-background py-6 sm:py-8"
+        className={`scroll-mt-28 border-b border-sand-dark/30 bg-background ${hubSectionSpacing}`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <HomesBrowseSection />
@@ -75,11 +98,44 @@ export default function HomesPage() {
 
       <FeaturedLocalRealtor />
 
-      <div id="living-guides">
-        <PillarHubSection pillar={homesPillar} />
-      </div>
+      <HubFeaturedSection
+        listings={homesBusinessListings}
+        id="featured-listings"
+        eyebrow="Trusted Pros"
+        title="Featured Local Businesses"
+        description="Lenders, title companies, insurance agents, and home pros serving Pompano buyers and residents."
+        advertisePackageId={homesPillar.advertisePackageId}
+        advertiseCtaLabel={homesPillar.advertiseCtaLabel}
+      />
 
-      <section className="border-y border-sand-dark/40 bg-background py-8 sm:py-10">
+      <HubCategoryGrid
+        type="business"
+        categories={homesCategoryNav}
+        eyebrow="Build Your Team"
+        title="Browse by Service"
+        description="Find the local pros you will need at closing and beyond — from mortgage and title to inspection and insurance."
+      />
+
+      <HubDirectorySection
+        listings={homesBusinessListings}
+        id="local-pros-directory"
+        eyebrow="Full Directory"
+        title="Local Pros Directory"
+        description="Partner businesses with dedicated profile pages and direct contact links for Pompano homebuyers."
+        advertisePackageId={homesPillar.advertisePackageId}
+      />
+
+      <HubGuidesSection
+        guides={homesGuideCards}
+        id="living-guides"
+        eyebrow="Editorial"
+        title={homesPillar.guidesTitle}
+        description={homesPillar.guidesDescription}
+      />
+
+      <PillarIntro editorial={homesPillarEditorial} mode="article" id="homes-guide" />
+
+      <section className={`border-b border-sand-dark/30 bg-background ${hubSectionSpacing}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-5 sm:grid-cols-3">
             {[
@@ -116,9 +172,9 @@ export default function HomesPage() {
         </div>
       </section>
 
-      <section className="bg-warm-white py-10 sm:py-12">
+      <section className={`border-b border-sand-dark/30 bg-warm-white ${hubSectionSpacing}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-8 text-center">
+          <div className="mb-10 text-center sm:mb-12">
             <p className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-teal">
               <span className="text-[8px] text-coral" aria-hidden="true">
                 &#9670;
@@ -128,7 +184,7 @@ export default function HomesPage() {
                 &#9670;
               </span>
             </p>
-            <h2 className="font-display mt-3 text-2xl font-medium text-navy sm:text-3xl">
+            <h2 className="font-display mt-3 text-2xl font-medium text-navy sm:text-3xl lg:text-4xl">
               Get Alerts, Schedule a Tour, or Ask a Question
             </h2>
           </div>
@@ -156,13 +212,7 @@ export default function HomesPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AdSensePlaceholder
-          size="banner"
-          label="Sponsored"
-          className="my-10 sm:my-12"
-        />
-      </div>
+      <NewsletterSignup />
 
       <PillarMoreGuidesTeaser labels={homesPillarEditorial.futureGuideLabels} />
 

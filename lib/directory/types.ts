@@ -86,8 +86,8 @@ export type DirectoryListing = {
   phone?: string;
   email?: string;
   websiteUrl?: string;
-  primaryCtaLabel: string;
-  primaryCtaUrl: string;
+  primaryCtaLabel?: string;
+  primaryCtaUrl?: string;
   secondaryCtaLabel?: string;
   secondaryCtaUrl?: string;
   reservationUrl?: string;
@@ -115,6 +115,19 @@ export type DirectoryListing = {
   isNewsletterSponsor?: boolean;
   sponsorLabel?: string;
   featuredRank?: number;
+  /** Human-readable badge labels for cards (Featured, Editor's Pick, etc.) */
+  displayBadges?: ListingDisplayBadge[];
+  /** Short cuisine label e.g. "Seafood", "Italian" */
+  cuisine?: string;
+  /** Set explicitly when open-status is known — do not guess */
+  isOpenNow?: boolean;
   priceRange?: string;
   meta?: string[];
 };
+
+export type ListingDisplayBadge =
+  | "featured"
+  | "editors-pick"
+  | "waterfront-favorite"
+  | "best-breakfast"
+  | "popular";

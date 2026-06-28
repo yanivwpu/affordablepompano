@@ -67,9 +67,9 @@ export const pageSeo = {
     path: "/about",
   },
   advertise: {
-    title: "Advertise With Affordable Pompano Beach | Sponsor",
+    title: "Get Featured in Affordable Pompano Beach | Local Listings",
     description:
-      "Reach Pompano Beach home buyers, diners, and tourists. Directory listings from $29/month, featured upgrades, homepage features, and newsletter sponsorship.",
+      "Get discovered by locals, visitors, and home buyers in Pompano Beach. Business listings from $29/month, featured placement, homepage spotlight, and category leader packages.",
     path: "/advertise",
     image: images.pompanoPier,
     imageAlt: images.pompanoPierAlt,

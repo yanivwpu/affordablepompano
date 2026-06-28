@@ -1,3 +1,4 @@
+import ListingActionButtons from "@/components/ListingActionButtons";
 import Image from "next/image";
 import Link from "next/link";
 import { directoryPath, type DirectoryListing } from "@/lib/directory";
@@ -61,23 +62,8 @@ export default function FeaturedRestaurantCard({
           {listing.shortDescription}
         </p>
 
-        <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
-          <a
-            href={listing.primaryCtaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center rounded-sm bg-coral px-5 py-3.5 text-sm font-bold tracking-wide text-cream shadow-sm transition-colors hover:bg-coral-light"
-          >
-            {listing.primaryCtaLabel}
-          </a>
-          {listing.phone && (
-            <a
-              href={`tel:${listing.phone.replace(/\D/g, "")}`}
-              className="inline-flex items-center justify-center rounded-sm border-2 border-teal/25 bg-white/60 px-5 py-3.5 text-sm font-semibold text-teal transition-colors hover:border-teal hover:bg-teal hover:text-cream"
-            >
-              Call {listing.phone}
-            </a>
-          )}
+        <div className="mt-6">
+          <ListingActionButtons listing={listing} listingHref={listingHref} />
         </div>
       </div>
     </article>

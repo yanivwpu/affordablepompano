@@ -37,7 +37,7 @@ export default async function BusinessListingPage({
       listing={listing}
       sectionLabel="Local Businesses"
       sectionPath="/businesses"
-      claimPackageId="business-listing-standard"
+      claimPackageId="business-listing"
     />
   );
 }

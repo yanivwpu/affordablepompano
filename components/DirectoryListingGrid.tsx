@@ -1,19 +1,27 @@
 import DirectoryListingCard from "@/components/DirectoryListingCard";
 import Link from "next/link";
+import {
+  directoryListingGridClass,
+  featuredListingGridClass,
+} from "@/lib/hubLayout";
 import { sortListings, type DirectoryListing } from "@/lib/directory";
 
 type DirectoryListingGridProps = {
   listings: DirectoryListing[];
   advertisePackageId: string;
   emptyLabel?: string;
+  showActions?: boolean;
 };
 
 export default function DirectoryListingGrid({
   listings,
   advertisePackageId,
   emptyLabel = "Partner listings appear here as businesses join the directory.",
+  showActions = false,
 }: DirectoryListingGridProps) {
   const sorted = sortListings(listings);
+  const featured = sorted.filter((l) => l.plan === "featured");
+  const standard = sorted.filter((l) => l.plan !== "featured");
 
   if (sorted.length === 0) {
     return (
@@ -30,10 +38,32 @@ export default function DirectoryListingGrid({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {sorted.map((listing) => (
-        <DirectoryListingCard key={listing.id} listing={listing} />
-      ))}
+    <div className="space-y-6">
+      {featured.length > 0 && (
+        <div className={featuredListingGridClass(featured.length)}>
+          {featured.map((listing, index) => (
+            <DirectoryListingCard
+              key={listing.id}
+              listing={listing}
+              priority={index === 0}
+              featuredLayout={featured.length === 1 ? "spotlight" : "vertical"}
+              showActions={showActions}
+            />
+          ))}
+        </div>
+      )}
+
+      {standard.length > 0 && (
+        <div className={directoryListingGridClass()}>
+          {standard.map((listing) => (
+            <DirectoryListingCard
+              key={listing.id}
+              listing={listing}
+              showActions={showActions}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
