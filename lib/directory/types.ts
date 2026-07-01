@@ -123,6 +123,12 @@ export type DirectoryListing = {
   isOpenNow?: boolean;
   priceRange?: string;
   meta?: string[];
+  /** How card images are framed — portrait keeps faces visible; auto detects headshots */
+  imagePresentation?: "portrait" | "landscape" | "auto";
+  /** Overrides default listing page title */
+  seoTitle?: string;
+  /** Overrides default listing meta description */
+  seoDescription?: string;
 };
 
 export type ListingDisplayBadge =

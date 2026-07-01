@@ -1,7 +1,8 @@
 import ListingActionButtons from "@/components/ListingActionButtons";
+import ListingCardImage from "@/components/ListingCardImage";
 import Image from "next/image";
 import Link from "next/link";
-import { directoryPath, type DirectoryListing } from "@/lib/directory";
+import { directoryPath, shouldShowActionsOnCard, type DirectoryListing } from "@/lib/directory";
 import {
   formatListingRating,
   getListingBadges,
@@ -52,16 +53,12 @@ function ListingBadges({
 
 function ListingActions({
   listing,
-  listingHref,
   compact = false,
 }: {
   listing: DirectoryListing;
-  listingHref: string;
   compact?: boolean;
 }) {
-  return (
-    <ListingActionButtons listing={listing} listingHref={listingHref} compact={compact} />
-  );
+  return <ListingActionButtons listing={listing} compact={compact} />;
 }
 
 function SpotlightFeaturedListingCard({
@@ -80,19 +77,19 @@ function SpotlightFeaturedListingCard({
   showActions?: boolean;
 }) {
   const cuisine = listing.cuisine ?? listing.category;
+  const showCardActions = shouldShowActionsOnCard(listing, showActions);
 
   return (
     <article className="group w-full overflow-hidden rounded-sm border border-teal/30 bg-cream shadow-[0_6px_28px_-8px_rgba(27,58,75,0.18)] ring-1 ring-teal/10 transition-all duration-300 hover:shadow-[0_10px_36px_-8px_rgba(27,58,75,0.22)] hover:ring-teal/18">
       <div className="relative h-[260px] overflow-hidden sm:h-[280px] md:h-[300px]">
-        <Image
-          src={listing.image}
-          alt={listing.imageAlt}
-          fill
+        <ListingCardImage
+          listing={listing}
           priority={priority}
           sizes="(max-width: 850px) 100vw, 850px"
-          className="object-cover object-center brightness-105 saturate-[1.07] transition-transform duration-700 group-hover:scale-[1.02]"
+          imageClassName="brightness-105 saturate-[1.07]"
+          hoverZoom
+          overlay="featured"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/15 to-transparent" />
         <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
           <span className="rounded-sm bg-coral px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-cream shadow-sm">
             Featured
@@ -166,14 +163,14 @@ function SpotlightFeaturedListingCard({
           <p className="mt-2 text-xs text-navy/45">{listing.hours}</p>
         )}
 
-        {showActions ? (
-          <ListingActions listing={listing} listingHref={listingHref} compact />
+        {showCardActions ? (
+          <ListingActions listing={listing} compact />
         ) : (
           <Link
             href={listingHref}
             className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-coral transition-all group-hover:gap-2.5 group-hover:text-coral-light"
           >
-            View Listing
+            Learn more
             <span aria-hidden="true">&rarr;</span>
           </Link>
         )}
@@ -197,20 +194,21 @@ function FeaturedListingCard({
   priority?: boolean;
   showActions?: boolean;
 }) {
+  const showCardActions = shouldShowActionsOnCard(listing, showActions);
+
   return (
     <article className="group card-hover florida-border-top overflow-hidden rounded-sm border border-teal/35 bg-cream shadow-md ring-1 ring-teal/15 transition-shadow hover:shadow-lg">
       <div className="flex flex-col md:flex-row md:items-stretch">
         <div className="relative h-44 shrink-0 overflow-hidden sm:h-48 md:h-auto md:w-[42%] lg:w-[38%]">
           <div className="relative h-full w-full md:absolute md:inset-0 md:min-h-[260px] md:max-h-[320px]">
-            <Image
-              src={listing.image}
-              alt={listing.imageAlt}
-              fill
+            <ListingCardImage
+              listing={listing}
               priority={priority}
               sizes="(max-width: 768px) 100vw, 42vw"
-              className="object-cover brightness-110 saturate-[1.06] transition-transform duration-500 group-hover:scale-[1.02]"
+              imageClassName="brightness-110 saturate-[1.06]"
+              hoverZoom
+              overlay="horizontal"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-navy/10 to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-navy/10" />
             {listing.priceRange && (
               <span className="absolute bottom-2.5 right-2.5 rounded-sm bg-navy/85 px-2 py-0.5 text-[11px] font-bold text-cream backdrop-blur-sm">
                 {listing.priceRange}
@@ -261,14 +259,14 @@ function FeaturedListingCard({
             <p className="mt-1.5 text-xs text-navy/45">{listing.hours}</p>
           )}
 
-          {showActions ? (
-            <ListingActions listing={listing} listingHref={listingHref} compact />
+          {showCardActions ? (
+            <ListingActions listing={listing} compact />
           ) : (
             <Link
               href={listingHref}
               className="mt-auto inline-flex items-center gap-2 pt-3 text-sm font-semibold text-coral transition-all group-hover:gap-2.5 group-hover:text-coral-light"
             >
-              View Listing
+              Learn more
               <span aria-hidden="true">&rarr;</span>
             </Link>
           )}
@@ -294,20 +292,20 @@ function PremiumVerticalListingCard({
   showActions?: boolean;
 }) {
   const cuisine = listing.cuisine ?? listing.category;
+  const showCardActions = shouldShowActionsOnCard(listing, showActions);
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-sm border border-teal/30 bg-cream shadow-[0_4px_24px_-6px_rgba(27,58,75,0.14)] ring-1 ring-teal/10 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_36px_-8px_rgba(27,58,75,0.2)] hover:ring-teal/20">
       <Link href={listingHref} className="flex flex-col">
         <div className="relative aspect-[5/4] overflow-hidden">
-          <Image
-            src={listing.image}
-            alt={listing.imageAlt}
-            fill
+          <ListingCardImage
+            listing={listing}
             priority={priority}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover object-center brightness-105 saturate-[1.07] transition-transform duration-700 group-hover:scale-[1.03]"
+            imageClassName="brightness-105 saturate-[1.07]"
+            hoverZoom
+            overlay="featured"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/65 via-navy/10 to-transparent" />
           <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
             <span className="rounded-sm bg-coral px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.18em] text-cream shadow-sm sm:text-[10px]">
               Featured
@@ -368,18 +366,18 @@ function PremiumVerticalListingCard({
             <p className="mt-2 text-xs text-navy/45">{listing.hours}</p>
           )}
 
-          {!showActions && (
+          {!showCardActions && (
             <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-coral transition-all group-hover:gap-2.5 group-hover:text-coral-light">
-              View Listing
+              Learn more
               <span aria-hidden="true">&rarr;</span>
             </span>
           )}
         </div>
       </Link>
 
-      {showActions && (
+      {showCardActions && (
         <div className="mt-auto border-t border-teal/10 px-5 pb-5 pt-3 sm:px-6">
-          <ListingActions listing={listing} listingHref={listingHref} compact />
+          <ListingActions listing={listing} compact />
         </div>
       )}
     </article>
@@ -399,18 +397,19 @@ function StandardListingCard({
   rating: string | null;
   showActions?: boolean;
 }) {
+  const showCardActions = shouldShowActionsOnCard(listing, showActions);
+
   return (
     <article className="group card-hover florida-border-top flex h-full flex-col overflow-hidden rounded-sm border border-sand-dark/60 bg-cream shadow-sm transition-shadow hover:shadow-md">
       <Link href={listingHref} className="flex h-full flex-col">
         <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={listing.image}
-            alt={listing.imageAlt}
-            fill
+          <ListingCardImage
+            listing={listing}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover brightness-110 saturate-[1.08] transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            imageClassName="brightness-110 saturate-[1.08]"
+            hoverZoom
+            overlay="standard"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-navy/10 to-transparent" />
           <div className="absolute left-3 top-3">
             <ListingBadges listing={listing} badges={badges} />
           </div>
@@ -434,17 +433,17 @@ function StandardListingCard({
           <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-navy/70">
             {listing.shortDescription}
           </p>
-          {!showActions && (
+          {!showCardActions && (
             <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-coral transition-all group-hover:gap-2.5 group-hover:text-coral-light">
-              View Listing
+              Learn more
               <span aria-hidden="true">&rarr;</span>
             </span>
           )}
         </div>
       </Link>
-      {showActions && (
+      {showCardActions && (
         <div className="border-t border-sand-dark/30 px-4 pb-4 sm:px-5 sm:pb-5">
-          <ListingActions listing={listing} listingHref={listingHref} compact />
+          <ListingActions listing={listing} compact />
         </div>
       )}
     </article>

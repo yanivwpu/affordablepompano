@@ -50,10 +50,10 @@ const EXCURSION_IMAGES: Record<string, CategoryImage> = {
     src: "/images/excursions/boat-dolphin-tours.webp",
     alt: "Dolphin sightseeing boat tour near Pompano Beach",
   },
-  "jet-ski": unsplash(
-    "photo-1551632436-79c2f0255729",
-    "Jet ski riding along the South Florida coast",
-  ),
+  "jet-ski": {
+    src: "/images/excursions/florida-water-sports.webp",
+    alt: "Jet ski on a white-sand Florida beach with clear Atlantic water",
+  },
   diving: unsplash(
     "photo-1544551763-77a4157aab54",
     "Scuba diver exploring a coral reef",
@@ -96,90 +96,101 @@ const EXCURSION_IMAGES: Record<string, CategoryImage> = {
   ),
 };
 
+const BUSINESS_CATEGORY_ROOT = "/images/businesses/categories";
+
+function localBusinessImage(file: string, alt: string): CategoryImage {
+  return { src: `${BUSINESS_CATEGORY_ROOT}/${file}`, alt };
+}
+
+const BUSINESS_CATEGORY_FALLBACK = localBusinessImage(
+  "fallback.jpg",
+  "Professional local business office",
+);
+
 const BUSINESS_IMAGES: Record<string, CategoryImage> = {
-  "real-estate": unsplash(
-    "photo-1560518883-ce09059eeffa",
-    "Real estate agent handing house keys to new homeowners",
+  "real-estate": localBusinessImage(
+    "real-estate.jpg",
+    "South Florida home with palm trees and property for sale",
   ),
-  mortgage: unsplash(
-    "photo-1554224155-6726b3ff858f",
-    "Mortgage advisor reviewing loan documents with clients",
+  mortgage: localBusinessImage(
+    "mortgage.jpg",
+    "Mortgage advisor reviewing loan paperwork with clients",
   ),
-  title: unsplash(
-    "photo-1450101499163-c8848c66ca85",
+  title: localBusinessImage(
+    "title.jpg",
     "Title company closing documents and signatures",
   ),
-  insurance: unsplash(
-    "photo-1454165804606-c8848c66ca85",
-    "Insurance agent discussing homeowner coverage options",
+  insurance: localBusinessImage(
+    "insurance.jpg",
+    "Insurance professionals discussing homeowner coverage",
   ),
-  attorneys: unsplash(
-    "photo-1589829545856-d10d557d86bb",
-    "Attorney reviewing legal documents at a desk",
+  attorneys: localBusinessImage(
+    "attorneys.jpg",
+    "Attorney consulting with clients in a law office",
   ),
-  inspectors: unsplash(
-    "photo-1581578731544-c64695cc6952",
-    "Home inspector examining a residential property exterior",
+  inspectors: localBusinessImage(
+    "inspectors.jpg",
+    "Modern Florida home exterior for buyer inspection",
   ),
-  contractors: unsplash(
-    "photo-1504307654326-118859664a75",
-    "General contractor reviewing plans at a construction site",
+  contractors: localBusinessImage(
+    "contractors.jpg",
+    "Construction crew working on a residential renovation",
   ),
-  roofing: unsplash(
-    "photo-1632778149525-faa663576e4e",
-    "Roofer installing shingles on a Florida home",
+  roofing: localBusinessImage(
+    "roofing.jpg",
+    "Florida home roofline and tropical landscaping",
   ),
-  plumbing: unsplash(
-    "photo-1607472586893-03fca59ccb0c",
-    "Plumber servicing residential plumbing fixtures",
+  plumbing: localBusinessImage(
+    "plumbing.jpg",
+    "Plumber tools and residential pipe fittings",
   ),
-  electricians: unsplash(
-    "photo-1621905252507-b78f3869328a",
-    "Electrician working on a home electrical panel",
+  electricians: localBusinessImage(
+    "electricians.jpg",
+    "Electrician installing residential lighting fixtures",
   ),
-  hvac: unsplash(
-    "photo-1621905251189-08b45d625aee",
+  hvac: localBusinessImage(
+    "hvac.jpg",
     "HVAC technician servicing an air conditioning unit",
   ),
-  landscaping: unsplash(
-    "photo-1558904541-efa843a96f87",
-    "Professional tropical landscaping at a Florida residence",
+  landscaping: localBusinessImage(
+    "landscaping.jpg",
+    "Professionally landscaped tropical Florida yard",
   ),
-  "pool-services": unsplash(
-    "photo-1576011008220-9dfe1f72572a",
-    "Technician maintaining a residential swimming pool",
+  "pool-services": localBusinessImage(
+    "pool-services.jpg",
+    "Residential swimming pool in South Florida",
   ),
-  "pest-control": unsplash(
-    "photo-1581579186988-9224de773333",
-    "Pest control specialist treating a home exterior",
+  "pest-control": localBusinessImage(
+    "pest-control.jpg",
+    "Florida home exterior for pest prevention services",
   ),
-  photographers: unsplash(
-    "photo-1452587925148-ce088e7a3314",
-    "Real estate photographer capturing a property listing",
+  photographers: localBusinessImage(
+    "photographers.jpg",
+    "Professional photographer with camera equipment",
   ),
-  medical: unsplash(
-    "photo-1576091160399-112ba8d25d1f",
-    "Medical clinic providing local healthcare services",
+  medical: localBusinessImage(
+    "medical.jpg",
+    "Medical professionals in a modern clinic",
   ),
-  dentists: unsplash(
-    "photo-1606811567643-1ec69a44b1ff",
-    "Modern dental office with examination chair and equipment",
+  dentists: localBusinessImage(
+    "dentists.jpg",
+    "Dental office with modern examination equipment",
   ),
-  veterinarians: unsplash(
-    "photo-1628009367960-73ed7f2c1d60",
-    "Veterinarian examining a dog at an animal clinic",
+  veterinarians: localBusinessImage(
+    "veterinarians.jpg",
+    "Veterinarian caring for a pet at an animal clinic",
   ),
-  "auto-repair": unsplash(
-    "photo-1486262714039-378b089b9a67",
+  "auto-repair": localBusinessImage(
+    "auto-repair.jpg",
     "Auto mechanic servicing a vehicle in a repair shop",
   ),
-  fitness: unsplash(
-    "photo-1534438327276-14e5300c3a91",
+  fitness: localBusinessImage(
+    "fitness.jpg",
     "Modern fitness gym with exercise equipment",
   ),
-  services: unsplash(
-    "photo-1497366216548-375260702968",
-    "Professional office providing local business services",
+  services: localBusinessImage(
+    "services.jpg",
+    "Local business team collaborating in a professional office",
   ),
 };
 
@@ -195,13 +206,13 @@ const TYPE_FALLBACKS: Record<DirectoryType, CategoryImage[]> = {
     { src: "/images/excursions/fishing-charters.webp", alt: "Fishing charters" },
     { src: "/images/excursions/boat-dolphin-tours.webp", alt: "Boat tours" },
     { src: "/images/excursions/snorkeling-scuba.webp", alt: "Snorkeling tours" },
-    { src: "/images/excursions/water-sports.webp", alt: "Water sports rentals" },
+    { src: "/images/excursions/florida-water-sports.webp", alt: "Jet ski on a Florida beach with turquoise Atlantic water" },
   ],
   business: [
-    unsplash("photo-1497366811353-6870734c7617", "Modern professional office workspace"),
-    unsplash("photo-1521791136064-7986c2920216", "Business handshake closing a local deal"),
-    unsplash("photo-1486406146926-c627a92ad1ab", "Commercial building in a business district"),
-    unsplash("photo-1507679799987-c73779587ccf", "Professional team meeting in a conference room"),
+    localBusinessImage("services.jpg", "Local business team in a professional office"),
+    localBusinessImage("real-estate.jpg", "South Florida residential property"),
+    localBusinessImage("insurance.jpg", "Insurance professionals meeting with clients"),
+    localBusinessImage("contractors.jpg", "Residential construction and renovation work"),
   ],
 };
 
@@ -220,6 +231,15 @@ function pickFallback(
   categoryId: string,
   used: Set<string>,
 ): CategoryImage {
+  if (type === "business") {
+    const fallbacks = TYPE_FALLBACKS.business;
+    for (let i = 0; i < fallbacks.length; i += 1) {
+      const candidate = fallbacks[(categoryId.length + i) % fallbacks.length];
+      if (!used.has(candidate.src)) return candidate;
+    }
+    return BUSINESS_CATEGORY_FALLBACK;
+  }
+
   const fallbacks = TYPE_FALLBACKS[type];
   for (let i = 0; i < fallbacks.length; i += 1) {
     const candidate = fallbacks[(categoryId.length + i) % fallbacks.length];
@@ -252,7 +272,16 @@ export function getHubCategoryHref(
   type: DirectoryType,
   categoryId: string,
   hubAnchor?: string,
-): string {
+  options?: { populatedOnly?: boolean; hasListings?: boolean },
+): string | undefined {
+  if (options?.populatedOnly && !options.hasListings) {
+    return undefined;
+  }
+
+  if (type === "business" && options?.populatedOnly && options.hasListings) {
+    return `#category-${categoryId}`;
+  }
+
   if (type === "restaurant") {
     const restaurantHrefs: Record<string, string> = {
       seafood: "#seafood",
@@ -284,5 +313,12 @@ export function getHubCategoryImage(
     [{ id: categoryId, title: "", description: "", type }],
     type,
   );
-  return resolved.get(categoryId) ?? TYPE_FALLBACKS[type][index % TYPE_FALLBACKS[type].length];
+  return (
+    resolved.get(categoryId) ??
+    (type === "business"
+      ? BUSINESS_CATEGORY_FALLBACK
+      : TYPE_FALLBACKS[type][index % TYPE_FALLBACKS[type].length])
+  );
 }
+
+export { BUSINESS_CATEGORY_FALLBACK };

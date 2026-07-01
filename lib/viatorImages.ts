@@ -13,8 +13,8 @@ export const viatorImages = {
     alt: "Dolphins swimming and jumping in the ocean",
   },
   waterSports: {
-    src: "/images/excursions/water-sports.webp",
-    alt: "Person riding a jet ski on the ocean",
+    src: "/images/excursions/florida-water-sports.webp",
+    alt: "Yamaha jet ski on a white-sand Florida beach with turquoise Atlantic water",
   },
   snorkelingScuba: {
     src: "/images/excursions/snorkeling-scuba.webp",

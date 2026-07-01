@@ -63,7 +63,7 @@ export default function FeaturedRestaurantCard({
         </p>
 
         <div className="mt-6">
-          <ListingActionButtons listing={listing} listingHref={listingHref} />
+          <ListingActionButtons listing={listing} />
         </div>
       </div>
     </article>

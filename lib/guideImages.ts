@@ -37,8 +37,8 @@ export const guideImages = {
     alt: "Collage of Pompano Beach activities including water sports and coastal tours",
   },
   bestBeaches: {
-    src: "/images/excursions/water-sports.webp",
-    alt: "Jet skis and beach activities along the Pompano Beach shoreline",
+    src: "/images/excursions/florida-water-sports.webp",
+    alt: "Jet ski on a white-sand Florida beach with turquoise Atlantic water",
   },
   fishingGuide: {
     src: "/images/excursions/fishing-charters.webp",

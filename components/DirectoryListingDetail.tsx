@@ -1,10 +1,11 @@
 import DirectoryListingCard from "@/components/DirectoryListingCard";
 import DirectoryListingSchema from "@/components/DirectoryListingSchema";
 import ListingActionButtons from "@/components/ListingActionButtons";
+import ListingCardImage from "@/components/ListingCardImage";
 import { getRelatedListings, type DirectoryListing } from "@/lib/directory";
 import { getEmailAddress, getUsableUrl } from "@/lib/directory/listingLinks";
+import { resolveListingImagePresentation } from "@/lib/directory/listingImage";
 import { SPONSORSHIP_INQUIRY_EMAIL } from "@/lib/advertise";
-import Image from "next/image";
 import Link from "next/link";
 
 type DirectoryListingDetailProps = {
@@ -22,6 +23,7 @@ export default function DirectoryListingDetail({
 }: DirectoryListingDetailProps) {
   const related = getRelatedListings(listing);
   const paragraphs = listing.fullDescription.split("\n\n").filter(Boolean);
+  const portraitHero = resolveListingImagePresentation(listing) === "portrait";
 
   return (
     <>
@@ -55,17 +57,33 @@ export default function DirectoryListingDetail({
           </nav>
         </div>
 
-        <header className="relative min-h-[40vh] overflow-hidden sm:min-h-[45vh]">
-          <Image
-            src={listing.image}
-            alt={listing.imageAlt}
-            fill
+        <header
+          className={`relative overflow-hidden ${
+            portraitHero
+              ? "min-h-[42vh] bg-gradient-to-b from-sand/80 via-cream to-navy sm:min-h-[48vh]"
+              : "min-h-[40vh] sm:min-h-[45vh]"
+          }`}
+        >
+          <ListingCardImage
+            listing={listing}
             priority
             sizes="100vw"
-            className="object-cover brightness-110 saturate-[1.06]"
+            imageClassName="brightness-110 saturate-[1.06]"
+            hoverZoom={false}
+            overlay="none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/40 to-navy/20" />
-          <div className="relative z-10 mx-auto flex min-h-[40vh] max-w-4xl flex-col justify-end px-4 pb-10 pt-24 sm:min-h-[45vh] sm:px-6 sm:pb-12">
+          <div
+            className={`absolute inset-0 ${
+              portraitHero
+                ? "bg-gradient-to-t from-navy/90 via-navy/35 to-transparent"
+                : "bg-gradient-to-t from-navy/85 via-navy/40 to-navy/20"
+            }`}
+          />
+          <div
+            className={`relative z-10 mx-auto flex max-w-4xl flex-col justify-end px-4 pb-10 pt-24 sm:px-6 sm:pb-12 ${
+              portraitHero ? "min-h-[42vh] sm:min-h-[48vh]" : "min-h-[40vh] sm:min-h-[45vh]"
+            }`}
+          >
             <div className="flex flex-wrap gap-2">
               <span className="rounded-sm bg-cream/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-teal">
                 {listing.category}
@@ -172,7 +190,9 @@ export default function DirectoryListingDetail({
                 <div className="mt-6 flex flex-col gap-2.5">
                   <ListingActionButtons listing={listing} />
 
-                  {getUsableUrl(listing.secondaryCtaUrl) && listing.secondaryCtaLabel && (
+                  {listing.type !== "business" &&
+                    getUsableUrl(listing.secondaryCtaUrl) &&
+                    listing.secondaryCtaLabel && (
                     <a
                       href={listing.secondaryCtaUrl}
                       target="_blank"

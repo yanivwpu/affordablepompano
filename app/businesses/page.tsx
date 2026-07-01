@@ -1,5 +1,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import HubCategoryGrid from "@/components/hub/HubCategoryGrid";
+import HubCategoryListingsSection from "@/components/hub/HubCategoryListingsSection";
 import HubDirectorySection from "@/components/hub/HubDirectorySection";
 import HubFeaturedSection from "@/components/hub/HubFeaturedSection";
 import HubGuidesSection from "@/components/hub/HubGuidesSection";
@@ -10,6 +11,7 @@ import { hubSectionSpacing } from "@/lib/hubLayout";
 import {
   getCategoriesForType,
   getHubListings,
+  getListingsByCategory,
 } from "@/lib/directory";
 import { guides } from "@/lib/guides";
 import { businessesPillar, pillarGuideCards } from "@/lib/guides/pillarContent";
@@ -32,6 +34,12 @@ const businessListings = getHubListings(
 
 const businessGuideCards = dedupeGuideCardImages(
   pillarGuideCards(guides, businessesPillar.guides),
+);
+
+const populatedBusinessCategoryIds = new Set(
+  businessCategoryNav
+    .filter((cat) => getListingsByCategory("business", cat.id).length > 0)
+    .map((cat) => cat.id),
 );
 
 export default function BusinessesPage() {
@@ -78,6 +86,12 @@ export default function BusinessesPage() {
         eyebrow="Find a Pro"
         title="Browse by Category"
         description="Real estate, mortgage, title, insurance, contractors, and everyday services for Pompano homeowners and relocators."
+        populatedCategoryIds={populatedBusinessCategoryIds}
+      />
+
+      <HubCategoryListingsSection
+        type="business"
+        categories={businessCategoryNav}
       />
 
       <HubDirectorySection

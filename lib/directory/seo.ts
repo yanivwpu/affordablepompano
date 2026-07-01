@@ -6,11 +6,13 @@ import type { Metadata } from "next";
 
 export function createListingMetadata(listing: DirectoryListing): Metadata {
   const path = directoryPath(listing.type, listing.slug);
-  const title = `${listing.name} | ${listing.category} in Pompano Beach`;
+  const title =
+    listing.seoTitle ??
+    `${listing.name} | ${listing.category} in Pompano Beach`;
 
   return createPageMetadata({
     title,
-    description: listing.shortDescription,
+    description: listing.seoDescription ?? listing.shortDescription,
     path,
     image: listing.image,
     imageAlt: listing.imageAlt,
@@ -43,11 +45,13 @@ export function createListingBreadcrumbSchema(
 export function createListingSchema(listing: DirectoryListing) {
   const url = `${SITE_URL}${directoryPath(listing.type, listing.slug)}`;
   const schemaType =
-    listing.type === "restaurant"
-      ? "Restaurant"
-      : listing.type === "excursion"
-        ? "TouristAttraction"
-        : "LocalBusiness";
+    listing.categoryId === "real-estate"
+      ? "RealEstateAgent"
+      : listing.type === "restaurant"
+        ? "Restaurant"
+        : listing.type === "excursion"
+          ? "TouristAttraction"
+          : "LocalBusiness";
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -89,6 +93,10 @@ export function createListingSchema(listing: DirectoryListing) {
 
   if (listing.serviceArea) {
     schema.areaServed = listing.serviceArea;
+  }
+
+  if (schemaType === "RealEstateAgent") {
+    schema.jobTitle = "Luxury Realtor";
   }
 
   schema.publisher = {
